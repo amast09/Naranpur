@@ -1,6 +1,13 @@
 <?php
 Class Charts extends CI_Controller{
 
+	function __construct(){   
+		parent::__construct();
+    	if(!$this->session->userdata('logged_in')){   
+			redirect('family');
+		}
+	}
+
 	function get_world_data(){
 		$this->load->library('form_validation');
 		$this->form_validation->set_rules('lookup', 'Lookup', 'trim|required');

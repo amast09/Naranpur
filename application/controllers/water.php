@@ -2,13 +2,12 @@
 
 class Water extends CI_Controller{
 
-  function __construct(){   
-    parent::__construct();
-    if(!$this->session->userdata('logged_in'))
-    {   
-      redirect('family');
-    }   
-  }
+	function __construct(){   
+		parent::__construct();
+    	if(!$this->session->userdata('logged_in')){   
+			redirect('family');
+		}
+	}
 
 	function update_method(){
 		$this->load->library('form_validation');

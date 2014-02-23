@@ -1,6 +1,13 @@
 <?php
 Class Discussion extends CI_Controller{
 
+	function __construct(){   
+		parent::__construct();
+		if(!$this->session->userdata('logged_in')){   
+			redirect('family');
+		}   
+	}
+	
 	function index(){
 		redirect('discussion/all');
 	}
@@ -10,7 +17,7 @@ Class Discussion extends CI_Controller{
 		$data['result'] = $this->Discussion_model->get_topics($sort_by, $sort_order, $offset);
 		$data['content'] = 'discussion_view';
 		$this->load->view('includes/template', $data);
- 	}
+	}
 
 	function add_comment($diss_id){
 		$data['diss_id'] = $diss_id;
@@ -20,10 +27,7 @@ Class Discussion extends CI_Controller{
 
 	function see_comments($diss_id, $sort_by = 'timestamp', $sort_order = 'DESC', $offset = 0){
 		$this->load->model('Discussion_model');
-		$data['comments'] = $this->Discussion_model->get_comments($diss_id, 
-																																	$sort_by, 
-																																	$sort_order, 
-																																	$offset);
+		$data['comments'] = $this->Discussion_model->get_comments($diss_id, $sort_by, $sort_order, $offset);
 		$data['discussion'] = $this->Discussion_model->get_discussion($diss_id);
 		$data['diss_id'] = $diss_id;
 		$data['content'] = 'view_comments';
@@ -41,8 +45,8 @@ Class Discussion extends CI_Controller{
 		}
 		else echo json_encode(array('success' => false, 'message' => validation_errors()));
 	}
-	
-	
+
+
 	function submit_comment(){
 		$this->load->library('form_validation');
 		$this->form_validation->set_rules('content', 'Content', 'trim|required');
@@ -55,4 +59,3 @@ Class Discussion extends CI_Controller{
 		else echo json_encode(array('success' => false, 'message' => validation_errors()));
 	}
 }
-?>
