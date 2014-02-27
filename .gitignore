@@ -45,4 +45,5 @@ application/config/database.php
 ####################################
 backup/*
 logs/*
+naranpur.sublime*
 
