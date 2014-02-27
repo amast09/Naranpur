@@ -1,7 +1,6 @@
 <script src="<?php echo base_url("/resources/base/js/raphael.js");?>"></script>
 
 <div class="container-fluid">
-
 	<div class="row-fluid">
 		<div style="text-align:center;" id="rsr"></div>
 	</div>
@@ -17,55 +16,14 @@
 	</div>
 
 	<a class="pull-left" href="<?=site_url('world')?>" id="back"></a>
-
 </div>
-
-		<div id="cultivate" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="cultivateLabel" aria-hidden="true">
-		  <div class="modal-header">
-		  	<h4>Manage Crops<button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button></br></h4>
-		  </div>
-		  <div class="modal-body">
-				<?php $this->load->view('cultivate_crop'); ?>
-		  </div>
-		</div>
  
-		<div id="plant" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="plantLabel" aria-hidden="true">
-		  <div class="modal-header">
-		    <h4>Plant Crops<button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button></br></h4>
-		  </div>
-		  <div class="modal-body">
-				<?php $this->load->view('plant_crop'); ?>
-		  </div>
-		</div>
- 
-		<div id="water" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="waterLabel" aria-hidden="true">
-		  <div class="modal-header">
-		    <h4>Collect Water<button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button></br></h4>
-		  </div>
-		  <div class="modal-body">
-				<?php $this->load->view('water_view'); ?>
-		  </div>
-		</div>
+<?php $this->load->view('modals/manage_crops'); ?>
+<?php $this->load->view('modals/manage_seed'); ?>
+<?php $this->load->view('modals/manage_water'); ?>
+<?php $this->load->view('modals/manage_animals'); ?>
+<?php $this->load->view('modals/manage_family'); ?>
 
-		<div id="feed" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="feedLabel" aria-hidden="true">
-		  <div class="modal-header">
-		    <h4>Manage Livestock<button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button></br></h4>
-		  </div>
-		  <div class="modal-body">
-				<?php $this->load->view('animal_view'); ?>
-		  </div>
-		</div>
-	</div>
-
-		<div id="family" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="familyLabel" aria-hidden="true">
-		  <div class="modal-header">
-		    <h4>Family Members<button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button></br></h4>
-		  </div>
-		  <div class="modal-body">
-				<?php $this->load->view('family_modal'); ?>
-		  </div>
-		</div>
-	</div>
 
 <script>
 $(function() {

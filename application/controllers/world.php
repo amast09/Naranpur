@@ -15,7 +15,7 @@ Class World extends CI_Controller{
 		$data['map_list'] = $map_query;
 		$data['lmu_list'] = $lmu_query;
 		$data['family_name'] = $this->session->userdata('family_name');
-		$data['content'] = 'worldview';
+		$data['content'] = 'world_view';
 		$this->load->view('includes/template', $data);
 	}
 

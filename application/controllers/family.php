@@ -10,7 +10,7 @@ class Family extends CI_Controller {
       redirect('family');
     }
 		else{
-			$data['content'] = 'password_change_view';
+			$data['content'] = 'update_password_view';
 			$this->load->view('includes/template', $data);
 		}
 	}
@@ -60,7 +60,7 @@ class Family extends CI_Controller {
       redirect('dashboard');
     }
 		else{
-			$data['content'] = 'login_form';
+			$data['content'] = 'login_view';
 			$this->load->view('includes/template', $data);
 		}
 	}
@@ -295,8 +295,8 @@ class Family extends CI_Controller {
 		redirect('family');
 	}
 
-	function signup(){
-		$data['content'] = 'signup_form';
+	function sign_up(){
+		$data['content'] = 'create_family_view';
 		$this->load->view('includes/template', $data);
 	}
 

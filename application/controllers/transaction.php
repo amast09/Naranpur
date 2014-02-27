@@ -42,7 +42,7 @@ class Transaction extends CI_Controller{
 		$data['res_id'] = $resource_id;
 		$data['total'] = $trans['total']; 
 		$data['resources'] = $this->inventory_model->get_store_inventory();
-		$data['content'] = 'all_transactions_view';
+		$data['content'] = 'read_transactions_view';
 		$this->load->view('includes/template', $data);
 	}
 
@@ -52,7 +52,7 @@ class Transaction extends CI_Controller{
 		$this->load->model("inventory_model");
 		$family_name = $this->session->userdata('family_name');
 		$data['resources'] = $this->inventory_model->get_store_inventory();
-		$data['content'] = 'all_transactions_view';
+		$data['content'] = 'read_transactions_view';
 		$this->load->view('includes/template', $data);
 	}
 

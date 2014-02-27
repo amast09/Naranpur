@@ -9,12 +9,6 @@ class Lmu extends CI_Controller{
 		}
 	}
 
-	function index(){
-		$this->load->model('lmu_model');
-		$data['result'] = $this->lmu_model->get_lmus();
-		$this->load->view('worldview2',$data);
-	}
-
 	function view($lmu_id = -1){
 		$this->load->model('lmu_model');
 		$family_name = $this->session->userdata('family_name');

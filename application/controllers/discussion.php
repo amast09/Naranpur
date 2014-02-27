@@ -15,13 +15,7 @@ Class Discussion extends CI_Controller{
 	function all($sort_by = 'timestamp', $sort_order = 'DESC', $offset = 0){
 		$this->load->model('Discussion_model');
 		$data['result'] = $this->Discussion_model->get_topics($sort_by, $sort_order, $offset);
-		$data['content'] = 'discussion_view';
-		$this->load->view('includes/template', $data);
-	}
-
-	function add_comment($diss_id){
-		$data['diss_id'] = $diss_id;
-		$data['content'] = 'add_comment';
+		$data['content'] = 'read_discussions_view';
 		$this->load->view('includes/template', $data);
 	}
 
@@ -30,7 +24,7 @@ Class Discussion extends CI_Controller{
 		$data['comments'] = $this->Discussion_model->get_comments($diss_id, $sort_by, $sort_order, $offset);
 		$data['discussion'] = $this->Discussion_model->get_discussion($diss_id);
 		$data['diss_id'] = $diss_id;
-		$data['content'] = 'view_comments';
+		$data['content'] = 'read_discussion_view';
 		$this->load->view('includes/template', $data);
 	}
 

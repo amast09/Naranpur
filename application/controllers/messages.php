@@ -24,7 +24,7 @@ class Messages extends CI_Controller{
 	}
 
 	function box_pag($sort_by, $sort_order, $offset, $box){
-		$data['content'] = 'box';
+		$data['content'] = 'read_messages_view';
 		$data['box'] = $box;
 		$this->load->model('messages_model');
 		$limit = 10;
@@ -56,7 +56,7 @@ class Messages extends CI_Controller{
 		$this->load->model('family_model');
 		$family_name = $this->session->userdata('family_name');
 		$data['families'] = $this->family_model->get_all_families($family_name);
-		$data['content'] = 'compose';
+		$data['content'] = 'create_message_view';
 		$this->load->view('includes/template', $data);
 	}
 
@@ -98,7 +98,7 @@ class Messages extends CI_Controller{
 	}
 
 	function view_message($id){
-		$data['content'] = 'message_view';
+		$data['content'] = 'read_message_view';
 		$this->load->model('messages_model');
 		$query = $this->messages_model->get_message($id);
 		if(!$query) $this->inbox();

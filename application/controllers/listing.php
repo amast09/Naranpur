@@ -33,7 +33,7 @@ class Listing extends CI_Controller{
 		$data['resources'] = $this->inventory_model->get_store_inventory();
 		$family_name = $this->session->userdata('family_name');
 		$data['listing_inventory'] = $this->inventory_model->get_sell_inventory($family_name);
-		$data['content'] = 'all_listings_view';
+		$data['content'] = 'read_listings_view';
 		$this->load->view('includes/template', $data);
 	}
 
@@ -53,7 +53,7 @@ class Listing extends CI_Controller{
 		$data['res_id'] = $resource_id;
 		$data['resources'] = $this->inventory_model->get_store_inventory();
 		$data['listing_inventory'] = $this->inventory_model->get_sell_inventory($family_name);
-		$data['content'] = 'all_listings_view';
+		$data['content'] = 'read_listings_view';
 		$this->load->view('includes/template', $data);
 	}
 
@@ -66,7 +66,7 @@ class Listing extends CI_Controller{
 			$data['bids'] = $this->bid_model->get_bids($listing_id);
 			$data['family_name'] = $this->session->userdata('family_name');
 			$data['listing'] = $listing;
-			$data['content'] = 'view_listing';
+			$data['content'] = 'read_listing_view';
 			$this->load->view('includes/template', $data);
 		}
 	}
