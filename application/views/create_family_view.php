@@ -1,7 +1,7 @@
 <div class="container-fluid">
 <div class="row-fluid">
 <div class="span6 offset3">
-<form id="new_family" class="form-horizontal">
+<form id="new-family" class="form-horizontal" data-url="<?=site_url("/family/create_family");?>">
 	<fieldset>
  		<div id="legend">
 			<legend class="">Create a Family</legend>
@@ -54,34 +54,10 @@
 			<div id="error" class="alert alert-block alert-error " style="display:none; bottom:10px;">  
   			<a class="close" onclick="$('#error').hide();">X</a>  
   			<h4 class="alert-heading">Error!</h4>  
-				<p id="error_message"></p>
+				<p id="error-message"></p>
 			</div> 
 		</div>
 	</div>
 </div>
 
-<script> 
-
-$('input').change( function() { $('#error').hide();  });
-
-
-$("button").on("click", function(event){
-	event.preventDefault();
-  var data = $("#new_family").serialize();
-  
-	$.ajax({
-		type: "POST",
-		url: "<?=site_url("/family/create_family");?>",
-		data: data,
-	  dataType: "json",
-    success: function(data){
-			if(data.success) window.location.assign('<?=site_url("dashboard");?>');
-			else{
-				$('#error').slideDown();
-				$('#error_message').html(data.message);	
-			}
-    }
-  });
-});
-
-</script>
+<script src="<?=base_url("/resources/create_family_view/js/createFamily.js");?>"></script>

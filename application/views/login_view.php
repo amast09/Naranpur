@@ -1,6 +1,6 @@
 <div class="container-fluid">
 	<div class="row-fluid">
-		<form class="span4 offset4 text-center" id="login">
+		<form class="span4 offset4 text-center" id="login" data-url='<?=site_url("/family/validate_credentials");?>' data-redirect-url='<?=site_url("dashboard");?>'>
 
     	<div id="legend">
      		<legend>Naranpur Login</legend>
@@ -21,9 +21,7 @@
 			<div class="control-group">
  	    	<div class="controls">
  	      	<a id="login_button" class="btn btn-success pull-left">Login</a>
-<?php /*
-					<a href="<?php echo site_url();?>/family/signup" class="btn btn-primary pull-right">Create a Family</a>
-*/ ?>
+					<!--<a href="<?php echo site_url();?>/family/signup" class="btn btn-primary pull-right">Create a Family</a>-->
 				</div>
 	   	</div>
 		</form>
@@ -77,28 +75,4 @@ do not work properly in Internet Explorer.
 
 </div>
 
-
-<script> 
-
-$('input').change( function() { $('#error').hide();  });
-
-
-$("#login_button").on("click", function(event){
-  var data = $("#login").serialize();
-  
-	$.ajax({
-		type: "post",
-		url: "<?=site_url("/family/validate_credentials");?>",
-		data: data,
-	  dataType: "json",
-    success: function(data){
-			if(data.success) window.location.assign('<?=site_url("dashboard");?>');
-			else{
-				$('#error').slideDown();
-				$('#error_message').text("Invalid Name or Password");	
-			}
-    }
-  });
-});
-
-</script>
+<script src="<?=base_url("/resources/login_view/js/loginView.js");?>"></script>
