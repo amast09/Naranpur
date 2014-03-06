@@ -107,3 +107,5 @@
 
 </div>
 
+<script src="<?=base_url("/resources/read_discussions_view/js/createDiscussion.js");?>"></script>
+
