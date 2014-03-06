@@ -18,10 +18,10 @@
 	<a class="pull-left" href="<?=site_url('world')?>" id="back"></a>
 </div>
  
-<?php $this->load->view('modals/manage_crops'); ?>
+<?php $this->load->view('modals/manage_crop'); ?>
 <?php $this->load->view('modals/manage_seed'); ?>
 <?php $this->load->view('modals/manage_water'); ?>
-<?php $this->load->view('modals/manage_animals'); ?>
+<?php $this->load->view('modals/manage_animal'); ?>
 <?php $this->load->view('modals/manage_family'); ?>
 
 
