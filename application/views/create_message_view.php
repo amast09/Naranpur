@@ -1,7 +1,7 @@
 <div class="container-fluid">
 	<div class="row-fluid">
 		<div class="span6 offset3 well text-center">
-		<form id="message_form" class="form-horizontal" data-url='<?=site_url("messages/create_message");?>' data-redirect-url='<?=site_url("messages/inbox");?>'>
+		<form id="message_form" class="form-horizontal" data-submit-url='<?=site_url("messages/create_message");?>' data-redirect-url='<?=site_url("messages/inbox");?>'>
 
 			<div class="control-group">
 			<div class="input-prepend">
