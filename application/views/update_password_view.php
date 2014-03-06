@@ -1,6 +1,6 @@
 <div class="container-fluid">
 	<div class="row-fluid">
-		<form class="span4 offset4 text-center" id="change-password" data-url="<?=site_url("/family/process_password_change");?>">
+		<form class="span4 offset4 text-center" id="change-password" data-submit-url="<?=site_url("/family/process_password_change");?>">
 
     	<div id="legend">
      		<legend>Change Your Naranpur Password</legend>

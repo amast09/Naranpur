@@ -1,7 +1,7 @@
 <div class="container-fluid">
 <div class="row-fluid">
 <div class="span6 offset3">
-<form id="new-family" class="form-horizontal" data-url="<?=site_url("/family/create_family");?>" data-redirect-url="<?=site_url("dashboard");?>">
+<form id="new-family" class="form-horizontal" data-submit-url="<?=site_url("/family/create_family");?>" data-redirect-url="<?=site_url("dashboard");?>">
 	<fieldset>
  		<div id="legend">
 			<legend class="">Create a Family</legend>

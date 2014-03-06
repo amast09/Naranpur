@@ -5,7 +5,7 @@ $(function() {
 	$("button").on("click", function(event){
 		event.preventDefault();
 		var data = $("#new-family").serialize(),
-				submitUrl = $("#new-family").attr("data-url"),
+				submitUrl = $("#new-family").attr("data-submit-url"),
 				redirectUrl = $("#new-family").attr("data-redirect-url");
 
 		$.ajax({

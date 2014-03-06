@@ -1,6 +1,6 @@
 <div class="container-fluid">
 	<div class="row-fluid">
-		<form class="span4 offset4 text-center" id="login" data-url='<?=site_url("/family/validate_credentials");?>' data-redirect-url='<?=site_url("dashboard");?>'>
+		<form class="span4 offset4 text-center" id="login" data-submit-url='<?=site_url("/family/validate_credentials");?>' data-redirect-url='<?=site_url("dashboard");?>'>
 
     	<div id="legend">
      		<legend>Naranpur Login</legend>

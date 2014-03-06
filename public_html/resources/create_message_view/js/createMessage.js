@@ -9,7 +9,7 @@ $(function() {
 	$('#send_button').click(function() {
 		$.ajax({
 			type: "post",
-			url: $("#message_form").attr("data-url"),
+			url: $("#message_form").attr("data-submit-url"),
 			data: $("#message_form").serialize(),
 			dataType: "json",
 			success: function(data){

@@ -6,7 +6,7 @@
   </div>
 
   <div class="modal-body">
-    <form id="comment_form" class="form-inline well">
+    <form id="comment-form" class="form-inline well" data-submit-url="<?=site_url('/discussion/submit_comment');?>" data-redirect-url="<?=site_url('discussion/see_comments/$diss_id');?>">
 
 			<input type="hidden" name="diss_id" id="diss_id" value=<?=$diss_id;?> />
 
@@ -35,11 +35,11 @@
 $('#comment_button').click(function() {
  	$.ajax({
 		type: "post",
-		url: "<?=site_url("/discussion/submit_comment");?>",
+		url: $("#comment-form").attr("data-submit-url"),
 		data: $("#comment_form").serialize(),
 	  dataType: "json",
     success: function(data){
-			if(data.success) window.location.assign('<?=site_url("discussion/see_comments/$diss_id");?>');
+			if(data.success) window.location.assign($("#comment-form").attr("data-redirect-url"));
 			else{
 				$('#comment_error').show("slide", { direction: "down" }, 'fast');
 				$('#comment_error_message').html(data.message);	

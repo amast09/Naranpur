@@ -4,7 +4,7 @@ $(function() {
 	$("#login_button").on("click", function(event){
 		$.ajax({
 			type: "post",
-			url: $("#login").attr("data-url"),
+			url: $("#login").attr("data-submit-url"),
 			data: $("#login").serialize(),
 			dataType: "json",
 			success: function(data){

@@ -8,7 +8,7 @@ $(function() {
 
 		$.ajax({
 			type: "post",
-			url: $("#change-password").attr("data-url"),
+			url: $("#change-password").attr("data-submit-url"),
 			data: $("#change-password").serialize(),
 			dataType: "json",
 			success: function(data){
