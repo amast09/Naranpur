@@ -25,7 +25,3 @@
 		<button class="btn btn-primary">Go to LMU</button>
 	</div>
 </form>
-
-<script src="<?=base_url("/resources/base/js/raphael.js");?>"></script>
-<script src="<?=base_url("/resources/world_view/js/map.js");?>"></script>
-
