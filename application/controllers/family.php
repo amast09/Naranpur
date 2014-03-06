@@ -35,21 +35,28 @@ class Family extends CI_Controller {
 				if($this->family_model->change_password($family_name, $pwd1)){
 					$code = 1;
 					$time = getdate();
+
 					if($time['hours'] < 13 && $time['hours'] > 3){
 						$message = 'Your password has been changed. Hope you are haveing a wonderful morning!';
 					}
-					else if($time['hours'] < 17){
+					else if($time['hours'] < 17) {
 						$message = 'Your password has been changed. Hope you are haveing a wonderful afternoon!';
 					}
-					else{
+					else {
 						$message = 'Your password has been changed. Hope you are having a wonderful night!';
 					}
+				}	
+				else { 
+					$message = 'Database Error';
 				}
-				else $message = 'Database Error';
 			}
-			else $message = 'The Current Password Supplied is Incorrect.';
+			else {
+			 $message = 'The Current Password Supplied is Incorrect.';
+			}
 		}
-		else $message = validation_errors();
+		else {
+			$message = validation_errors();
+		}
 
 		echo json_encode(array('success' => $code, 'message' => $message));
 	}

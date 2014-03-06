@@ -1,6 +1,6 @@
 <div class="container-fluid">
 	<div class="row-fluid">
-		<form class="span4 offset4 text-center" id="login">
+		<form class="span4 offset4 text-center" id="change-password" data-url="<?=site_url("/family/process_password_change");?>">
 
     	<div id="legend">
      		<legend>Change Your Naranpur Password</legend>
@@ -51,35 +51,5 @@
 	</div>
 </div>
 
+<script src="<?=base_url("/resources/update_password_view/js/updatePassword.js");?>"></script>
 
-<script> 
-
-$('input').change( function() { $('#error').hide();  });
-
-
-$("#change_button").on("click", function(event){
-	event.preventDefault();
-  var data = $("#login").serialize();
-  
-	$.ajax({
-		type: "post",
-		url: "<?=site_url("/family/process_password_change");?>",
-		data: data,
-	  dataType: "json",
-    success: function(data){
-			if(data.success){
-				$('#success').slideDown();
-				$('#success_message').text(data.message);
-				$('#pwd0').val('');
-				$('#pwd1').val('');
-				$('#pwd2').val('');
-			} 
-			else{
-				$('#error').slideDown();
-				$('#error_message').html(data.message);
-			}
-    }
-  });
-});
-
-</script>
