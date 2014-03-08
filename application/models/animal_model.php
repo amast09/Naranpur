@@ -71,7 +71,7 @@ class Animal_model extends CI_Model{
 		return($this->db->get('animal_policy')->row()->collect_manure);
 	}
 
-	function create_animal_policy($family_name, $animal_id, $feed_method_id = 7){
+	function create_animal_policy($family_name, $animal_id, $feed_method_id = 1){
 		$data = array(
 			'family_name' => $family_name,
 			'animal_id' => $animal_id,
