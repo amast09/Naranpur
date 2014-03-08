@@ -19,7 +19,7 @@ $(function() {
 	function drawWorldGraph(){
 		var jsonData = $.ajax({
 			type: 'POST',
-			url: $("#world").attr("data-submit-url"),
+			url: $("#world").attr("data-ajax-url"),
 			data: {lookup: x},
 			dataType:"json",
 			success: function(data){
@@ -53,7 +53,7 @@ $(function() {
 	function drawUserGraph(){
 		var jsonData = $.ajax({
 			type: 'POST',
-			url: $("#user").attr("data-submit-url"),
+			url: $("#user").attr("data-ajax-url"),
 			data: {lookup: y},
 			dataType:"json",
 			success: function(data){

@@ -1,6 +1,6 @@
 <div class="row-fluid" style="text-align:right;">
 	<div class="span9">
-		<div id='world' data-submit-url="<?=site_url('charts/get_world_data')?>"></div>
+		<div id='world' data-ajax-url="<?=site_url('charts/get_world_data')?>"></div>
 		<div id="worldBtns" class="btn-group" data-toggle="buttons-radio">
 			<button type="button" data-lookup="P" class="btn btn-primary active">Rainfall</button>
 			<button type="button" data-lookup="pop" class="btn btn-primary">Population</button>
@@ -17,7 +17,7 @@
 
 <div class="row-fluid" style="text-align:right;">
 	<div class="span9">
-	<div id='user' data-submit-url="<?=site_url('charts/get_user_data')?>"></div>
+	<div id='user' data-ajax-url="<?=site_url('charts/get_user_data')?>"></div>
 
 	<div id="userBtns" class="btn-group" data-toggle="buttons-radio">
 		<button type="button" data-lookup="money" class="btn btn-primary active">Money</button>
