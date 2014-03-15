@@ -1,5 +1,5 @@
 $(function(){
-	var siteUrl = $("#animal-management").attr("data-site-url");
+	var siteUrl = $("#site").attr("data-site-url");
 
 	$('#animalSelect').change(function () {
 		if($('#animalSelect option:selected').val() == -1){
