@@ -24,7 +24,7 @@
 		</div>
 	</div>
 
-	<a class="pull-left" href="<?=site_url('world')?>" id="back"></a>
+	<a class="pull-left" href="<?=site_url('world')?>" id="site" data-site-url="<?=site_url()?>"></a>
 </div>
  
 <?php $this->load->view('modals/manage_crop'); ?>
