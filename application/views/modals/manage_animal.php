@@ -3,7 +3,7 @@
 		<h4>Manage Livestock<button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button></br></h4>
 	</div>
 
-	<div class="modal-body" id="animal-management" data-site-url="<?=site_url()?>">
+	<div class="modal-body" id="animal-management">
 		<form id="feed_policy">
 			
 			<select id="animalSelect" name="animal_id">
