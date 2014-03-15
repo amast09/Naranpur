@@ -1,4 +1,3 @@
-<script src="<?php echo base_url("/resources/base/js/raphael.js");?>"></script>
 <div class="container-fluid">
 <?php
 	$sort_by = ($this->uri->segment(3) == '')? 'timestamp' : $this->uri->segment(3);
@@ -106,6 +105,3 @@
 	</ul>
 
 </div>
-
-<script src="<?=base_url("/resources/read_discussions_view/js/createDiscussion.js");?>"></script>
-

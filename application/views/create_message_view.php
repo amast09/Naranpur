@@ -46,5 +46,3 @@
 		</div> 
 	</div> 
 </div>
-
-<script src="<?=base_url("/resources/create_message_view/js/createMessage.js");?>"></script>

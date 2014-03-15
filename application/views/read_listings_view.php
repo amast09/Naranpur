@@ -96,4 +96,4 @@
 </div>
 </div>
 
-<?php $this->load->view('create_listing_view'); ?>
+<?php $this->load->view('modals/create_listing'); ?>

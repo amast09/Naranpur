@@ -39,6 +39,16 @@ class Lmu extends CI_Controller{
 			}
 
 			$data['percent_planted'] = $percent_planted;
+			$data['js_files'] = [
+				'http://code.jquery.com/ui/1.9.2/jquery-ui.js',
+				base_url('resources/base/js/raphael.js'),
+				base_url('resources/lmu_view/js/lmu.js'),
+				base_url('resources/lmu_view/js/manageAnimal.js'),
+				base_url('resources/lmu_view/js/manageCrop.js'),
+				base_url('resources/lmu_view/js/manageSeed.js'),
+				base_url('resources/lmu_view/js/manageWater.js'),
+			];
+			$data['css_files'] = ['http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css'];
 
 			$this->load->view('includes/template', $data);
 		}

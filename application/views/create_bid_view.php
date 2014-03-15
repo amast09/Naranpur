@@ -3,19 +3,23 @@
 	<div class="row-fluid" style="text-align:center;">
 		<?php $lis = $listing->row(); ?>
 					<div class="span3">
-						<div id="fam"></div>
+						<h5>Family</h5>
+						<div class="icon-group"></div>
 						<p><?=$lis->family_name;?></p>
 					</div>
 					<div class="span3">
-						<div id="res"></div>
+						<h5>Resource</h5>
+						<div class="icon-leaf"></div>
 						<p><?=$lis->resource_name;?></p>
 					</div>
 					<div class="span3">
-						<div id="qua"></div>
+						<h5>Quantity</h5>
+						<div class="icon-meter"></div>
 						<p><?=$lis->quantity;?></p>
 					</div>
 					<div class="span3">
-						<div id="mes"></div>
+						<h5>Message</h5>
+						<div class="icon-bubble2"></div>
 						<p><?=$lis->message;?></p>
 					</div>
 	</div>
@@ -69,5 +73,3 @@
 
 	</div>
 </div>
-
-<script src="<?=base_url("/resources/create_bid_view/js/createBid.js");?>"></script>

@@ -14,6 +14,7 @@ class Store extends CI_Controller{
 		$data['buy_inventory'] = $this->inventory_model->get_store_inventory();
 		$data['sell_inventory'] = $this->inventory_model->get_sell_inventory($family_name);
 		$data['cash'] = $this->inventory_model->get_resource('4', $family_name)->row()->quantity;
+		$data['js_files'] = [base_url('resources/store_view/js/store.js')];
 		$data['content'] = 'store_view';
 		$this->load->view('includes/template', $data);
 	}

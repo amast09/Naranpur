@@ -51,5 +51,3 @@
 	</div>
 </div>
 
-<script src="<?=base_url("/resources/update_password_view/js/updatePassword.js");?>"></script>
-

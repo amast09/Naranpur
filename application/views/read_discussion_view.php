@@ -108,5 +108,3 @@
 	</ul>
 
 </div>
-
-<script src="<?=base_url("/resources/read_discussion_view/js/createComment.js");?>"></script>

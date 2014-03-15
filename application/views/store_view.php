@@ -31,4 +31,3 @@
 	</div>
 
 </div>
-<script src="<?=base_url("/resources/store_view/js/store.js");?>"></script>

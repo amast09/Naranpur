@@ -56,6 +56,7 @@ class Messages extends CI_Controller{
 		$this->load->model('family_model');
 		$family_name = $this->session->userdata('family_name');
 		$data['families'] = $this->family_model->get_all_families($family_name);
+		$data['js_files'] = [base_url('resources/create_message_view/js/createMessage.js')];
 		$data['content'] = 'create_message_view';
 		$this->load->view('includes/template', $data);
 	}

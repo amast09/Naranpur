@@ -35,10 +35,3 @@
 <?php $this->load->view('modals/manage_water'); ?>
 <?php $this->load->view('modals/manage_animal'); ?>
 <?php $this->load->view('modals/manage_family'); ?>
-
-<script src="<?=base_url('/resources/base/js/raphael.js');?>"></script>
-<script src="<?=base_url("/resources/lmu_view/js/lmu.js");?>"></script>
-<script src="<?=base_url("/resources/lmu_view/js/manageAnimal.js");?>"></script>
-<script src="<?=base_url("/resources/lmu_view/js/manageCrop.js");?>"></script>
-<script src="<?=base_url("/resources/lmu_view/js/manageSeed.js");?>"></script>
-<script src="<?=base_url("/resources/lmu_view/js/manageWater.js");?>"></script>

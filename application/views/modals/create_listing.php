@@ -41,4 +41,3 @@
 	</div> 
 </div>
 
-<script src="<?=base_url("/resources/create_listing_view/js/createListing.js");?>"></script>

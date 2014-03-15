@@ -10,6 +10,7 @@ class Family extends CI_Controller {
       redirect('family');
     }
 		else{
+			$data['js_files'] = [base_url('/resources/update_password_view/js/updatePassword.js')];
 			$data['content'] = 'update_password_view';
 			$this->load->view('includes/template', $data);
 		}
@@ -67,6 +68,7 @@ class Family extends CI_Controller {
       redirect('dashboard');
     }
 		else{
+			$data['js_files'] = [base_url('resources/login_view/js/loginView.js')];
 			$data['content'] = 'login_view';
 			$this->load->view('includes/template', $data);
 		}
@@ -304,6 +306,7 @@ class Family extends CI_Controller {
 
 	function sign_up(){
 		$data['content'] = 'create_family_view';
+		$data['js_files'] = [base_url('/resources/create_family_view/js/createFamily.js')];
 		$this->load->view('includes/template', $data);
 	}
 

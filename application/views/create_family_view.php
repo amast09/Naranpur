@@ -59,5 +59,3 @@
 		</div>
 	</div>
 </div>
-
-<script src="<?=base_url("/resources/create_family_view/js/createFamily.js");?>"></script>

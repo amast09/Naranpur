@@ -6,11 +6,11 @@
 				<ul class="nav">
 						<li class="divider-vertical"></li>
 
-      		<li><a href="<?=site_url('/world');?>"><i class="icon-globe"></i> World</a></li>
+      		<li><a href="<?=site_url('/world');?>"><i class="icon-earth"></i> World</a></li>
 						<li class="divider-vertical"></li>
 
      			<li class="dropdown">
-						<a class="dropdown-toggle text-error" id="family-updates" data-toggle="dropdown" data-ajax-url="<?=site_url('/family/get_updates')?>"><i class="icon-home"></i> Family <b class="caret"></b></a>
+						<a class="dropdown-toggle text-error" id="family-updates" data-toggle="dropdown" data-ajax-url="<?=site_url('/family/get_updates')?>"><i class="icon-home3"></i> Family <b class="caret"></b></a>
 							<ul class="dropdown-menu span3">
       						<li id="inventoryLink" data-ajax-url="<?=site_url('/family/get_inventory')?>"><a href="#inventoryModal" role="button"  data-toggle="modal"><i class="icon-tasks"></i> Inventory</a></li>
 									<li class="divider"></li>
@@ -25,11 +25,11 @@
 					</li>
 						<li class="divider-vertical"></li>
 
-      		<li><a href="<?=site_url('/store');?>"><i class="icon-leaf"></i> Store</a></li>
+      		<li><a href="<?=site_url('/store');?>"><i class="icon-library"></i> Store</a></li>
 						<li class="divider-vertical"></li>
 
      			<li class="dropdown">
-						<a class="dropdown-toggle" data-toggle="dropdown" href=""><i class="icon-th"></i> Market <b class="caret"></b></a>
+						<a class="dropdown-toggle" data-toggle="dropdown" href=""><i class="icon-leaf"></i> Market <b class="caret"></b></a>
 							<ul class="dropdown-menu span3">
 								<li>
 									<a href="<?=site_url('/listing/view_all_listings');?>">
@@ -39,28 +39,28 @@
 									<li class="divider"></li>
 								<li>
 									<a href="<?=site_url('/transaction/view_all_transactions');?>">
-										<i class="icon-barcode"></i> View Transactions <span id='win' class="badge badge-info pull-right" style="display:none;">
+										<i class="icon-stack"></i> View Transactions <span id='win' class="badge badge-info pull-right" style="display:none;">
 									</a>
 								</li>
 							</ul>
 					</li>
 						<li class="divider-vertical"></li>
 
-     			<li><a href="<?=site_url('/discussion');?>"><i class="icon-comment"></i> Forum</a></li>
+     			<li><a href="<?=site_url('/discussion');?>"><i class="icon-bubbles"></i> Forum</a></li>
 						<li class="divider-vertical"></li>
 
      			<li class="dropdown">
-						<a class="dropdown-toggle" data-toggle="dropdown" href=""><i class="icon-envelope"></i> Messages <b class="caret"></b></a>
+						<a class="dropdown-toggle" data-toggle="dropdown" href=""><i class="icon-envelope-alt"></i> Messages <b class="caret"></b></a>
 							<ul class="dropdown-menu span3">
-								<li><a href="<?=site_url('/messages/compose');?>"><i class="icon-pencil"></i> Compose</a></li>
+								<li><a href="<?=site_url('/messages/compose');?>"><i class="icon-quill"></i> Compose</a></li>
 									<li class="divider"></li>
 								<li>
 									<a href="<?=site_url('/messages/inbox');?>">
-										<i class="icon-inbox"></i> Inbox <span id='mess' class="badge badge-info pull-right" style="display:none;"></span>
+										<i class="icon-download"></i> Inbox <span id='mess' class="badge badge-info pull-right" style="display:none;"></span>
 									</a>
 								</li>
 									<li class="divider"></li>
-								<li><a href="<?=site_url('/messages/outbox');?>"><i class="icon-share"></i> Outbox</a></li>
+								<li><a href="<?=site_url('/messages/outbox');?>"><i class="icon-upload"></i> Outbox</a></li>
 							</ul>
 					</li>
 
@@ -82,7 +82,7 @@
 								</li>
 								<li class="divider"></li>
 								<li>
-				     			<a href="<?=site_url('/family/logout');?>"><i class="icon-share"></i> Logout</a>
+				     			<a href="<?=site_url('/family/logout');?>"><i class="icon-exit"></i> Logout</a>
 								</li>
 							</ul>
 					</li>

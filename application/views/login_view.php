@@ -74,5 +74,3 @@ do not work properly in Internet Explorer.
 </table>
 
 </div>
-
-<script src="<?=base_url("/resources/login_view/js/loginView.js");?>"></script>

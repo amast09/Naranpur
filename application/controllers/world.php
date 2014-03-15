@@ -15,6 +15,13 @@ Class World extends CI_Controller{
 		$data['map_list'] = $map_query;
 		$data['lmu_list'] = $lmu_query;
 		$data['family_name'] = $this->session->userdata('family_name');
+		$data['js_files'] = [
+			base_url('resources/base/js/raphael.js'),
+			base_url('resources/world_view/js/g.raphael-min.js'),
+			base_url('resources/world_view/js/g.line.js'),
+			base_url('resources/world_view/js/map.js'),
+			base_url('resources/world_view/js/chart.js')
+		];
 		$data['content'] = 'world_view';
 		$this->load->view('includes/template', $data);
 	}
