@@ -12,30 +12,30 @@
 
 				<div id="<?=$ac->id;?>" style="display:none;">
 					<table  class="table table-striped table-condensed">
-						<tr data-lmu_id="<?=$ac->lmu_id;?>" data-crop_id="<?=$ac->id;?>">
-							<td data-field="irrigation">
+						<tr data-lmu_id="<?=$ac->lmu_id;?>" data-crop_id="<?=$ac->id;?>" data-field="irrigation">
+							<td>
 								Irrigation <i style="cursor:pointer;" class="pull-right <?php echo ($ac->irrigation) ? 'icon-ok' : 'icon-remove';?>"></i>
 							</td>
 							<td>
 								Requires: <?=round($ac->irr * $ac->land_percentage / 100 * $acres * 7,3);?> L/wk of water
 							</td>
 						</tr>
-						<tr data-lmu_id="<?=$ac->lmu_id;?>" data-crop_id="<?=$ac->id;?>">
-							<td data-field="fertilizer">
+						<tr data-lmu_id="<?=$ac->lmu_id;?>" data-crop_id="<?=$ac->id;?>" data-field="fertilizer">
+							<td>
 							Fertilizer <i style="cursor:pointer;" class="pull-right <?php echo ($ac->fertilizer) ? 'icon-ok' : 'icon-remove';?>"></i></td>
 							<td>
 								Requires: <?=round($ac->frr * $ac->land_percentage / 100 * $acres,3);?> kg/wk of fertilizer
 							</td>
 						</tr>
-						<tr data-lmu_id="<?=$ac->lmu_id;?>" data-crop_id="<?=$ac->id;?>">
-							<td data-field="pesticide">
+						<tr data-lmu_id="<?=$ac->lmu_id;?>" data-crop_id="<?=$ac->id;?>" data-field="pesticide">
+							<td>
 								Pesticide <i style="cursor:pointer;" class="pull-right <?php echo ($ac->pesticide) ? 'icon-ok' : 'icon-remove';?>"></i></td>
 							<td>
 								Requires: <?=round($ac->prr * $ac->land_percentage / 100 * $acres,3);?> kg/wk of pesticide
 							</td>
 						</tr>
-						<tr data-lmu_id="<?=$ac->lmu_id;?>" data-crop_id="<?=$ac->id;?>">
-							<td data-field="collect_seeds">
+						<tr data-lmu_id="<?=$ac->lmu_id;?>" data-crop_id="<?=$ac->id;?>" data-field="collect_seeds">
+							<td>
 							Collect Seed <i style="cursor:pointer;" class="pull-right <?php echo ($ac->collect_seeds) ? 'icon-ok' : 'icon-remove';?>"></i></td>
 							<td>
 								Requires: <?=round($ac->land_percentage * $acres / 100 * .5,3);?> FLUs labor
@@ -114,53 +114,3 @@
 	</div>
 </div>
 
-
-
-<script>
-
-$('i').on('click', function() {
-	var data = {lmu_id: $(this).closest('tr').data('lmu_id'), crop_id: $(this).closest('tr').data('crop_id'), field: $(this).closest('td').data('field')};
-	var icon = $(this);
-	$.ajax({
-	type: "POST",
-	url: "<?=site_url()?>/lmu/cultivate_crop",
-	data: data,
-	dataType: "json",
-	success: function(data){
-		if(!data['water']){
-			$('#cult_warn').show("slide", { direction: "down" }, 'fast');
-			$('#cult_warn_message').text("You don't have enough water available to irrigate this field, but irrigation will now be applied if water becomes available.");
-		}
-		else $('#cult_warn').hide();
-		if(!data['seed']){
-			$('#seed_error').show("slide", { direction: "down" }, 'fast');
-			$('#seed_error_message').text("You don't have enough family members to start this task.  Adjust your other management decisions to release a family member's time");
-		}
-		else $('#seed_error').hide();
-
-		if(data['checked'] == 1){
-			icon.removeClass('icon-remove');
-			icon.addClass('icon-ok');
-		}
-		else{
-			icon.removeClass('icon-ok');
-			icon.addClass('icon-remove');
-		}
-    	}
-  	});
-});
-
-$('#removeCrop').click(function() {
-	var data = { 'lmu_id': $(this).data('lmu_id'), 'crop_id': $(this).data('crop_id') };
-	$.ajax({
-		type: "POST",
-		url: "<?=site_url()?>/lmu/remove_crop",
-		data: data,
-		dataType: "json",
-		success: function(data){
-			location.reload();
-		}
-	});
-});
-
-</script>
