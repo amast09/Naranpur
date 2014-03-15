@@ -12,6 +12,7 @@
 			data-planted-crops='<?=json_encode($planted_crops->result_array());?>'
 			data-percent-planted='<?=$percent_planted;?>'
 			data-acres='<?=$acres;?>'
+			data-lmu-id='<?=$lmu_id?>'
 		>
 		</div>
 	</div>

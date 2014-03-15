@@ -12,7 +12,7 @@
 					<?=$row->method;?>
 				</option>
 			<?php } ?>
-		  	<option value="3">Well</option>
+		  	<option value="well-method">Well</option>
 		</select>
 
 		<div id="body" style="display:none;">
@@ -33,7 +33,7 @@
 						<i class="icon-time"></i>
 					</span>
 					<input class="span5" id="updatedHours" type="text" placeholder="Collecting FLUs">
-					<button id="button" class="btn btn-info" type="button">Update FLUs</button>
+					<button id="update-hours" class="btn btn-info" type="button">Update FLUs</button>
 				</div>
 			</div>
 
@@ -64,140 +64,3 @@
 
 	</div>
 </div>
-
-<script>
-var well = "";
-
-$('#methodSelect').change(function () {
-	if($('#methodSelect option:selected').val() == -1){
-		$('#body').hide();
-		$('#error').hide();
-	}
-	else if($('#methodSelect option:selected').val() == 3){
-		$('#water-error').hide();
-		update_well();
-	}
-	else{
-		update();
-		$('#water-error').hide();
-		$('#body').show();
-	}
-});
-
-$('#button').click(function () {
-  var post={
-	'hours': $('#updatedHours').val(),
-	'method_id': $('#methodSelect option:selected').val(),
-	'lmu_id': <?=$lmu_id?>
-	};
-  $.ajax({
-    type: "POST",
-		url: "<?=site_url()?>/water/check_hours",
-		data: post,
-		dataType: "json",
-		success: function(data){
-			if(data.success == 1){
-				if($('#methodSelect option:selected').val() < 3){
-					var post = {
-						'hours': $('#updatedHours').val(),
-						'method_id': $('#methodSelect option:selected').val(),
-						'lmu_id': <?=$lmu_id?>
-						};
-					$.ajax({
-					type: "POST",
-					    url: "<?=site_url("/water/update_method")?>",
-					    data: post,
-					    dataType: "json",
-					    success: function(data){ update(); }
-					});
-				}
-				else{
-					var post = {
-						'hours': $('#updatedHours').val(),
-						'method_id': $('#methodSelect option:selected').val(),
-						'lmu_id': <?=$lmu_id?>
-						};
-					$.ajax({
-					type: "POST",
-					    url: "<?=site_url()?>/water/update_well_hours",
-					    data: post,
-					    dataType: "json",
-					    success: function(data){ update_well(); }
-					});
-				}
-			}
-			else{
-				if(data.fail == 'form')
-					$('#water_error_message').text("Please enter a numerical value.");
-				else
-					$('#water_error_message').text("You don't have enough family members to start this task.  Adjust your other management decisions to release a family member's time");
-					$('#water_error').show("slide", { direction: "down" }, 'fast');
-			}
-		}
-	});
-});
-
-$('#buy_well').click(function () {
-	$('#water-error').hide();
-	if(well == $('#well_select option:selected').val()){
-		$('#water_error_message').text("The well is already of this type.");
-		$('#water_error').show("slide", { direction: "down" }, 'fast');
-	}
-	else{
-	  var post = {
-			'well_type_id': $('#well_select option:selected').val(), 
-			'lmu_id': <?=$lmu_id?>,
-			'cost': $('#well_select option:selected').data('cost') 
-		};
-		$.ajax({
-			type: "POST",
-	 	  url: "<?=site_url("/water/buy_well")?>",
-	    data: post,
-	    dataType: "json",
-	    success: function(data){
-				if(data.success == 1){
-					update_well();
-				}
-				else{
-					$('#water_error_message').text("You do not have the funds to upgrade to this well");
-					$('#water_error').show("slide", { direction: "down" }, 'fast');
-				}
- 	   }
-	  });
-	}
-});
-
-function update(){
-	$.ajax({
-    type: 'POST',
-    url: '<?=site_url("/water/get_method")?>',
-    data: 'method_id=' + $('#methodSelect option:selected').val(),
-    dataType: 'json',
-    success: function(data){
-			$('#update_well').hide();
-			$('#method').text(data[0].method);
-			$('#hours').text(data[0].hours);
-			var rate = data[0].hours * data[0].rate * 7;
-			$('#rate').text(rate+' L/wk');
-    }
-  });
-}
-
-function update_well(){
-	$.ajax({
-	type: 'POST',
-	url: '<?=site_url("/water/get_well")?>',
-	data: 'lmu_id=<?=$lmu_id?>',
-	dataType: 'json',
-	success: function(data){
-		$('#update_well').show();
-		$('#body').show();
-		$('#method').text(data[0].type + ' well');
-		$('#hours').text(data[0].hours);
-		var rate = data[0].hours * data[0].pumpingRate * 7;
-		$('#rate').text(rate+' L/wk');
-		well = data[0].well_type_id;
-	}
-    });
-}
-</script>

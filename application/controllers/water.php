@@ -109,11 +109,11 @@ class Water extends CI_Controller{
 		$method_id = $this->input->post('method_id');
 		$lmu_id = $this->input->post('lmu_id');
 
-		if ($method_id < 3){
-		$oldHours = $this->water_model->get_method($family_name,$method_id)->row()->hours;
+		if ($method_id != "well-method"){
+			$oldHours = $this->water_model->get_method($family_name,$method_id)->row()->hours;
 		}
 		else{
-		$oldHours = $this->water_model->get_well($lmu_id)->row()->hours;
+			$oldHours = $this->water_model->get_well($lmu_id)->row()->hours;
 		}
 
 		$this->form_validation->set_rules('hours', 'Hours', 'trim|required|numeric');
