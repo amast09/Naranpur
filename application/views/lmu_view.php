@@ -10,6 +10,8 @@
 			data-farmer-image="<?=base_url('/resources/lmu_view/img/farmer.png')?>"
 			data-crop-base-image="<?=base_url('/resources/lmu_view/img')?>"
 			data-planted-crops='<?=json_encode($planted_crops->result_array());?>'
+			data-percent-planted='<?=$percent_planted;?>'
+			data-acres='<?=$acres;?>'
 		>
 		</div>
 	</div>
