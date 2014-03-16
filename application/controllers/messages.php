@@ -10,7 +10,6 @@ class Messages extends CI_Controller{
 
 	function index(){
 		$this->inbox();
-		$testing = "what";
 	}
 
 	function inbox($sort_by = 'sent_date', $sort_order = 'desc', $offset = 0){
