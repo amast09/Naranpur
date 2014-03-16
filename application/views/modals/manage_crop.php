@@ -14,7 +14,7 @@
 					<table  class="table table-striped table-condensed">
 						<tr data-lmu_id="<?=$ac->lmu_id;?>" data-crop_id="<?=$ac->id;?>" data-field="irrigation">
 							<td>
-								Irrigation <i style="cursor:pointer;" class="pull-right <?php echo ($ac->irrigation) ? 'icon-ok' : 'icon-remove';?>"></i>
+								Irrigation <i style="cursor:pointer;" class="pull-right <?php echo ($ac->irrigation) ? 'icon-checkbox-checked' : 'icon-checkbox-unchecked';?>"></i>
 							</td>
 							<td>
 								Requires: <?=round($ac->irr * $ac->land_percentage / 100 * $acres * 7,3);?> L/wk of water
@@ -22,21 +22,21 @@
 						</tr>
 						<tr data-lmu_id="<?=$ac->lmu_id;?>" data-crop_id="<?=$ac->id;?>" data-field="fertilizer">
 							<td>
-							Fertilizer <i style="cursor:pointer;" class="pull-right <?php echo ($ac->fertilizer) ? 'icon-ok' : 'icon-remove';?>"></i></td>
+							Fertilizer <i style="cursor:pointer;" class="pull-right <?php echo ($ac->fertilizer) ? 'icon-checkbox-checked' : 'icon-checkbox-unchecked';?>"></i></td>
 							<td>
 								Requires: <?=round($ac->frr * $ac->land_percentage / 100 * $acres,3);?> kg/wk of fertilizer
 							</td>
 						</tr>
 						<tr data-lmu_id="<?=$ac->lmu_id;?>" data-crop_id="<?=$ac->id;?>" data-field="pesticide">
 							<td>
-								Pesticide <i style="cursor:pointer;" class="pull-right <?php echo ($ac->pesticide) ? 'icon-ok' : 'icon-remove';?>"></i></td>
+								Pesticide <i style="cursor:pointer;" class="pull-right <?php echo ($ac->pesticide) ? 'icon-checkbox-checked' : 'icon-checkbox-unchecked';?>"></i></td>
 							<td>
 								Requires: <?=round($ac->prr * $ac->land_percentage / 100 * $acres,3);?> kg/wk of pesticide
 							</td>
 						</tr>
 						<tr data-lmu_id="<?=$ac->lmu_id;?>" data-crop_id="<?=$ac->id;?>" data-field="collect_seeds">
 							<td>
-							Collect Seed <i style="cursor:pointer;" class="pull-right <?php echo ($ac->collect_seeds) ? 'icon-ok' : 'icon-remove';?>"></i></td>
+							Collect Seed <i style="cursor:pointer;" class="pull-right <?php echo ($ac->collect_seeds) ? 'icon-checkbox-checked' : 'icon-checkbox-unchecked';?>"></i></td>
 							<td>
 								Requires: <?=round($ac->land_percentage * $acres / 100 * .5,3);?> FLUs labor
 							</td>

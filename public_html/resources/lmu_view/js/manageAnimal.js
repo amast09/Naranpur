@@ -49,10 +49,10 @@ $(function(){
 					$('#manure_error').show("slide", { direction: "down" }, 'fast');
 				}
 				if(data.manure){
-					$('#manure_icon').removeClass('icon-remove').addClass('icon-ok');
+					$('#manure_icon').removeClass('icon-checkbox-unchecked').addClass('icon-checkbox-checked');
 				}
 				else{
-					$('#manure_icon').removeClass('icon-ok').addClass('icon-remove');
+					$('#manure_icon').removeClass('icon-checkbox-checked').addClass('icon-checkbox-unchecked');
 				}
 			}
 		});
@@ -83,10 +83,10 @@ $(function(){
 				$('#feed_method').text('Feeding Method: ' + data[0].method);
 				$('#animal').text('Size of herd: ' + data[0].quantity);
 				if(Number(data[0].manure) === 0) {
-					$('#manure_icon').removeClass('icon-ok').addClass('icon-remove');
+					$('#manure_icon').removeClass('icon-checkbox-checked').addClass('icon-checkbox-unchecked');
 				}
 				else {
-					$('#manure_icon').removeClass('icon-remove').addClass('icon-ok');
+					$('#manure_icon').removeClass('icon-checkbox-unchecked').addClass('icon-checkbox-checked');
 				}
 
 				$nAnimals = data[0].quantity;

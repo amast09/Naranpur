@@ -32,12 +32,10 @@ $(function(){
 				}
 
 				if(data['checked'] === "1"){
-					$icon.removeClass('icon-remove');
-					$icon.addClass('icon-ok');
+					$icon.removeClass('icon-checkbox-unchecked').addClass('icon-checkbox-checked');
 				}
 				else{
-					$icon.removeClass('icon-ok');
-					$icon.addClass('icon-remove');
+					$icon.removeClass('icon-checkbox-checked').addClass('icon-checkbox-unchecked');
 				}
 			}
 		});
