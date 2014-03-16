@@ -10,18 +10,21 @@
 	$dis = $discussion->row();
 ?>
 
-	<h4 style="text-align:center;">Discussion Topic</h4>
-	<div class="row-fluid" style="text-align:center;">
+	<h4 class="discussion-topic">Discussion Topic</h4>
+	<div class="row-fluid discussion-details">
 		<div class="span4">
-			<div id="fam"></div>
+			<h5>Family</h5>
+			<div class="icon icon-group"></div>
 			<p><?=$dis->name;?></p>
 		</div>
 		<div class="span4">
-			<div id="dat"></div>
+			<h5>Date Created</h5>
+			<div class="icon icon-time"></div>
 			<p><?=$dis->timestamp;?></p>
 		</div>
 		<div class="span4">
-			<div id="sub"></div>
+			<h5>Subject</h5>
+			<div class="icon icon-info3"></div>
 			<p><?=$dis->subject;?></p>
 		</div>
 	</div>
@@ -78,15 +81,14 @@
 			<?php foreach($comments->result_array() as $entry):?>
 			<tr>
 				<td class="span2">
-					<div id="user"></div>
+					<div class="icon icon-group"></div>
 					<div><h5><?=$entry['name'];?></h5></div>
 				</td>
 				<td class="span8">
-					<div id="comment_icon"></div>
 					<p><?=$entry['comment'];?></p>
 				</td>
 				<td class="span2">
-					<div id="clock"></div>
+					<div class="icon icon-time"></div>
 					<div><h5><?=$entry['timestamp'];?></h5></div>
 				</td>
 			</tr>

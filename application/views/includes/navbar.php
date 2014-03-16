@@ -12,7 +12,7 @@
      			<li class="dropdown">
 						<a class="dropdown-toggle text-error" id="family-updates" data-toggle="dropdown" data-ajax-url="<?=site_url('/family/get_updates')?>"><i class="icon-home3"></i> Family <b class="caret"></b></a>
 							<ul class="dropdown-menu span3">
-      						<li id="inventoryLink" data-ajax-url="<?=site_url('/family/get_inventory')?>"><a href="#inventoryModal" role="button"  data-toggle="modal"><i class="icon-tasks"></i> Inventory</a></li>
+      						<li id="inventoryLink" data-ajax-url="<?=site_url('/family/get_inventory')?>"><a href="#inventoryModal" role="button"  data-toggle="modal"><i class="icon-list-ol"></i> Inventory</a></li>
 									<li class="divider"></li>
       						<li id="needsLink" data-ajax-url="<?=site_url('/family/get_status')?>"><a href="#needsModal" role="button"  data-toggle="modal"><i class="icon-tint"></i> Needs</a></li>
 									<li class="divider"></li>

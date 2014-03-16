@@ -27,7 +27,9 @@
 		</div>
 	</div>
 
-	<a class="pull-left" href="<?=site_url('world')?>" id="site" data-site-url="<?=site_url()?>"></a>
+	<a class="pull-left back-button" href="<?=site_url('world')?>"  data-site-url="<?=site_url()?>">
+		<i class="icon icon-arrow-left"></i>World Map
+	</a>
 </div>
  
 <?php $this->load->view('modals/manage_crop'); ?>

@@ -71,7 +71,7 @@
 			<?php foreach($result->result_array() as $entry):?>
 			<tr style="cursor:pointer"; onclick="document.location = '<?=site_url('discussion/see_comments/'.$entry['id']);?>';">
 				<td class="span2">
-					<div id="user"></div>
+					<div class="icon icon-group"></div>
 					<h5><?=$entry['name'];?></h5>
 				</td>
 				<td class="span7">
@@ -79,11 +79,11 @@
 					<p><?=$entry['content'];?></p>
 				</td>
 				<td class="span1">
-					<div id="comment_icon"></div>
+					<div class="icon icon-bubbles4"></div>
 					<div><h4><?=$entry['comments'];?></h4></div>
 				</td>
 				<td class="span2">
-					<div id="clock"></div>
+					<div class="icon icon-time"></div>
 					<div><h5><?=$entry['timestamp'];?></h5></div>
 				</td>
 			</tr>

@@ -42,13 +42,16 @@ class Lmu extends CI_Controller{
 			$data['js_files'] = [
 				'http://code.jquery.com/ui/1.9.2/jquery-ui.js',
 				base_url('resources/base/js/raphael.js'),
-				base_url('resources/lmu_view/js/lmu.js'),
+				base_url('resources/lmu_view/js/lmuView.js'),
 				base_url('resources/lmu_view/js/manageAnimal.js'),
 				base_url('resources/lmu_view/js/manageCrop.js'),
 				base_url('resources/lmu_view/js/manageSeed.js'),
 				base_url('resources/lmu_view/js/manageWater.js'),
 			];
-			$data['css_files'] = ['http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css'];
+			$data['css_files'] = [
+				'http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css',
+				base_url('resources/lmu_view/css/lmu-view.css')
+			];
 
 			$this->load->view('includes/template', $data);
 		}

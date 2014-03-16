@@ -1,0 +1,12 @@
+.back-button {
+	font-size: 35px;
+	color: #777777;
+}
+	.back-button:hover {
+		text-decoration: none;
+	}
+
+.icon {
+	margin-right: 20px;
+}
+

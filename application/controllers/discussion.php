@@ -25,6 +25,7 @@ Class Discussion extends CI_Controller{
 		$data['comments'] = $this->Discussion_model->get_comments($diss_id, $sort_by, $sort_order, $offset);
 		$data['discussion'] = $this->Discussion_model->get_discussion($diss_id);
 		$data['diss_id'] = $diss_id;
+		$data['css_files'] = [base_url('resources/read_discussion_view/css/read-discussion-view.css')];
 		$data['js_files'] = [base_url('resources/read_discussion_view/js/createComment.js')];
 		$data['content'] = 'read_discussion_view';
 		$this->load->view('includes/template', $data);

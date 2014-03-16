@@ -4,22 +4,22 @@
 		<?php $lis = $listing->row(); ?>
 					<div class="span3">
 						<h5>Family</h5>
-						<div class="icon-group"></div>
+						<div class="icon icon-group"></div>
 						<p><?=$lis->family_name;?></p>
 					</div>
 					<div class="span3">
 						<h5>Resource</h5>
-						<div class="icon-leaf"></div>
+						<div class="icon icon-leaf"></div>
 						<p><?=$lis->resource_name;?></p>
 					</div>
 					<div class="span3">
 						<h5>Quantity</h5>
-						<div class="icon-meter"></div>
+						<div class="icon icon-meter"></div>
 						<p><?=$lis->quantity;?></p>
 					</div>
 					<div class="span3">
 						<h5>Message</h5>
-						<div class="icon-bubble2"></div>
+						<div class="icon icon-bubble2"></div>
 						<p><?=$lis->message;?></p>
 					</div>
 	</div>
@@ -58,7 +58,7 @@
 			</div>
 			<div class="control-group">
 				<div class="controls">
-					<button id="bid_button" type="submit" class="btn btn-primary"><i class="icon-list"></i> Create Bid</button>
+					<button id="bid_button" type="submit" class="btn btn-primary"><i class="icon-legal"></i> Create Bid</button>
 				</div>
 			</div>
 

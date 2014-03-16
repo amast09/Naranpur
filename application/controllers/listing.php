@@ -67,6 +67,7 @@ class Listing extends CI_Controller{
 			$data['bids'] = $this->bid_model->get_bids($listing_id);
 			$data['family_name'] = $this->session->userdata('family_name');
 			$data['listing'] = $listing;
+			$data['css_files'] = [base_url('resources/read_listing_view/css/read-listing-view.css')];
 			$data['content'] = 'read_listing_view';
 			$this->load->view('includes/template', $data);
 		}
@@ -84,7 +85,7 @@ class Listing extends CI_Controller{
 			$data['listing'] = $listing_query;
 			$data['listing_id'] = $listing_id;
 			$data['bid_inventory'] = $this->inventory_model->get_bid_inventory($family_name);
-			$data['css_files'] = [base_url('resources/create_bid_view/css/main.css')];
+			$data['css_files'] = [base_url('resources/create_bid_view/css/create-bid-view.css')];
 			$data['js_files'] = [base_url('resources/create_bid_view/js/createBid.js')];
 			$data['content'] = 'create_bid_view';
 			$this->load->view('includes/template', $data);

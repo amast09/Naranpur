@@ -5,10 +5,26 @@
 
 		<div class="container-fluid">
 			<div class="row-fluid" style="text-align:center;">
-				<div class="span3"><div id="sen"></div><strong><?=$m->sender_name;?></strong></div>
-				<div class="span3"><div id="rec"></div><strong><?=$m->reciever_name;?></strong></div>
-				<div class="span3"><div id="cal"></div><strong><?=$m->sent_date;?></strong></div>
-				<div class="span3"><div id="sub"></div><strong><?=$m->subject;?></strong></div> 
+				<div class="span3">
+					<h5>Sender</h5>
+					<div class="icon icon-upload"></div>
+					<strong><?=$m->sender_name;?></strong>
+				</div>
+				<div class="span3">
+					<h5>Receiver</h5>
+					<div class="icon icon-download"></div>
+					<strong><?=$m->reciever_name;?></strong>
+				</div>
+				<div class="span3">
+					<h5>Date Sent</h5>
+					<div class="icon icon-time"></div>
+					<strong><?=$m->sent_date;?></strong>
+				</div>
+				<div class="span3">
+					<h5>Subject</h5>
+					<div class="icon icon-bubble"></div>
+					<strong><?=$m->subject;?></strong>
+				</div> 
 			</div>
 
 			<hr></hr>
