@@ -60,6 +60,7 @@ class Messages extends CI_Controller{
 			base_url('resources/create_message_view/js/createMessage.js'),
 			'http://code.jquery.com/ui/1.9.2/jquery-ui.js'
 		];
+		$data['css_files'] = ['http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css'];
 		$data['content'] = 'create_message_view';
 		$this->load->view('includes/template', $data);
 	}
