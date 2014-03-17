@@ -56,11 +56,9 @@ class Messages extends CI_Controller{
 		$this->load->model('family_model');
 		$family_name = $this->session->userdata('family_name');
 		$data['families'] = $this->family_model->get_all_families($family_name);
-		$data['js_files'] = [
-			base_url('resources/create_message_view/js/createMessage.js'),
-			'http://code.jquery.com/ui/1.9.2/jquery-ui.js'
-		];
-		$data['css_files'] = ['http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css'];
+		$data['js_files'][0] = base_url('resources/create_message_view/js/createMessage.js');
+		$data['js_files'][1] = 'http://code.jquery.com/ui/1.9.2/jquery-ui.js';
+		$data['css_files'][0] = 'http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css';
 		$data['content'] = 'create_message_view';
 		$this->load->view('includes/template', $data);
 	}
@@ -108,7 +106,7 @@ class Messages extends CI_Controller{
 		$query = $this->messages_model->get_message($id);
 		if(!$query) $this->inbox();
 		$data['message'] = $query;
-		$data['css_files'] = [base_url('resources/read_message_view/css/read-message-view.css')];
+		$data['css_files'][0] = base_url('resources/read_message_view/css/read-message-view.css');
 		$this->load->view('includes/template', $data);
 	}
 
