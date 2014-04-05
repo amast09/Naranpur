@@ -57,7 +57,7 @@ class Messages extends CI_Controller{
 			$this->add_message_to_thread($message_data['sender'], $message_data['message'], $thread_id);
 
 			// Add the families to the thread
-			$this->add_families_to_thread($message_data['families'], $thread_id);
+			$this->initialize_thread_subscribers($message_data['families'], $thread_id);
 
 			echo json_encode(array('success' => true));
 		}
@@ -69,7 +69,7 @@ class Messages extends CI_Controller{
 		$this->Message_model->add_message_to_thread($sender, $message, $thread_id);
 	}
 
-	function add_families_to_thread($families, $thread_id){
+	function initialize_thread_subscribers($families, $thread_id){
 		$this->load->model('Message_model');
 
 		// Remove any trailing comas if there is one, then split the string on comas into an array of families
@@ -79,6 +79,9 @@ class Messages extends CI_Controller{
 			// call model add family
 			$this->Message_model->add_family_to_thread(trim($families[$x]), $thread_id);
 		}
+
+		// Subscribe the sender to the thread
+		$this->Message_model->add_family_to_thread($this->session->userdata('family_name'), $thread_id);
 	}
 
 	function remove_family_from_thread($family_name, $thread_id){
