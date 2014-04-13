@@ -1,0 +1,30 @@
+.threads {
+	margin: 5px 0 5px 0;
+}
+.thread {
+	line-height: 30px;
+	margin: 2px 0 2px 0;
+	cursor: pointer;
+}
+.members,
+.subject,
+.message {
+	overflow-x: hidden;
+	overflow-y: hidden;
+	height: 30px;
+}
+.alert-error {
+	border-radius: 3px;
+}
+.subject {
+	font-weight: bold;
+}
+.checkbox {
+	margin-left: 1%;
+}
+.btn-group {
+	float: right;
+}
+.delete-btn {
+	display: none;
+}

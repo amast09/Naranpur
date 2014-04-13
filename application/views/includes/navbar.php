@@ -1,7 +1,7 @@
 <div class="navbar">
 	<div class="navbar-inner">
 		<div class="container-fluid">
-			<a class="brand" href="<?=site_url();?>" name="top">Naranpur</i></a>
+			<a class="brand" href="<?=site_url();?>" data-site-url="<?=site_url();?>" name="top">Naranpur</i></a>
 			<div class="nav-collapse collapse">
 				<ul class="nav">
 						<li class="divider-vertical"></li>

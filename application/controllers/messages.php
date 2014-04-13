@@ -9,24 +9,58 @@ class Messages extends CI_Controller{
 	}
 
 	function index(){
-		$this->messages();
+		$this->threads_view();
 	}
 
-	function messages_view(){
+	function threads_view(){
+		$this->load->model('Message_model');
+		$threads = $this->Message_model->read_all_threads($this->session->userdata('family_name'));
+
+		// For each of the thread that the user is subscribed to
+		foreach ($threads->result() as $row) {
+			// Grab the most recent message for the thread
+		  $row->most_recent_message = $this->Message_model->read_most_recent_message($row->id)->row();
+		  // Grab the members fo the specific thread
+		  $row->thread_members = $this->Message_model->get_members_for_thread($row->id)->result_array();
+		}
+
+		$data['threads'] = $threads;
+		$data['content'] = 'read_threads_view';
+		$data['css_files'] = [
+			base_url('resources/read_threads_view/css/readThreads.css')
+		];
+		$data['js_files'] = [
+			base_url('resources/read_threads_view/js/readThreads.js')
+		];
+		$this->load->view('includes/template', $data);
 	}
 
-	function create_message_view(){
+	function thread_view($thread_id){
+		$this->load->model('Message_model');
+		//$thread_details = $this->Message_model->read_all_threads($this->session->userdata('family_name'));
+
+		$data['content'] = 'read_thread_view';
+		$data['css_files'] = [
+			base_url('resources/read_thread_view/css/readThread.css')
+		];
+		$data['js_files'] = [
+			base_url('resources/read_thread_view/js/readThread.js')
+		];
+		$this->load->view('includes/template', $data);
+	}
+
+	function create_thread_view(){
 		$this->load->model('family_model');
 		$family_name = $this->session->userdata('family_name');
 		$data['families'] = $this->family_model->get_all_families($family_name);
-		$data['content'] = 'create_message_view';
+		$data['content'] = 'create_thread_view';
 		$data['css_files'] = [
-			base_url('resources/create_message_view/css/createMessage.css'),
+			base_url('resources/create_thread_view/css/createThread.css'),
 			'http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css'
 		];
 		$data['js_files'] = [
 			base_url('resources/base/js/validate.min.js'),
-			base_url('resources/create_message_view/js/createMessage.js'),
+			base_url('resources/create_thread_view/js/createThread.js'),
 			'http://code.jquery.com/ui/1.9.2/jquery-ui.js'
 
 		];
@@ -64,6 +98,24 @@ class Messages extends CI_Controller{
 		else echo json_encode(array('success' => false, 'message' => validation_errors()));
 	}
 
+	function delete_threads(){
+		$this->load->library('form_validation');
+
+		$this->form_validation->set_rules('thread_ids', 'ids', 'required');
+
+		if($this->form_validation->run()){
+			$this->load->model('Message_model');
+			$family_name = $this->session->userdata('family_name');
+			$thread_ids = $this->input->post('thread_ids');
+			foreach ($thread_ids as $thread_id) {
+				$this->Message_model->remove_family_from_thread($family_name, $thread_id);
+			}
+			echo json_encode(array('success' => true));
+		} else {
+			echo json_encode(array('success' => false));
+		}
+	}
+
 	function add_message_to_thread($sender, $message, $thread_id){
 		$this->load->model('Message_model');
 		$this->Message_model->add_message_to_thread($sender, $message, $thread_id);
@@ -82,10 +134,6 @@ class Messages extends CI_Controller{
 
 		// Subscribe the sender to the thread
 		$this->Message_model->add_family_to_thread($this->session->userdata('family_name'), $thread_id);
-	}
-
-	function remove_family_from_thread($family_name, $thread_id){
-
 	}
 
 }
