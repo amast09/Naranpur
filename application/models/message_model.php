@@ -19,17 +19,36 @@ class Message_model extends CI_Model{
 	}
 
 	function add_family_to_thread($family_name, $thread_id) {
-		$this->db->insert('thread_member', array('thread_id' => $thread_id, 'family_name' => $family_name, 'subscribed' => true));
+		if(!$this->is_thread_member($family_name, $thread_id)) {
+			$this->db->insert('thread_member', array('thread_id' => $thread_id, 'family_name' => $family_name, 'subscribed' => true));
+		}
 	}
 
 	function remove_family_from_thread($family_name, $thread_id) {
 		$this->db->where('family_name', $family_name);
 		$this->db->where('thread_id', $thread_id);
+		$this->db->from('thread_member');
 		$this->db->update('thread_member', array('subscribed' => 0));
 	}
 
+	function is_thread_member($family_name, $thread_id) {
+		$this->db->from('thread_member');
+		$this->db->where('family_name', $family_name);
+		$this->db->where('thread_id', $thread_id);
+
+		return($this->db->get()->num_rows() > 0);
+	}
+
+	function is_thread_subscriber($family_name, $thread_id) {
+		$this->db->from('thread_member');
+		$this->db->where('family_name', $family_name);
+		$this->db->where('thread_id', $thread_id);
+		$this->db->where('subscribed', true);
+
+		return($this->db->get()->num_rows() > 0);
+	}
+
 	function read_all_threads($family_name) {
-		$this->db->select('*');
 		$this->db->from('thread');
 		$this->db->join('thread_member', 'thread_member.thread_id = thread.id');
 		$this->db->where('family_name', $family_name);
@@ -39,7 +58,6 @@ class Message_model extends CI_Model{
 	}
 
 	function read_most_recent_message($thread_id) {
-		$this->db->select('*');
 		$this->db->from('message');
 		$this->db->where('thread_id', $thread_id);
 		$this->db->order_by('seq', 'desc');
@@ -56,5 +74,21 @@ class Message_model extends CI_Model{
 
 		return($this->db->get());
 	}
+
+	function read_thread_subject($thread_id) {
+		$this->db->from('thread');
+		$this->db->where('id', $thread_id);
+
+		return($this->db->get()->row()->subject);
+	}
+
+	function get_thread_messages($thread_id) {
+		$this->db->from('message');
+		$this->db->where('thread_id', $thread_id);
+		$this->db->order_by('seq', 'dec');
+
+		return($this->db->get());
+	}
+
 
 }

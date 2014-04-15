@@ -37,8 +37,41 @@ class Messages extends CI_Controller{
 
 	function thread_view($thread_id){
 		$this->load->model('Message_model');
-		//$thread_details = $this->Message_model->read_all_threads($this->session->userdata('family_name'));
 
+		$family_name = $this->session->userdata('family_name');
+
+		// If the thread exists and the user is a member of the thread
+		if($this->Message_model->is_thread_subscriber($family_name, $thread_id)) {
+			$subject = $this->Message_model->read_thread_subject($thread_id);
+			$thread_members = $this->Message_model->get_members_for_thread($thread_id)->result_array();
+			$messages = $this->Message_model->get_thread_messages($thread_id);
+
+			echo "<h4>";
+			echo $subject;
+			echo "&nbsp;";
+
+			foreach($thread_members as $thread) {
+				echo $thread['family_name'];
+			}
+			echo "</h4>";
+
+			foreach($messages->result() as $message) {
+			echo "<h4>";
+				echo $message->seq;
+			echo "&nbsp;";
+				echo $message->date_sent;
+			echo "&nbsp;";
+				echo $message->sender;
+			echo "&nbsp;";
+				echo $message->message;
+			echo "</h4>";
+			}
+
+		} else {
+			// Otherwise redirect the user to the threads view
+			redirect('/messages/threads_view/', 'refresh');
+		}
+/*
 		$data['content'] = 'read_thread_view';
 		$data['css_files'] = [
 			base_url('resources/read_thread_view/css/readThread.css')
@@ -47,6 +80,7 @@ class Messages extends CI_Controller{
 			base_url('resources/read_thread_view/js/readThread.js')
 		];
 		$this->load->view('includes/template', $data);
+*/
 	}
 
 	function create_thread_view(){
