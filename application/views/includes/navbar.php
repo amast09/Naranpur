@@ -48,22 +48,7 @@
 
      			<li><a href="<?=site_url('/discussion');?>"><i class="icon-bubbles"></i> Forum</a></li>
 						<li class="divider-vertical"></li>
-
-     			<li class="dropdown">
-						<a class="dropdown-toggle" data-toggle="dropdown" href=""><i class="icon-envelope-alt"></i> Messages <b class="caret"></b></a>
-							<ul class="dropdown-menu span3">
-								<li><a href="<?=site_url('/messages/compose');?>"><i class="icon-quill"></i> Compose</a></li>
-									<li class="divider"></li>
-								<li>
-									<a href="<?=site_url('/messages/inbox');?>">
-										<i class="icon-download"></i> Inbox <span id='mess' class="badge badge-info pull-right" style="display:none;"></span>
-									</a>
-								</li>
-									<li class="divider"></li>
-								<li><a href="<?=site_url('/messages/outbox');?>"><i class="icon-upload"></i> Outbox</a></li>
-							</ul>
-					</li>
-
+     			<li><a href="<?=site_url('/messages');?>"><i class="icon-envelope-alt"></i> Messages</a></li>
 						<li class="divider-vertical"></li>
 
      			<li class="dropdown">
