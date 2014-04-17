@@ -85,7 +85,7 @@ class Message_model extends CI_Model{
 	function get_thread_messages($thread_id) {
 		$this->db->from('message');
 		$this->db->where('thread_id', $thread_id);
-		$this->db->order_by('seq', 'dec');
+		$this->db->order_by('seq', 'desc');
 
 		return($this->db->get());
 	}
