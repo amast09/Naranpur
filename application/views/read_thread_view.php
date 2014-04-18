@@ -24,7 +24,7 @@
 
 	<div class="row-fluid">
 		<div class="span6 offset3">
-			<form name="reply">
+			<form name="reply" action="<?=site_url('messages/add_message_to_thread')?>">
 				<input type="hidden" name="thread_id" value="<?=$thread_id?>">
 
 				<div class="control-group">
@@ -43,22 +43,24 @@
 		</div>
 	</div>
 
-	<?php foreach($messages->result() as $message) { ?>
-		<div class="row-fluid">
-			<div class="message span6 offset3">
-				<div class="message-info row-fluid">
-					<div class="sender span6">
-						<h4><?=$message->sender;?></h4>
+	<div class="all-messages">
+		<?php foreach($messages->result() as $message) { ?>
+			<div class="row-fluid">
+				<div class="message span6 offset3">
+					<div class="message-info row-fluid">
+						<div class="sender span6">
+							<h4><?=$message->sender;?></h4>
+						</div>
+						<div class="date-sent span6">
+							<h5><?=$message->date_sent;?></h5>
+						</div>
 					</div>
-					<div class="date-sent span6">
-						<h5><?=$message->date_sent;?></h5>
+					<div class="row-fluid">
+						<div class="text"><?=$message->message;?></div>
 					</div>
-				</div>
-				<div class="row-fluid">
-					<div class="text"><?=$message->message;?></div>
 				</div>
 			</div>
-		</div>
-	<?php } ?>
+		<?php } ?>
+	</div>
 
 </div>

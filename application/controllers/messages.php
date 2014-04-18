@@ -60,9 +60,6 @@ class Messages extends CI_Controller{
 			// Otherwise redirect the user to the threads view
 			redirect('/messages/threads_view/', 'refresh');
 		}
-/*
-
-*/
 	}
 
 	function create_thread_view(){
@@ -93,25 +90,61 @@ class Messages extends CI_Controller{
 
 		if($this->form_validation->run()){
 			$this->load->model('Message_model');
-			$message_data = array(
-				'sender' => $this->session->userdata('family_name'),
-				'subject' => $this->input->post('subject'),
-				'families' => $this->input->post('families'),
-				'message' => $this->input->post('message')
-			);
+			$sender = $this->session->userdata('family_name');
+			$subject = $this->input->post('subject');
+			$families = $this->input->post('families');
+			$message = $this->input->post('message');
 
 			// Create the thread
-			$thread_id = $this->Message_model->create_thread($message_data['subject']);
+			$thread_id = $this->Message_model->create_thread($subject);
 
 			// Add the message into the thread
-			$this->add_message_to_thread($message_data['sender'], $message_data['message'], $thread_id);
+			$this->Message_model->add_message_to_thread($sender, $message, $thread_id);
 
 			// Add the families to the thread
-			$this->initialize_thread_subscribers($message_data['families'], $thread_id);
+			$this->initialize_thread_subscribers($families, $thread_id);
 
 			echo json_encode(array('success' => true));
+
 		}
-		else echo json_encode(array('success' => false, 'message' => validation_errors()));
+		else {
+			echo json_encode(array('success' => false, 'message' => validation_errors()));
+		}
+	}
+
+	function add_message_to_thread() {
+		$this->load->library('form_validation');
+		$this->form_validation->set_rules('thread_id', 'Thread', 'trim|required');
+		$this->form_validation->set_rules('message', 'Message', 'trim|required|max_length[21844]');
+
+		if($this->form_validation->run()){
+			$this->load->model('Message_model');
+			$sender = $this->session->userdata('family_name');
+			$thread_id = $this->input->post('thread_id');
+			$message = $this->input->post('message');
+
+			// Add the message into the thread
+			$message_sequence_number = $this->Message_model->add_message_to_thread($sender, $message, $thread_id);
+
+			// Make the thread visible and "new" to all receivers
+			$this->Message_model->update_thread_members($sender, $thread_id);
+
+			// Retrieve inserted message
+			$new_message = $this->Message_model->get_message_by_sequence_number($message_sequence_number, $thread_id)->row();
+
+
+			//echo json_encode(array('success' => true));
+			echo json_encode(array('sender' => $new_message->sender, 
+				'thread_id' => $new_message->thread_id,
+				'message' => $new_message->message,
+				'date_sent' => $new_message->date_sent,
+				'success' => true
+			));
+
+		} else {
+			echo json_encode(array('success' => false, 'message' => validation_errors()));
+		}
+
 	}
 
 	function delete_threads(){
@@ -130,11 +163,6 @@ class Messages extends CI_Controller{
 		} else {
 			echo json_encode(array('success' => false));
 		}
-	}
-
-	function add_message_to_thread($sender, $message, $thread_id){
-		$this->load->model('Message_model');
-		$this->Message_model->add_message_to_thread($sender, $message, $thread_id);
 	}
 
 	function initialize_thread_subscribers($families, $thread_id){

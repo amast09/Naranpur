@@ -16,7 +16,8 @@
 .date-sent {
 	text-align: right;
 }
-.text {
+.all-messages {
+	margin-bottom: 20px;
 }
 .reply-box {
 	margin: 15px 0 20px 0;

@@ -16,11 +16,13 @@ class Message_model extends CI_Model{
 
 		// Insert message into the message table
 		$this->db->insert('message', array('sender' => $sender, 'message' => $message, 'thread_id' => $thread_id, 'seq' => $sequence));
+
+		return($sequence);
 	}
 
 	function add_family_to_thread($family_name, $thread_id) {
 		if(!$this->is_thread_member($family_name, $thread_id)) {
-			$this->db->insert('thread_member', array('thread_id' => $thread_id, 'family_name' => $family_name, 'subscribed' => true));
+			$this->db->insert('thread_member', array('thread_id' => $thread_id, 'family_name' => $family_name, 'subscribed' => true, 'has_read' => false));
 		}
 	}
 
@@ -75,6 +77,14 @@ class Message_model extends CI_Model{
 		return($this->db->get());
 	}
 
+	function get_message_by_sequence_number($sequence_number, $thread_id) {
+		$this->db->from('message');
+		$this->db->where('thread_id', $thread_id);
+		$this->db->where('seq', $sequence_number);
+
+		return($this->db->get());
+	}
+
 	function read_thread_subject($thread_id) {
 		$this->db->from('thread');
 		$this->db->where('id', $thread_id);
@@ -88,6 +98,12 @@ class Message_model extends CI_Model{
 		$this->db->order_by('seq', 'desc');
 
 		return($this->db->get());
+	}
+
+	function update_thread_members($family_name, $thread_id) {
+		$this->db->where_not_in('family_name', $family_name);
+		$this->db->where('thread_id', $thread_id);
+		$this->db->update('thread_member', array("subscribed" => true, "has_read" => false));
 	}
 
 
