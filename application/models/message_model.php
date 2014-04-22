@@ -7,6 +7,13 @@ class Message_model extends CI_Model{
 		return($this->db->insert_id()); 
 	}
 
+	function read_thread($family_name, $thread_id) {
+		$this->db->where('family_name', $family_name);
+		$this->db->where('thread_id', $thread_id);
+		$this->db->from('thread_member');
+		$this->db->update('thread_member', array('has_read' => true));
+	}
+
 	function add_message_to_thread($sender, $message, $thread_id) {
 		$this->db->where('thread_id', $thread_id);
 		$this->db->from('message');
@@ -30,7 +37,7 @@ class Message_model extends CI_Model{
 		$this->db->where('family_name', $family_name);
 		$this->db->where('thread_id', $thread_id);
 		$this->db->from('thread_member');
-		$this->db->update('thread_member', array('subscribed' => 0));
+		$this->db->update('thread_member', array('subscribed' => false));
 	}
 
 	function is_thread_member($family_name, $thread_id) {
@@ -54,7 +61,7 @@ class Message_model extends CI_Model{
 		$this->db->from('thread');
 		$this->db->join('thread_member', 'thread_member.thread_id = thread.id');
 		$this->db->where('family_name', $family_name);
-		$this->db->where('subscribed', 1);
+		$this->db->where('subscribed', true);
 
 		return($this->db->get());
 	}

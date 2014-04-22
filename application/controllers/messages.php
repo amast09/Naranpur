@@ -42,6 +42,7 @@ class Messages extends CI_Controller{
 
 		// If the thread exists and the user is a member of the thread
 		if($this->Message_model->is_thread_subscriber($family_name, $thread_id)) {
+			$this->Message_model->read_thread($family_name, $thread_id);
 			$data['subject'] = $this->Message_model->read_thread_subject($thread_id);
 			$data['thread_members'] = $this->Message_model->get_members_for_thread($thread_id)->result_array();
 			$data['messages'] = $this->Message_model->get_thread_messages($thread_id);
@@ -104,7 +105,7 @@ class Messages extends CI_Controller{
 			// Add the families to the thread
 			$this->initialize_thread_subscribers($families, $thread_id);
 
-			echo json_encode(array('success' => true));
+			$this->threads_view();
 
 		}
 		else {
@@ -165,6 +166,21 @@ class Messages extends CI_Controller{
 		}
 	}
 
+	function delete_thread(){
+		$this->load->library('form_validation');
+
+		$this->form_validation->set_rules('thread_id', 'Thread ID', 'required|integer');
+
+		if($this->form_validation->run()){
+			$this->load->model('Message_model');
+			$family_name = $this->session->userdata('family_name');
+			$thread_id = $this->input->post('thread_id');
+			$this->Message_model->remove_family_from_thread($family_name, $thread_id);
+			$this->threads_view();
+		}
+
+	}
+
 	function initialize_thread_subscribers($families, $thread_id){
 		$this->load->model('Message_model');
 
@@ -176,8 +192,11 @@ class Messages extends CI_Controller{
 			$this->Message_model->add_family_to_thread(trim($families[$x]), $thread_id);
 		}
 
+		$family_name = $this->session->userdata('family_name');
 		// Subscribe the sender to the thread
-		$this->Message_model->add_family_to_thread($this->session->userdata('family_name'), $thread_id);
+		$this->Message_model->add_family_to_thread($family_name, $thread_id);
+		// The user has already read the message they have sent so make sure that it is set to read for the family sending 
+		$this->Message_model->read_thread($family_name, $thread_id);
 	}
 
 }

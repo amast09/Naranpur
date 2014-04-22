@@ -2,7 +2,7 @@ $(function() {
 
 	$('.checkbox').on('click', function() {
 		if($(this).hasClass('icon-checkbox-unchecked')) {
-			$(this).removeClass('icon-checkbox-unchecked').addClass('icon-checkbox-checked').closest('.thread').addClass('alert-error');
+			$(this).removeClass('icon-checkbox-unchecked').addClass('icon-checkbox-checked').closest('.thread').addClass('delete-thread');
 
 			var $deleteBtn = $(".delete-btn");
 			if($deleteBtn.css("display") === "none"){
@@ -10,7 +10,7 @@ $(function() {
 			}
 
 		} else {
-			$(this).removeClass('icon-checkbox-checked').addClass('icon-checkbox-unchecked').closest('.thread').removeClass('alert-error');
+			$(this).removeClass('icon-checkbox-checked').addClass('icon-checkbox-unchecked').closest('.thread').removeClass('delete-thread');
 
 			if($(".icon-checkbox-checked").length === 0){
 				$(".delete-btn").hide();

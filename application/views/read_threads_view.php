@@ -2,7 +2,7 @@
 	<h3>Messages</h3>
 	<div class="threads">
 		<?php foreach($threads->result() as $thread) { ?>
-			<div class="thread row-fluid">
+			<div class="thread row-fluid <?php if(!$thread->has_read) { echo 'unread'; } ?>">
 				<div class="span4">
 					<div class="span1">
 						<i data-thread-id="<?=$thread->id?>" class="icon-checkbox-unchecked checkbox"></i>

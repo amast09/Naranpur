@@ -18,7 +18,7 @@ $(function() {
 						$(".reply-box").val("");
 						var messageHtml = '' +
 							'<div class="row-fluid">' +
-								'<div class="message span6 offset3">' +
+								'<div class="message span8 offset2">' +
 									'<div class="message-info row-fluid">' +
 										'<div class="sender span6">' +
 											'<h4>' + data.sender + '</h4>' +
