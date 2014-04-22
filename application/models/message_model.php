@@ -62,6 +62,7 @@ class Message_model extends CI_Model{
 		$this->db->join('thread_member', 'thread_member.thread_id = thread.id');
 		$this->db->where('family_name', $family_name);
 		$this->db->where('subscribed', true);
+		$this->db->order_by('id', 'desc');
 
 		return($this->db->get());
 	}

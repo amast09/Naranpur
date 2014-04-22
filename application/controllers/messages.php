@@ -105,7 +105,10 @@ class Messages extends CI_Controller{
 			// Add the families to the thread
 			$this->initialize_thread_subscribers($families, $thread_id);
 
-			$this->threads_view();
+			// The user has already read the message they have sent so make sure that it is set to read for the family sending 
+			$this->Message_model->read_thread($sender, $thread_id);
+
+			redirect("messages");
 
 		}
 		else {
@@ -192,11 +195,8 @@ class Messages extends CI_Controller{
 			$this->Message_model->add_family_to_thread(trim($families[$x]), $thread_id);
 		}
 
-		$family_name = $this->session->userdata('family_name');
 		// Subscribe the sender to the thread
-		$this->Message_model->add_family_to_thread($family_name, $thread_id);
-		// The user has already read the message they have sent so make sure that it is set to read for the family sending 
-		$this->Message_model->read_thread($family_name, $thread_id);
+		$this->Message_model->add_family_to_thread($this->session->userdata('family_name'), $thread_id);
 	}
 
 }
