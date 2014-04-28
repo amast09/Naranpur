@@ -39,7 +39,7 @@
 							<textarea class="reply-box span12" rows="6" name="message" placeholder="Type Your Reply Here..."></textarea>
 						</div>
 						<div class="row-fluid">
-							<a href="<?=site_url('/messages');?>" class="btn btn-primary span2">Back</a>
+							<a href="javascript:history.back()" class="btn btn-primary span2">Back</a>
 							<span class="help-inline span8"></span>
 							<button class="reply-btn btn span2" type="submit">Send</button>
 						</div>
