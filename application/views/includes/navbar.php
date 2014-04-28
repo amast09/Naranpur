@@ -48,7 +48,7 @@
 
      			<li><a href="<?=site_url('/discussion');?>"><i class="icon-bubbles"></i> Forum</a></li>
 						<li class="divider-vertical"></li>
-     			<li><a href="<?=site_url('/messages');?>"><i class="icon-envelope-alt"></i> Messages</a></li>
+     			<li><a href="<?=site_url('/messages');?>"><i class="icon-envelope-alt"></i> Messages <div class="unread-messages"></div></a></li>
 						<li class="divider-vertical"></li>
 
      			<li class="dropdown">

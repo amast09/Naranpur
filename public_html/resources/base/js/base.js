@@ -50,6 +50,11 @@
 					else {
 						$('#notif').hide();
 					}
+					if(data.unreadMessages > 0) {
+						$(".unread-messages").text("(" + data.unreadMessages + ")");
+					} else {
+						$(".unread-messages").text();
+					}
 				}
 			});
 		}

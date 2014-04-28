@@ -41,8 +41,9 @@ class Messages extends CI_Controller{
 		$this->load->view('includes/template', $data);
 	}
 
-	function thread_view($thread_id){
+	function thread_view($thread_id, $page = 0){
 		$this->load->model('Message_model');
+		$page = (is_numeric($page)) ? $page : 0;
 
 		$family_name = $this->session->userdata('family_name');
 
@@ -51,7 +52,11 @@ class Messages extends CI_Controller{
 			$this->Message_model->read_thread($family_name, $thread_id);
 			$data['subject'] = $this->Message_model->read_thread_subject($thread_id);
 			$data['thread_members'] = $this->Message_model->get_members_for_thread($thread_id)->result_array();
-			$data['messages'] = $this->Message_model->get_thread_messages($thread_id);
+			$data['messages'] = $this->Message_model->get_page_of_messages($thread_id, $page);
+			$data['total_messages'] = $this->Message_model->get_number_of_messages($thread_id);
+			$data['current_page'] = $page;
+			$data['previous'] = ($page == 0) ? false : true;
+			$data['next'] = (($page + 1) * 10 >= $data['total_messages']) ? false : true;
 			$data['thread_id'] = $thread_id;
 			$data['content'] = 'read_thread_view';
 			$data['css_files'] = [

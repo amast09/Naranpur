@@ -70,12 +70,28 @@
 		<?php } ?>
 	</div>
 	<div class="row-fluid">
-			<button class="btn pull-left">
-				<i id="left" class="icon-chevron-left"></i>
-			</button>
-			<button class="btn pull-right">
-				<i id="right" class="icon-chevron-right"></i>
-			</button>
+		<div class="pagination">
+		  <ul>
+		    <?php
+		    	if($previous) {
+		    		$previous_page = $current_page - 1;
+						echo "<li><a href='" . site_url("messages/thread_view/$thread_id/$previous_page") . "'><i class='icon-chevron-left'></i></a></li>";
+					}
+					for($x = 0; $x < $total_messages / 10; $x++) {
+						$link_text = $x + 1;
+						if($x == intval($current_page)) {
+							echo "<li class='active'><a href='" . site_url("messages/thread_view/$thread_id/$x") . "'>$link_text</a></li>";
+						} else {
+							echo "<li><a href='" . site_url("messages/thread_view/$thread_id/$x") . "'>$link_text</a></li>";
+						}
+					}
+					if($next) {
+		    		$next_page = $current_page + 1;
+						echo "<li><a href='" . site_url("messages/thread_view/$thread_id/$next_page") . "'><i class='icon-chevron-right'></i></a></li>";
+					}
+		    ?>
+		  </ul>
+		</div>
 	</div>
 
 </div>

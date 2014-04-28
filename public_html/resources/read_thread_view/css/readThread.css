@@ -34,6 +34,7 @@
 }
 .subject-text {
 	display: inline-block;
+	width: 100%;
 }
 .btn-danger {
 	float: right;
@@ -43,4 +44,7 @@
 }
 .pull-right {
 	margin: 0 5% 5% 0;	
+}
+.pagination {
+	text-align: center;
 }

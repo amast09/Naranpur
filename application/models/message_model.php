@@ -111,12 +111,22 @@ class Message_model extends CI_Model{
 		return($this->db->get()->row()->subject);
 	}
 
-	function get_thread_messages($thread_id) {
+	function get_page_of_messages($thread_id, $page) {
 		$this->db->from('message');
 		$this->db->where('thread_id', $thread_id);
 		$this->db->order_by('seq', 'desc');
+		$this->db->limit(10, $page * 10);
 
 		return($this->db->get());
+	}
+
+	function get_number_of_messages($thread_id) {
+		$sql_query = "SELECT COUNT(thread_id) AS total FROM message " .
+									"WHERE thread_id = $thread_id;";
+
+		$query = $this->db->query($sql_query);
+
+		return($query->result_array()[0]['total']);
 	}
 
 	function update_thread_members($family_name, $thread_id) {
@@ -125,5 +135,15 @@ class Message_model extends CI_Model{
 		$this->db->update('thread_member', array("subscribed" => true, "has_read" => false));
 	}
 
+	function get_unread_thread_count($family_name) {
+		$sql_query = "SELECT COUNT(family_name) AS total FROM thread_member " .
+									"WHERE family_name = '$family_name' " .
+									"AND subscribed = True " .
+									"AND has_read = False;";
+
+		$query = $this->db->query($sql_query);
+
+		return($query->result_array()[0]['total']);
+	}
 
 }
