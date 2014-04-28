@@ -47,3 +47,6 @@
 .delete-btn {
 	display: none;
 }
+.pagination {
+	margin: 0;
+}

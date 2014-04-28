@@ -28,14 +28,34 @@
 			</div>
 		<?php } ?>
 	</div>
-	<a class="btn btn-success" href="<?=site_url('messages/create_thread_view/');?>">Compose</a>
-	<button class="btn btn-danger delete-btn" type="button">Delete</button>
-	<div class="btn-group">
-		<button class="btn">
-			<i id="left" class="icon-chevron-left"></i>
-		</button>
-		<button class="btn">
-			<i id="right" class="icon-chevron-right"></i>
-		</button>
+	<div class="row-fluid">
+		<div class="span4">
+			<a class="btn btn-success" href="<?=site_url('messages/create_thread_view/');?>">Compose</a>
+			<button class="btn btn-danger delete-btn" type="button">Delete</button>
+		</div>
+		<div class="span8">
+			<div class="pagination pull-right">
+			  <ul>
+			    <?php
+			    	if($previous) {
+			    		$previous_page = $current_page - 1;
+							echo "<li><a href='" . site_url("messages/threads_view/$previous_page") . "'><i class='icon-chevron-left'></i></a></li>";
+						}
+						for($x = 0; $x < $total_threads / 10; $x++) {
+							$link_text = $x + 1;
+							if($x == intval($current_page)) {
+								echo "<li class='active'><a href='" . site_url("messages/threads_view/$x") . "'>$link_text</a></li>";
+							} else {
+								echo "<li><a href='" . site_url("messages/threads_view/$x") . "'>$link_text</a></li>";
+							}
+						}
+						if($next) {
+			    		$next_page = $current_page + 1;
+							echo "<li><a href='" . site_url("messages/threads_view/$next_page") . "'><i class='icon-chevron-right'></i></a></li>";
+						}
+			    ?>
+			  </ul>
+			</div>
+		</div>
 	</div>
 </div>

@@ -57,14 +57,25 @@ class Message_model extends CI_Model{
 		return($this->db->get()->num_rows() > 0);
 	}
 
-	function read_all_threads($family_name) {
+	function get_page_of_threads($family_name, $page) {
 		$this->db->from('thread');
 		$this->db->join('thread_member', 'thread_member.thread_id = thread.id');
 		$this->db->where('family_name', $family_name);
 		$this->db->where('subscribed', true);
 		$this->db->order_by('id', 'desc');
+		$this->db->limit(10, $page * 10);
 
 		return($this->db->get());
+	}
+
+	function get_number_of_threads($family_name) {
+		$sql_query = "SELECT COUNT(family_name) AS total FROM thread_member " .
+									"WHERE family_name = '$family_name' " .
+									"AND subscribed = True; ";
+
+		$query = $this->db->query($sql_query);
+
+		return($query->result_array()[0]['total']);
 	}
 
 	function read_most_recent_message($thread_id) {

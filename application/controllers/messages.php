@@ -9,12 +9,14 @@ class Messages extends CI_Controller{
 	}
 
 	function index(){
-		$this->threads_view();
+		redirect('/messages/threads_view/', 'refresh');
 	}
 
-	function threads_view(){
+	function threads_view($page = 0){
 		$this->load->model('Message_model');
-		$threads = $this->Message_model->read_all_threads($this->session->userdata('family_name'));
+		$page = (is_numeric($page)) ? $page : 0;
+		$threads = $this->Message_model->get_page_of_threads($this->session->userdata('family_name'), $page);
+
 
 		// For each of the thread that the user is subscribed to
 		foreach ($threads->result() as $row) {
@@ -25,6 +27,10 @@ class Messages extends CI_Controller{
 		}
 
 		$data['threads'] = $threads;
+		$data['total_threads'] = $this->Message_model->get_number_of_threads($this->session->userdata('family_name'));
+		$data['current_page'] = $page;
+		$data['previous'] = ($page == 0) ? false : true;
+		$data['next'] = (($page + 1) * 10 >= $data['total_threads']) ? false : true;
 		$data['content'] = 'read_threads_view';
 		$data['css_files'] = [
 			base_url('resources/read_threads_view/css/readThreads.css')
