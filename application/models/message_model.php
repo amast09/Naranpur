@@ -124,9 +124,9 @@ class Message_model extends CI_Model{
 		$sql_query = "SELECT COUNT(thread_id) AS total FROM message " .
 									"WHERE thread_id = $thread_id;";
 
-		$query = $this->db->query($sql_query);
+		$queryArray = $this->db->query($sql_query)->result_array();
 
-		return($query->result_array()[0]['total']);
+		return($queryArray[0]['total']);
 	}
 
 	function update_thread_members($family_name, $thread_id) {
