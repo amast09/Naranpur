@@ -11,6 +11,12 @@
 .navbar {
 	min-width: 1095px;
 }
+.modal {
+	width: 80%;
+	left: 10%;
+	margin: 0;
+}
+
 @media (max-width: 979px) {
 	.nav-collapse .nav {
 		min-width: inherit;
