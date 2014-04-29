@@ -73,9 +73,9 @@ class Message_model extends CI_Model{
 									"WHERE family_name = '$family_name' " .
 									"AND subscribed = True; ";
 
-		$query = $this->db->query($sql_query);
+		$queryArray = $this->db->query($sql_query)->result_array();
 
-		return($query->result_array()[0]['total']);
+		return($queryArray[0]['total']);
 	}
 
 	function read_most_recent_message($thread_id) {
