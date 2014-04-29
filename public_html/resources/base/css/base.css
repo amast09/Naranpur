@@ -4,3 +4,18 @@
 .unread-messages {
 	display: inline-block;
 }
+.nav-collapse .nav {
+	float: none;
+	min-width: 1075px;
+}
+.navbar {
+	min-width: 1095px;
+}
+@media (max-width: 979px) {
+	.nav-collapse .nav {
+		min-width: inherit;
+	}
+	.navbar {
+		min-width: inherit;
+	}
+}
