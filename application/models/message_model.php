@@ -141,9 +141,9 @@ class Message_model extends CI_Model{
 									"AND subscribed = True " .
 									"AND has_read = False;";
 
-		$query = $this->db->query($sql_query);
+		$queryArray = $this->db->query($sql_query)->result_array();
 
-		return($query->result_array()[0]['total']);
+		return($queryArray[0]['total']);
 	}
 
 }
