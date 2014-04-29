@@ -39,7 +39,8 @@
 	font-weight: bold;
 }
 .checkbox {
-	margin-left: 1%;
+	margin-right: 1%;
+	padding: 0;
 }
 .btn-group {
 	float: right;
@@ -49,4 +50,7 @@
 }
 .pagination {
 	margin: 0;
+}
+.thread .span1 {
+	padding-left: 5px;
 }
