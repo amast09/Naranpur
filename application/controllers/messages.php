@@ -32,12 +32,8 @@ class Messages extends CI_Controller{
 		$data['previous'] = ($page == 0) ? false : true;
 		$data['next'] = (($page + 1) * 10 >= $data['total_threads']) ? false : true;
 		$data['content'] = 'read_threads_view';
-		$data['css_files'] = [
-			base_url('resources/read_threads_view/css/readThreads.css')
-		];
-		$data['js_files'] = [
-			base_url('resources/read_threads_view/js/readThreads.js')
-		];
+		$data['css_files'][0] = base_url('resources/read_threads_view/css/readThreads.css');
+		$data['js_files'][0] = base_url('resources/read_threads_view/js/readThreads.js');
 		$this->load->view('includes/template', $data);
 	}
 
@@ -59,13 +55,9 @@ class Messages extends CI_Controller{
 			$data['next'] = (($page + 1) * 10 >= $data['total_messages']) ? false : true;
 			$data['thread_id'] = $thread_id;
 			$data['content'] = 'read_thread_view';
-			$data['css_files'] = [
-				base_url('resources/read_thread_view/css/readThread.css')
-			];
-			$data['js_files'] = [
-				base_url('resources/base/js/validate.min.js'),
-				base_url('resources/read_thread_view/js/readThread.js')
-			];
+			$data['css_files'][0] = base_url('resources/read_thread_view/css/readThread.css');
+			$data['js_files'][0] = base_url('resources/base/js/validate.min.js');
+			$data['js_files'][1] = base_url('resources/read_thread_view/js/readThread.js');
 
 			$this->load->view('includes/template', $data);
 		} else {
@@ -79,16 +71,11 @@ class Messages extends CI_Controller{
 		$family_name = $this->session->userdata('family_name');
 		$data['families'] = $this->family_model->get_all_families($family_name);
 		$data['content'] = 'create_thread_view';
-		$data['css_files'] = [
-			base_url('resources/create_thread_view/css/createThread.css'),
-			'http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css'
-		];
-		$data['js_files'] = [
-			base_url('resources/base/js/validate.min.js'),
-			base_url('resources/create_thread_view/js/createThread.js'),
-			'http://code.jquery.com/ui/1.9.2/jquery-ui.js'
-
-		];
+		$data['css_files'][0] = base_url('resources/create_thread_view/css/createThread.css');
+		$data['css_files'][1] = 'http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css';
+		$data['js_files'][0] = base_url('resources/base/js/validate.min.js');
+		$data['js_files'][1] = base_url('resources/create_thread_view/js/createThread.js');
+		$data['js_files'][2] = 'http://code.jquery.com/ui/1.9.2/jquery-ui.js';
 		$this->load->view('includes/template', $data);
 	}
 

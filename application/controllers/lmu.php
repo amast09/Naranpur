@@ -39,19 +39,15 @@ class Lmu extends CI_Controller{
 			}
 
 			$data['percent_planted'] = $percent_planted;
-			$data['js_files'] = [
-				'http://code.jquery.com/ui/1.9.2/jquery-ui.js',
-				base_url('resources/base/js/raphael.js'),
-				base_url('resources/lmu_view/js/lmuView.js'),
-				base_url('resources/lmu_view/js/manageAnimal.js'),
-				base_url('resources/lmu_view/js/manageCrop.js'),
-				base_url('resources/lmu_view/js/manageSeed.js'),
-				base_url('resources/lmu_view/js/manageWater.js'),
-			];
-			$data['css_files'] = [
-				'http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css',
-				base_url('resources/lmu_view/css/lmu-view.css')
-			];
+			$data['js_files'][0] = 'http://code.jquery.com/ui/1.9.2/jquery-ui.js';
+			$data['js_files'][1] = base_url('resources/base/js/raphael.js');
+			$data['js_files'][2] = base_url('resources/lmu_view/js/lmuView.js');
+			$data['js_files'][3] = base_url('resources/lmu_view/js/manageAnimal.js');
+			$data['js_files'][4] = base_url('resources/lmu_view/js/manageCrop.js');
+			$data['js_files'][5] = base_url('resources/lmu_view/js/manageSeed.js');
+			$data['js_files'][6] = base_url('resources/lmu_view/js/manageWater.js');
+			$data['css_files'][0] = 'http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css';
+			$data['css_files'][1] = base_url('resources/lmu_view/css/lmu-view.css');
 
 			$this->load->view('includes/template', $data);
 		}
