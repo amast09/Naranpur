@@ -22,8 +22,9 @@ class Messages extends CI_Controller{
 		foreach ($threads->result() as $row) {
 			// Grab the most recent message for the thread
 		  $row->most_recent_message = $this->Message_model->read_most_recent_message($row->id)->row();
-		  // Grab the members fo the specific thread
+		  // Grab the members for the specific thread
 		  $row->thread_members = $this->Message_model->get_members_for_thread($row->id)->result_array();
+		  $row->total_messages = $this->Message_model->get_number_of_messages($row->id);
 		}
 
 		$data['threads'] = $threads;

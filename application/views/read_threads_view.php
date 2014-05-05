@@ -7,7 +7,8 @@
 					<div class="span1">
 						<i data-thread-id="<?=$thread->id?>" class="icon-checkbox-unchecked checkbox"></i>
 					</div>
-					<div class="members span11">
+					<div class="members span11 message-third">
+						(<?=$thread->total_messages;?>)
 						<?php
 							for($x = 0; $x < count($thread->thread_members); $x++) {
 								echo $thread->thread_members[$x]['family_name'];
@@ -19,11 +20,11 @@
 					</div>
 				</div>
 				<div class="span8">
-					<div class="span9">
+					<div class="span9 message-third">
 						<span class="subject"><?=$thread->subject;?></span>
 						<span class="message"> - <?=$thread->most_recent_message->message;?></span>
 					</div>
-					<div class="date-sent span3"><?=$thread->most_recent_message->date_sent;?></div>
+					<div class="date-sent span3 message-third"><?=$thread->most_recent_message->date_sent;?></div>
 				</div>
 			</div>
 		<?php } ?>
