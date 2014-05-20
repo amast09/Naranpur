@@ -46,7 +46,6 @@ class Lmu extends CI_Controller{
 			$data['js_files'][4] = base_url('resources/lmu_view/js/manageCrop.js');
 			$data['js_files'][5] = base_url('resources/lmu_view/js/manageSeed.js');
 			$data['js_files'][6] = base_url('resources/lmu_view/js/manageWater.js');
-
 			$data['css_files'][0] = 'http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css';
 			$data['css_files'][1] = base_url('resources/lmu_view/css/lmu-view.css');
 

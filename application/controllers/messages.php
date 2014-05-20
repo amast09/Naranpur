@@ -9,117 +9,193 @@ class Messages extends CI_Controller{
 	}
 
 	function index(){
-		$this->inbox();
+		redirect('/messages/threads_view/', 'refresh');
 	}
 
-	function inbox($sort_by = 'sent_date', $sort_order = 'desc', $offset = 0){
-		$this->load->model('update_model');
-		$family_name = $this->session->userdata('family_name');
-		$this->update_model->clear_updates($family_name, 'mess');
-		$this->box_pag($sort_by, $sort_order, $offset, 'inbox');
-	}
-	
-	function outbox($sort_by = 'sent_date', $sort_order = 'desc', $offset = 0){
-		$this->box_pag($sort_by, $sort_order, $offset, 'outbox');
-	}
+	function threads_view($page = 0){
+		$this->load->model('Message_model');
+		$page = (is_numeric($page)) ? $page : 0;
+		$threads = $this->Message_model->get_page_of_threads($this->session->userdata('family_name'), $page);
 
-	function box_pag($sort_by, $sort_order, $offset, $box){
-		$data['content'] = 'read_messages_view';
-		$data['box'] = $box;
-		$this->load->model('messages_model');
-		$limit = 10;
-		$data['fields'] = array(
-														'sender_name'  => 'From',
-														'reciever_name'  => 'To',
-														'subject'   => 'Subject',
-														'sent_date'    => 'Date'
-														);
-		$data['sort_by'] = $sort_by;
-		$data['sort_order'] = $sort_order;
 
-		$model_data = $this->messages_model->box_pagination($limit, $offset, $sort_by, $sort_order, $box);
+		// For each of the thread that the user is subscribed to
+		foreach ($threads->result() as $row) {
+			// Grab the most recent message for the thread
+		  $row->most_recent_message = $this->Message_model->read_most_recent_message($row->id)->row();
+		  // Grab the members for the specific thread
+		  $row->thread_members = $this->Message_model->get_members_for_thread($row->id)->result_array();
+		  $row->total_messages = $this->Message_model->get_number_of_messages($row->id);
+		}
 
-    $this->load->library('pagination');
-		$config['base_url'] = site_url("messages/$box/$sort_by/$sort_order");
-    $config['per_page'] = $limit;
-    $config['num_links'] = 5;
-		$config['total_rows'] = $model_data['total_rows'];
-		$config['uri_segment'] = 5;
-		$this->pagination->initialize($config);
-
-		$data['pagination'] = $this->pagination->create_links();
-		$data['messages'] = $model_data['messages'];
+		$data['threads'] = $threads;
+		$data['total_threads'] = $this->Message_model->get_number_of_threads($this->session->userdata('family_name'));
+		$data['current_page'] = $page;
+		$data['previous'] = ($page == 0) ? false : true;
+		$data['next'] = (($page + 1) * 10 >= $data['total_threads']) ? false : true;
+		$data['content'] = 'read_threads_view';
+		$data['css_files'][0] = base_url('resources/read_threads_view/css/readThreads.css');
+		$data['js_files'][0] = base_url('resources/read_threads_view/js/readThreads.js');
 		$this->load->view('includes/template', $data);
 	}
 
-	function compose(){
+	function thread_view($thread_id, $page = 0){
+		$this->load->model('Message_model');
+		$page = (is_numeric($page)) ? $page : 0;
+
+		$family_name = $this->session->userdata('family_name');
+
+		// If the thread exists and the user is a member of the thread
+		if($this->Message_model->is_thread_subscriber($family_name, $thread_id)) {
+			$this->Message_model->read_thread($family_name, $thread_id);
+			$data['subject'] = $this->Message_model->read_thread_subject($thread_id);
+			$data['thread_members'] = $this->Message_model->get_members_for_thread($thread_id)->result_array();
+			$data['messages'] = $this->Message_model->get_page_of_messages($thread_id, $page);
+			$data['total_messages'] = $this->Message_model->get_number_of_messages($thread_id);
+			$data['current_page'] = $page;
+			$data['previous'] = ($page == 0) ? false : true;
+			$data['next'] = (($page + 1) * 10 >= $data['total_messages']) ? false : true;
+			$data['thread_id'] = $thread_id;
+			$data['content'] = 'read_thread_view';
+			$data['css_files'][0] = base_url('resources/read_thread_view/css/readThread.css');
+			$data['js_files'][0] = base_url('resources/base/js/validate.min.js');
+			$data['js_files'][1] = base_url('resources/read_thread_view/js/readThread.js');
+
+			$this->load->view('includes/template', $data);
+		} else {
+			// Otherwise redirect the user to the threads view
+			redirect('/messages/threads_view/', 'refresh');
+		}
+	}
+
+	function create_thread_view(){
 		$this->load->model('family_model');
 		$family_name = $this->session->userdata('family_name');
 		$data['families'] = $this->family_model->get_all_families($family_name);
-		$data['js_files'][0] = base_url('resources/create_message_view/js/createMessage.js');
-		$data['js_files'][1] = 'http://code.jquery.com/ui/1.9.2/jquery-ui.js';
-		$data['css_files'][0] = 'http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css';
-		$data['content'] = 'create_message_view';
+		$data['content'] = 'create_thread_view';
+		$data['css_files'][0] = base_url('resources/create_thread_view/css/createThread.css');
+		$data['css_files'][1] = 'http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css';
+		$data['js_files'][0] = base_url('resources/base/js/validate.min.js');
+		$data['js_files'][1] = base_url('resources/create_thread_view/js/createThread.js');
+		$data['js_files'][2] = 'http://code.jquery.com/ui/1.9.2/jquery-ui.js';
 		$this->load->view('includes/template', $data);
 	}
 
-	function create_message(){
+
+	function create_thread(){
 		$this->load->library('form_validation');
 
-		$this->form_validation->set_rules('reciever_name', 'Recipient', 'trim|required|min_length[4]|max_lenth[20]|callback_valid_family');
-		$this->form_validation->set_rules('subject', 'Subject', 'trim|required|max_length[80]');
-		$this->form_validation->set_rules('body', 'Body', 'trim|required');
+		$this->form_validation->set_rules('subject', 'Subject', 'trim|required|max_lenth[200]');
+		$this->form_validation->set_rules('families', 'Content', 'trim|required|min_length[4]');
+		$this->form_validation->set_rules('message', 'Message', 'trim|required|max_length[21844]');
 
 		if($this->form_validation->run()){
-			$this->load->model('messages_model');
-
-			$sender_name = $this->session->userdata('family_name');
-			$reciever_name = $this->input->post('reciever_name');
+			$this->load->model('Message_model');
+			$sender = $this->session->userdata('family_name');
 			$subject = $this->input->post('subject');
-			$body = $this->input->post('body');
+			$families = $this->input->post('families');
+			$message = $this->input->post('message');
 
-			if($this->messages_model->send_message($sender_name,
-																						 $reciever_name,
-																						 $subject,
-																						 $body)){
-				$this->load->model('update_model');
-				$this->update_model->create_notification($reciever_name, 'mess');
-				echo json_encode(array('success' => true));
-			}
-			else{	echo "Fatal Database Error Check Database Structure and Model Code.";	}
+			// Create the thread
+			$thread_id = $this->Message_model->create_thread($subject);
+
+			// Add the message into the thread
+			$this->Message_model->add_message_to_thread($sender, $message, $thread_id);
+
+			// Add the families to the thread
+			$this->initialize_thread_subscribers($families, $thread_id);
+
+			// The user has already read the message they have sent so make sure that it is set to read for the family sending 
+			$this->Message_model->read_thread($sender, $thread_id);
+
+			redirect("messages");
+
 		}
-		else echo json_encode(array('success' => false, 'message' => validation_errors()));
-	}
-
-	function valid_family($family_name){
-		$this->load->model('family_model');
-		if($this->family_model->get_family($family_name)->num_rows == 1) return(true);
-		else{
-			$this->form_validation->set_message('valid_family', 'There is no Family by this Name.');
-			return(false);
+		else {
+			echo json_encode(array('success' => false, 'message' => validation_errors()));
 		}
 	}
 
-	function view_message($id){
-		$data['content'] = 'read_message_view';
-		$this->load->model('messages_model');
-		$query = $this->messages_model->get_message($id);
-		if(!$query) $this->inbox();
-		$data['message'] = $query;
-		$data['css_files'][0] = base_url('resources/read_message_view/css/read-message-view.css');
-		$this->load->view('includes/template', $data);
-	}
-
-	function delete_messages(){
-		$this->load->model('messages_model');
+	function add_message_to_thread() {
 		$this->load->library('form_validation');
-		$this->form_validation->set_rules('msg[]', 'Messages', 'required');
-		$box = $this->input->post('box');
-		$seg = $this->input->post('seg');
-		
-		if($this->form_validation->run())
-			$box =	$this->messages_model->remove_messages($this->input->post('msg'), $box);
-		redirect($seg);
+		$this->form_validation->set_rules('thread_id', 'Thread', 'trim|required');
+		$this->form_validation->set_rules('message', 'Message', 'trim|required|max_length[21844]');
+
+		if($this->form_validation->run()){
+			$this->load->model('Message_model');
+			$sender = $this->session->userdata('family_name');
+			$thread_id = $this->input->post('thread_id');
+			$message = $this->input->post('message');
+
+			// Add the message into the thread
+			$message_sequence_number = $this->Message_model->add_message_to_thread($sender, $message, $thread_id);
+
+			// Make the thread visible and "new" to all receivers
+			$this->Message_model->update_thread_members($sender, $thread_id);
+
+			// Retrieve inserted message
+			$new_message = $this->Message_model->get_message_by_sequence_number($message_sequence_number, $thread_id)->row();
+
+
+			//echo json_encode(array('success' => true));
+			echo json_encode(array('sender' => $new_message->sender, 
+				'thread_id' => $new_message->thread_id,
+				'message' => $new_message->message,
+				'date_sent' => $new_message->date_sent,
+				'success' => true
+			));
+
+		} else {
+			echo json_encode(array('success' => false, 'message' => validation_errors()));
+		}
+
+	}
+
+	function delete_threads(){
+		$this->load->library('form_validation');
+
+		$this->form_validation->set_rules('thread_ids', 'ids', 'required');
+
+		if($this->form_validation->run()){
+			$this->load->model('Message_model');
+			$family_name = $this->session->userdata('family_name');
+			$thread_ids = $this->input->post('thread_ids');
+			foreach ($thread_ids as $thread_id) {
+				$this->Message_model->remove_family_from_thread($family_name, $thread_id);
+			}
+			echo json_encode(array('success' => true));
+		} else {
+			echo json_encode(array('success' => false));
+		}
+	}
+
+	function delete_thread(){
+		$this->load->library('form_validation');
+
+		$this->form_validation->set_rules('thread_id', 'Thread ID', 'required|integer');
+
+		if($this->form_validation->run()){
+			$this->load->model('Message_model');
+			$family_name = $this->session->userdata('family_name');
+			$thread_id = $this->input->post('thread_id');
+			$this->Message_model->remove_family_from_thread($family_name, $thread_id);
+			$this->threads_view();
+		}
+
+	}
+
+	function initialize_thread_subscribers($families, $thread_id){
+		$this->load->model('Message_model');
+
+		// Remove any trailing comas if there is one, then split the string on comas into an array of families
+		$families = explode(',', preg_replace('/,*\z/', '', $families));
+
+		for($x = 0; $x < count($families); $x++){
+			// call model add family
+			$this->Message_model->add_family_to_thread(trim($families[$x]), $thread_id);
+		}
+
+		// Subscribe the sender to the thread
+		$this->Message_model->add_family_to_thread($this->session->userdata('family_name'), $thread_id);
 	}
 
 }

@@ -1,0 +1,10 @@
+.icon-group {
+	font-size:	12px;
+}
+.help-inline {
+	font-size: 15px;
+	line-height: 30px;
+}
+textarea + .help-inline {
+	float: right;
+}

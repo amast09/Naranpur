@@ -90,14 +90,17 @@ class Family extends CI_Controller {
 
 	function get_updates(){
 		$this->load->model('update_model');
+		$this->load->model('message_model');
 		$family_name = $this->session->userdata('family_name');
 
 		$row = $this->update_model->get_updates($family_name)->row();
+		$unread_messages = $this->message_model->get_unread_thread_count($family_name);
 
 		echo json_encode(array('mess' => $row->mess,
 								 'bid' => $row->bid,
 								 'win' => $row->win,
-								 'notif' => $row->notif));
+								 'notif' => $row->notif,
+								 'unreadMessages' => $unread_messages));
 	}
 
 

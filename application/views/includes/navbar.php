@@ -1,7 +1,12 @@
 <div class="navbar">
 	<div class="navbar-inner">
-		<div class="container-fluid">
-			<a class="brand" href="<?=site_url();?>" name="top">Naranpur</i></a>
+		<div class="container">
+			<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</a>
+			<a class="brand" href="<?=site_url();?>" data-site-url="<?=site_url();?>" name="top">Naranpur</i></a>
 			<div class="nav-collapse collapse">
 				<ul class="nav">
 						<li class="divider-vertical"></li>
@@ -48,22 +53,7 @@
 
      			<li><a href="<?=site_url('/discussion');?>"><i class="icon-bubbles"></i> Forum</a></li>
 						<li class="divider-vertical"></li>
-
-     			<li class="dropdown">
-						<a class="dropdown-toggle" data-toggle="dropdown" href=""><i class="icon-envelope-alt"></i> Messages <b class="caret"></b></a>
-							<ul class="dropdown-menu span3">
-								<li><a href="<?=site_url('/messages/compose');?>"><i class="icon-quill"></i> Compose</a></li>
-									<li class="divider"></li>
-								<li>
-									<a href="<?=site_url('/messages/inbox');?>">
-										<i class="icon-download"></i> Inbox <span id='mess' class="badge badge-info pull-right" style="display:none;"></span>
-									</a>
-								</li>
-									<li class="divider"></li>
-								<li><a href="<?=site_url('/messages/outbox');?>"><i class="icon-upload"></i> Outbox</a></li>
-							</ul>
-					</li>
-
+     			<li><a href="<?=site_url('/messages');?>"><i class="icon-envelope-alt"></i> Messages <div class="unread-messages"></div></a></li>
 						<li class="divider-vertical"></li>
 
      			<li class="dropdown">
