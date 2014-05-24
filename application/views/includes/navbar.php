@@ -47,6 +47,12 @@
 										<i class="icon-stack"></i> View Transactions <span id='win' class="badge badge-info pull-right" style="display:none;">
 									</a>
 								</li>
+									<li class="divider"></li>
+								<li>
+									<a href="<?=site_url('/labor/create_contract_view');?>">
+										<i class="icon-user4"></i> Create Labor Contract <span id='win' class="badge badge-info pull-right" style="display:none;">
+									</a>
+								</li>
 							</ul>
 					</li>
 						<li class="divider-vertical"></li>
