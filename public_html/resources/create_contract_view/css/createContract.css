@@ -1,0 +1,9 @@
+.family-member-name:hover,
+.family-name:hover {
+	cursor: pointer;
+}
+.family-list,
+.member-stats {
+	display: none;
+	list-style: none;
+}
