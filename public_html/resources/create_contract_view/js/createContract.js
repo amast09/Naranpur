@@ -1,27 +1,32 @@
 $(function() {
 
   $(".family-name").on("click", function(){
-		var $familyToShow = $(this).next('.family-list');
-		if(!$familyToShow.is(':visible')) {
-			$(".family-list").hide();
-			$(".member-stats").hide();
-			$familyToShow.show();
-		} else {
-			$(".member-stats").hide();
+		var	$familyToShow = $("#family-" + $(this).attr("data-family-name"));
+
+		if($familyToShow.is(':visible')) {
+			$(this).removeClass("chosen");
 			$familyToShow.hide();
+		} else {
+			$(".family-member-list").hide();
+			$(".family-name").removeClass("chosen");
+			$(this).addClass("chosen");
+			$familyToShow.show();
 		}
+
   });
 
-	$(".family-member-name").on("click", function(){
-		var memberId = $(this).attr("data-member-id"),
-				$memberToShow = $("#stats-" + memberId);
+	$(".family-member").on("click", function(){
+		var $memberToShow = $("#member-" + $(this).attr("data-member-id"));
 
-		if(!$memberToShow.is(':visible')) {
-			$(".member-stats").hide();
-			$memberToShow.show();
-		} else {
+		if($memberToShow.is(':visible')) {
+			$(this).removeClass("chosen");
 			$memberToShow.hide();
+		} else {
+			$(".family-member").removeClass("chosen");
+			$(this).addClass("chosen");
+			$memberToShow.show();
 		}
+
   });
 
 });

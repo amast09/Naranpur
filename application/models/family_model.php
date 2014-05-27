@@ -57,12 +57,15 @@ class Family_model extends CI_Model{
 	}
 
 	function get_all_families($family_name){
-		$query = $this->db->query("
-			SELECT family.name
-			FROM family
-			WHERE family.name !=  '$family_name'
-		");
-		return($query);
+		$this->db->or_where_not_in('name', $family_name);
+		$this->db->order_by('name', 'ASC');
+		return($this->db->get('family'));
+	}
+
+	function get_all_members($family_name) {
+		$this->db->or_where_not_in('family_name', $family_name);
+		$this->db->order_by('family_name', 'ASC');
+		return($this->db->get('member'));
 	}
 
 	function get_members($family_name){

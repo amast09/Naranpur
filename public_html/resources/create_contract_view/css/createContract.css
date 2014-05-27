@@ -1,9 +1,27 @@
-.family-member-name:hover,
-.family-name:hover {
-	cursor: pointer;
+.family-member,
+.family-name {
+	padding: 0 15px;
 }
-.family-list,
-.member-stats {
+	.family-member:hover,
+	.family-name:hover {
+		cursor: pointer;
+	}
+
+
+.family-member-list {
 	display: none;
+}
+
+.family-name-list,
+.family-member-list,
+.family-member-stats {
 	list-style: none;
+	max-height: 500px;
+	overflow-y: auto;
+}
+
+.chosen {
+	color: #ffffff;
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2);
+	background-color: #0088cc;
 }

@@ -13,6 +13,7 @@ class Labor extends CI_Controller{
 		$this->load->model('family_model');
 		$family_name = $this->session->userdata('family_name');
 		$data['families'] = $this->family_model->get_all_families($family_name);
+		$data['members'] = $this->family_model->get_all_members($family_name);
 		$data['content'] = 'create_contract_view';
 		$data['css_files'][0] = base_url('resources/create_contract_view/css/createContract.css');
 		$data['js_files'][0] = base_url('resources/base/js/validate.min.js');
