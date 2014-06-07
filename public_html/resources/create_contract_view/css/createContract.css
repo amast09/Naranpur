@@ -1,5 +1,53 @@
+/** Navigation between steps **/
+
+/* Steps */
+.wrap {
+	overflow: hidden;
+	position: relative;
+	min-height: 500px;
+}
+.employee-option,
+.resources-option,
+.review-option {
+	width: 100%;
+	position: absolute;
+	transition: 1s;
+	left: 0;
+}
+
+.step-2 > .employee-option,
+.step-3 > .employee-option,
+.step-3 > .resources-option {
+	left: -200%;
+}
+
+.step-1 > .resources-option,
+.step-1 > .review-option,
+.step-2 > .review-option {
+	left: 200%;	
+}
+
+/* Next & Previous Buttons */
+.step-1 + .navigation .previous,
+.step-1 + .navigation .next,
+.step-3 + .navigation .next {
+	display: none;
+}
+
+.step-1.employee-chosen + .navigation .next {
+	display: inline-block;
+}
+
+.navigation {
+	margin-top: 10px;
+}
+
+/******************************/
+
+/******** Step-1 CSS ********/
 .family-member,
-.family-name {
+.family-name,
+.header {
 	padding: 0 15px;
 }
 	.family-member:hover,
@@ -25,3 +73,19 @@
 	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2);
 	background-color: #0088cc;
 }
+.family-member-stats > .span2,
+.family-member-stats > .span3 {
+	min-height: 100%;
+}
+.family-name-list > .header,
+.family-member-list > .header {
+	font-weight: bold;
+}
+/****************************/
+
+/******** Step-2 CSS ********/
+/****************************/
+
+/******** Step-3 CSS ********/
+/****************************/
+
