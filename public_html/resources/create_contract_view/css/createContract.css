@@ -6,35 +6,49 @@
 	position: relative;
 	min-height: 500px;
 }
+
+.length-option,
 .employee-option,
 .resources-option,
 .review-option {
-	width: 100%;
+	width: 96%;
 	position: absolute;
 	transition: 1s;
-	left: 0;
+	left: 2%;
 }
 
-.step-2 > .employee-option,
-.step-3 > .employee-option,
-.step-3 > .resources-option {
+.wrap[data-step='2'] > .length-option,
+.wrap[data-step='3'] > .length-option,
+.wrap[data-step='3'] > .employee-option,
+.wrap[data-step='4'] > .length-option,
+.wrap[data-step='4'] > .employee-option,
+.wrap[data-step='4'] > .resources-option{
 	left: -200%;
 }
 
-.step-1 > .resources-option,
-.step-1 > .review-option,
-.step-2 > .review-option {
+.wrap[data-step='1'] > .employee-option,
+.wrap[data-step='1'] > .resources-option,
+.wrap[data-step='1'] > .review-option,
+.wrap[data-step='2'] > .resources-option, 
+.wrap[data-step='2'] > .review-option,
+.wrap[data-step='3'] > .review-option {
 	left: 200%;	
 }
 
 /* Next & Previous Buttons */
-.step-1 + .navigation .previous,
-.step-1 + .navigation .next,
-.step-3 + .navigation .next {
+.wrap[data-step='1'] + .navigation .previous,
+.wrap[data-step='1'] + .navigation .next,
+.wrap[data-step='2'] + .navigation .next,
+.wrap[data-step='3'] + .navigation .next, 
+.wrap[data-step='4'] + .navigation .next,
+.create {
 	display: none;
 }
 
-.step-1.employee-chosen + .navigation .next {
+.wrap[data-step='1'].length-chosen + .navigation .next,
+.wrap[data-step='2'].employee-chosen + .navigation .next,
+.wrap[data-step='3'].resources-chosen + .navigation .next, 
+.wrap[data-step='4'].length-chosen + .navigation .create {
 	display: inline-block;
 }
 
@@ -42,9 +56,54 @@
 	margin-top: 10px;
 }
 
+.step-name {
+	display: inline-block;
+}
+
+.crumbs {
+	list-style: none;
+	float: right;
+	margin: 10px 0;
+}
+
+.step-link {
+	color: #0088cc;
+}
+	.step-link:hover {
+		cursor: pointer;
+	}
+
+.crumbs .icon-chevron-right {
+	font-size: 16px;
+}
+
 /******************************/
 
-/******** Step-1 CSS ********/
+/******** Length : Step-1 CSS ********/
+.length-choice:first-child {
+	border-right: 1px solid #e5e5e5;
+}
+.length-option .length-choice,
+.length-option .length-choice {
+	min-height: 500px;
+	text-align: center;
+}
+
+.length-choice:hover {
+	cursor: pointer;
+	color: #0088cc;
+}
+.not-selected,
+.not-selected:hover {
+	color: #555555;
+}
+.length-selected {
+
+}
+/*************************************/
+
+/******** Employee : Step-2 CSS ********/
+/***************************************/
 .family-member,
 .family-name,
 .header {
@@ -81,11 +140,38 @@
 .family-member-list > .header {
 	font-weight: bold;
 }
-/****************************/
+/***************************************/
 
-/******** Step-2 CSS ********/
-/****************************/
+/******** Resources : Step-3 CSS ********/
+/****************************************/
+.available-resources {
+	text-align: center;
+}
+.add-resource {
+	margin-bottom: 10px;
+}
+.added-resources-list {
+	list-style: none;
+	margin: 0;
+	max-height: 350px;
+	overflow-y: auto;
+}
+.added-resource {
+	margin: 1% 5%;
+	border-bottom: 1px solid #ddd;
+	padding-bottom: 5px;
+	font-size: 25px;
+}
+.added-resource:last-of-type {
+	border: none;
+}
 
-/******** Step-3 CSS ********/
-/****************************/
+#resource-quantity.error {
+	border-color: #b94a48;
+	color: #b94a48;
+}
+/****************************************/
+
+/******** Review : Step-4 CSS ********/
+/*************************************/
 

@@ -45,22 +45,69 @@ $(function() {
 
   });
 
+	$('.added-resources-list').on('click', '.remove-resource', function(){
+		var $resourceSelect = $("#resource-id"),
+			$resourceToPutBack = $(this).closest(".added-resource");
+			htmlToInsert = '<option value="' + $resourceToPutBack.attr("data-resource-id") +'">' + $resourceToPutBack.attr("data-resource-name") + '</option>';
+		$(this).closest(".added-resource").remove();
+		$resourceSelect.append(htmlToInsert);
+		if($(".added-resource").length === 0) {
+			$(".wrap").removeClass('resources-chosen');
+		}
+	});
+
+	$(".add-resource").on("click", function(){
+		var $quantity = $("#resource-quantity");
+
+		if($quantity.val() !== "" && !$quantity.hasClass('error')) {
+			var $addedResource = $("#resource-id").find(":selected"),
+			resourceId = $addedResource.val(),
+			resourceName = $addedResource.text(),
+			quantity = $quantity.val().trim(),
+			htmlToInsert =	'<li class="added-resource" ' +
+												'data-resource-name="' + resourceName + '" data-resource-id="' + resourceId + '" data-quantity="' + quantity + '">' +
+														'<div class="span9">' +
+															'<i class="icon-leaf"></i>' +
+															'&nbsp;<span>' + resourceName + '</span>' +
+														'</div>' +
+														'<div class="span2">' +
+															'<i class="icon-plus-sign"></i>' +
+															'&nbsp;<span>' + quantity +'</span>' +
+														'</div>' +
+														'<button class="btn btn-danger remove-resource"><i class="icon-minus"></i></button>' +
+													'</li>';
+			$addedResource.remove();
+			$quantity.val("");
+			$(".added-resources-list").append(htmlToInsert);
+			$(".wrap").addClass('resources-chosen');
+		} else {
+			$quantity.addClass('error');
+		}
+
+	});
+
+	$("#resource-quantity").on("keyup", function() {
+		var $this = $(this);
+		if(/^\-?[0-9]+$/.exec($this.val()) !== null) {
+			$this.removeClass('error');
+		} else {
+			$this.addClass('error');
+		}
+	});
+
+	$(".step-link").on("click", function(){
+		var stepToMoveTo = $(this).attr("data-step");
+		$(".wrap").attr("data-step", stepToMoveTo);
+	});
+
   $(".next").on("click", function(){
 		var $wrap = $(".wrap");
-		if($wrap.hasClass('step-1')) {
-			$wrap.removeClass('step-1').addClass('step-2');
-		} else if($wrap.hasClass('step-2')) {
-			$wrap.removeClass('step-2').addClass('step-3');
-		}
+		$wrap.attr('data-step', parseInt($wrap.attr('data-step'), 10) + 1);
   });
 
   $(".previous").on("click", function(){
 		var $wrap = $(".wrap");
-		if($wrap.hasClass('step-2')) {
-			$wrap.removeClass('step-2').addClass('step-1');
-		} else if($wrap.hasClass('step-3')) {
-			$wrap.removeClass('step-3').addClass('step-2');
-		}
+		$wrap.attr('data-step', parseInt($wrap.attr('data-step'), 10) - 1);
   });
 
   function hideNextButton() {

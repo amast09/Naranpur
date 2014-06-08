@@ -1,10 +1,33 @@
 <!-- Steps of Contract Creation -->
-<div class="wrap step-1">
+<div class="container-fluid wrap" data-step="1">
+
+	<!-- Contract Review Step -->
+	<div class="length-option">
+		<div class="row-fluid">
+			<legend>
+				<h1 class="step-name">Contract Length</h1>
+				<ul class="crumbs inline">
+					<li class="step-active">Length</li>
+				</ul>
+			</legend>
+		</div>
+		<div class="row-fluid">
+			<button class="span6 btn btn-primary">Fixed Contract</button>
+			<button class="span6 btn btn-primary">On Going Contract</button>
+		</div>
+	</div>
 
 	<!-- Employee Choosing Step -->
-	<div class="container-fluid employee-option">
+	<div class="employee-option">
 		<div class="row-fluid">
-			<h1>Choose the Employee</h1>
+			<legend>
+				<h1 class="step-name">Choose the Employee</h1>
+				<ul class="crumbs inline">
+					<li class="step-link" data-step="1">Length</li>
+					<li><i class="icon-chevron-right"></i></li>
+					<li class="step-active">Employee</li>
+				</ul>
+			</legend>
 		</div>
 		<div class="row-fluid">
 			<div class='span4 family-names'>
@@ -64,16 +87,48 @@
 	</div>
 
 	<!-- Resource Choosing Step -->
-	<div class="container-fluid resources-option">
+	<div class="resources-option">
 		<div class="row-fluid">
-			<h1>Choose the Resources</h1>
+			<legend>
+				<h1 class="step-name">Choose the Resources</h1>
+				<ul class="crumbs inline">
+					<li class="step-link" data-step="1">Length</li>
+					<li><i class="icon-chevron-right"></i></li>
+					<li class="step-link" data-step="2">Employee</li>
+					<li><i class="icon-chevron-right"></i></li>
+					<li class="step-active">Resources</li>
+				</ul>
+			</legend>
+		</div>
+		<div class="row-fluid available-resources">
+			<select id="resource-id" class="span9">
+				<?php foreach($resources->result() as $resource){ ?>
+					<option value="<?=$resource->id?>"><?=$resource->name?></option>
+				<?php } ?>
+			</select>
+			<input type="number" id="resource-quantity" class="span2" placeholder="Quantity"></input>
+			<button class="btn btn-primary add-resource"><i class="icon-plus"></i></button>
+		</div>
+		<div class="row-fluid add-resources">
+			<ul class="added-resources-list"></ul>
 		</div>
 	</div>
 
 	<!-- Contract Review Step -->
-	<div class="container-fluid review-option">
+	<div class="review-option">
 		<div class="row-fluid">
-			<h1>Review the Contract</h1>
+			<legend>
+				<h1 class="step-name">Review the Contract</h1>
+				<ul class="crumbs inline">
+					<li class="step-link" data-step="1">Length</li>
+					<li><i class="icon-chevron-right"></i></li>
+					<li class="step-link" data-step="2">Employee</li>
+					<li><i class="icon-chevron-right"></i></li>
+					<li class="step-link" data-step="3">Resources</li>
+					<li><i class="icon-chevron-right"></i></li>
+					<li class="step-active">Review</li>
+				</ul>
+			</legend>
 		</div>
 	</div>
 
@@ -84,6 +139,7 @@
 	<div class="row-fluid">
 		<button class="btn btn-primary pull-left previous" type="button">Previous</button>
 		<button class="btn btn-primary pull-right next" type="button">Next</button>
+		<button class="btn btn-success pull-right create" type="button">Create</button>
 	</div>
 </div>
 

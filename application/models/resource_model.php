@@ -16,6 +16,15 @@ class Resource_model extends CI_Model{
 		return($this->db->get('resource')->row()->sellPrice);
 	}
 
+	function get_all_resources() {
+		$query = $this->db->query("
+			SELECT * 
+			FROM resource
+			WHERE category !=  ''
+		");
+		return($query);
+	}
+
 	function get_animals($family_name){
 		$query = $this->db->query("
 			SELECT inventory.quantity as quantity, resource.name as resource, resource.id as id
