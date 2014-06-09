@@ -11,9 +11,13 @@
 				</ul>
 			</legend>
 		</div>
-		<div class="row-fluid">
-			<button class="span6 btn btn-primary">Fixed Contract</button>
-			<button class="span6 btn btn-primary">On Going Contract</button>
+		<div class="row-fluid length-type">
+			<button class="span6 btn btn-primary fixed-contract">Fixed Contract</button>
+			<button class="span6 btn btn-primary on-going-contract">On Going Contract</button>
+		</div>
+		<div class="row-fluid contract-duration hidden">
+			<label class="contract-duration__label">Length in Turns</label>
+			<input type="number" class="contract-duration__input" id="contract-duration" value="-1" placeholder="Contract Length"/>
 		</div>
 	</div>
 

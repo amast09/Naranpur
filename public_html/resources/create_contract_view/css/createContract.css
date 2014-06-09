@@ -80,25 +80,19 @@
 /******************************/
 
 /******** Length : Step-1 CSS ********/
-.length-choice:first-child {
-	border-right: 1px solid #e5e5e5;
-}
-.length-option .length-choice,
-.length-option .length-choice {
-	min-height: 500px;
+.contract-duration {
 	text-align: center;
+	margin-top: 50px;
 }
-
-.length-choice:hover {
-	cursor: pointer;
-	color: #0088cc;
+.contract-duration__label {
+	display: inline-block;
+	line-height: 30px;
+	font-size: 20px;
+	margin: 0 15px 10px 0;
+	vertical-align: middle;
 }
-.not-selected,
-.not-selected:hover {
-	color: #555555;
-}
-.length-selected {
-
+.hidden {
+	display: none;
 }
 /*************************************/
 

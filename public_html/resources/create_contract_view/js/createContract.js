@@ -1,5 +1,30 @@
 $(function() {
 
+	$(".fixed-contract").click(function() {
+		$(".on-going-contract").removeClass('active');
+		$(this).addClass('active');
+		$('.contract-duration').removeClass('hidden').find(".contract-duration__input").val("");
+		$('.wrap').removeClass('length-chosen');
+	});
+
+	$(".on-going-contract").click(function() {
+		$(".fixed-contract").removeClass('active');
+		$(this).addClass('active');
+		$('.contract-duration').addClass('hidden').find(".contract-duration__input").val(-1);
+		$('.wrap').addClass('length-chosen');
+	});
+
+	$("#contract-duration").on("keyup", function() {
+		var $this = $(this);
+		if(isInteger($this.val())) {
+			$this.removeClass('error');
+			$('.wrap').addClass('length-chosen');
+		} else {
+			$this.addClass('error');
+			$('.wrap').removeClass('length-chosen');
+		}
+	});
+
 	// If you click a family
   $(".family-name").on("click", function(){
 		// Grab the DOM node with the associated family members
@@ -88,7 +113,7 @@ $(function() {
 
 	$("#resource-quantity").on("keyup", function() {
 		var $this = $(this);
-		if(/^\-?[0-9]+$/.exec($this.val()) !== null) {
+		if(isInteger($this.val())) {
 			$this.removeClass('error');
 		} else {
 			$this.addClass('error');
@@ -116,6 +141,10 @@ $(function() {
 
   function showNextButton() {
 		$(".wrap").addClass("employee-chosen");
+  }
+
+  function isInteger(input) {
+		return(/^\-?[0-9]+$/.exec(input) !== null);
   }
 
 });
