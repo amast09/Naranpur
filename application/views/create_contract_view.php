@@ -68,9 +68,9 @@
 										"</li>";
 						}
 
-						echo	"<li class='family-member'>" .
+						echo	"<li class='family-member' data-family='$member->family_name' data-id='$member->id' data-age='$member->age' data-sex='$member->sex' data-health='$member->health' data-labor='120'>" .
 										"<ul class='family-member-stats inline'>" .
-											"<li class='name span3'>member-$member_index</li>" .
+											"<li class='name span3'>$member->id</li>" .
 											"<li class='age span2'>$member->age</li>" .
 											"<li class='sex span2'>$member->sex</li>" .
 											"<li class='health span2'>$member->health</li>" .
@@ -134,6 +134,13 @@
 				</ul>
 			</legend>
 		</div>
+		<div class="row-fluid review-template">
+		</div>
+		<form action="<?=site_url("/labor/create_contract");?>" method="POST">
+			<input id="length-input" type="hidden" name="length"/>
+			<input id="employee-id-input" type="hidden" name="employee-id"/>
+			<input id="resources-input" type="hidden" name="resources"/>
+		</form>
 	</div>
 
 </div>

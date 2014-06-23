@@ -159,11 +159,16 @@
 .added-resource:last-of-type {
 	border: none;
 }
+	.added-resource > .span2 {
+		line-height: 30px;
+		vertical-align: middle;
+	}
 
 #resource-quantity.error {
 	border-color: #b94a48;
 	color: #b94a48;
 }
+
 /****************************************/
 
 /******** Review : Step-4 CSS ********/

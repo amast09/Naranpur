@@ -16,7 +16,7 @@ $(function() {
 
 	$("#contract-duration").on("keyup", function() {
 		var $this = $(this);
-		if(isInteger($this.val())) {
+		if(isInteger($this.val()) && $this.val() > 0) {
 			$this.removeClass('error');
 			$('.wrap').addClass('length-chosen');
 		} else {
@@ -73,7 +73,7 @@ $(function() {
 	$('.added-resources-list').on('click', '.remove-resource', function(){
 		var $resourceSelect = $("#resource-id"),
 			$resourceToPutBack = $(this).closest(".added-resource");
-			htmlToInsert = '<option value="' + $resourceToPutBack.attr("data-resource-id") +'">' + $resourceToPutBack.attr("data-resource-name") + '</option>';
+			htmlToInsert = '<option value="' + $resourceToPutBack.attr("data-id") +'">' + $resourceToPutBack.attr("data-name") + '</option>';
 		$(this).closest(".added-resource").remove();
 		$resourceSelect.append(htmlToInsert);
 		if($(".added-resource").length === 0) {
@@ -90,10 +90,14 @@ $(function() {
 			resourceName = $addedResource.text(),
 			quantity = $quantity.val().trim(),
 			htmlToInsert =	'<li class="added-resource" ' +
-												'data-resource-name="' + resourceName + '" data-resource-id="' + resourceId + '" data-quantity="' + quantity + '">' +
-														'<div class="span9">' +
+												'data-name="' + resourceName + '" data-id="' + resourceId + '" data-quantity="' + quantity + '" data-ongoing="true">' +
+														'<div class="span7">' +
 															'<i class="icon-leaf"></i>' +
 															'&nbsp;<span>' + resourceName + '</span>' +
+														'</div>' +
+														'<div class="span2">' +
+															'<i class="icon-checkbox-checked on-going"></i>' +
+															'&nbsp;<span>On Going</span>' +
 														'</div>' +
 														'<div class="span2">' +
 															'<i class="icon-plus-sign"></i>' +
@@ -111,6 +115,18 @@ $(function() {
 
 	});
 
+	$('.added-resources-list').on('click', '.on-going', function(){
+		var $this = $(this),
+				$containerResource = $this.closest('.added-resource');
+		if($containerResource.attr("data-ongoing") === "true") {
+			$containerResource.attr("data-ongoing", false);
+			$this.removeClass('icon-checkbox-checked').addClass('icon-checkbox-unchecked');
+		} else {
+			$containerResource.attr("data-ongoing", true);
+			$this.removeClass('icon-checkbox-unchecked').addClass('icon-checkbox-checked');
+		}
+	});
+
 	$("#resource-quantity").on("keyup", function() {
 		var $this = $(this);
 		if(isInteger($this.val())) {
@@ -126,14 +142,75 @@ $(function() {
 	});
 
   $(".next").on("click", function(){
-		var $wrap = $(".wrap");
-		$wrap.attr('data-step', parseInt($wrap.attr('data-step'), 10) + 1);
+		var $wrap = $(".wrap"),
+				nextStep = parseInt($wrap.attr('data-step'), 10) + 1;
+		$wrap.attr('data-step', nextStep);
+
+		if(nextStep === 4) {
+			renderReviewView();
+		}
   });
 
   $(".previous").on("click", function(){
 		var $wrap = $(".wrap");
 		$wrap.attr('data-step', parseInt($wrap.attr('data-step'), 10) - 1);
   });
+
+  function renderReviewView() {
+  	var length = parseInt($("#contract-duration").val(), 10),
+  			lengthText = (length === -1) ? "On Going" : length + " Turns";
+  			$employee = $(".family-member.chosen"),
+  			$resources = $(".added-resource"),
+  			resourcesObject = {},
+  			newHtml = '';
+
+		newHtml = '<ul class="review-contract-details">' +
+								'<li class="review-length">' + 
+									'<div>Length</div>' +
+									'<div class="review-length-text">' + lengthText + '</div>' +
+								'</li>' +
+								'<li class="review-employee">' +
+									'<div>Employee</div>' +
+									'<ul>' +
+										'<li>Family: ' + $employee.attr("data-family") + '</li>' +
+										'<li>Member: ' + $employee.attr("data-id") + '</li>' +
+										'<li>Age: ' + $employee.attr("data-age") + '</li>' +
+										'<li>Sex: ' + $employee.attr('data-sex') + '</li>' +
+										'<li>Health: ' + $employee.attr("data-health") + '</li>' +
+										'<li>Labor: ' + 120 + '</li>' +
+									'</ul>' +
+								'</li>' +
+								'<li class="review-resources">' +
+									'<div>Resources</div>' +
+									'<ul>';
+
+		$.each($resources, function(index, obj) {
+			var $obj = $(obj),
+					onGoingResourceHtml = ($obj.attr('data-ongoing') === "true") ? "Every Turn" : "Once";
+
+			newHtml += '<li class="review-added-resource">' +
+			 							'<div class="span7">' + 
+			 								'<i class="icon-leaf"></i>&nbsp;' +
+			 								'<span>' + $obj.attr('data-name') + '</span>' +
+			 							'</div>' +
+			 							'<div class="span2">' + onGoingResourceHtml + '</div>' +
+			 							'<div class="span2">' +
+			 								'<i class="icon-plus-sign"></i>&nbsp;' +
+			 								'<span>' + $obj.attr('data-quantity') + '</span>' +
+			 							'</div>' +
+			 						'</li>';
+			resourcesObject[$obj.attr('data-id')] = $obj.attr('data-quantity');
+		});
+				
+		newHtml += '</ul>' +
+							'</li>' +
+						'</ul>';
+
+		$("#length-input").val(length);
+		$("#employee-id-input").val($employee.attr("data-id"));
+		$("#resources-input").val(JSON.stringify(resourcesObject));
+		$(".review-template").html(newHtml);
+  }
 
   function hideNextButton() {
 		$(".wrap").removeClass("employee-chosen");
