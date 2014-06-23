@@ -172,5 +172,26 @@
 /****************************************/
 
 /******** Review : Step-4 CSS ********/
+.review-list {
+	list-style: none;
+}
+.review-length-text {
+	padding: 0;
+	margin: 0 0 10px 25px;
+}
+.review-added-resource {
+	border-bottom: 1px solid #ddd;
+	min-height: 30px;
+}
+.review-added-resource:last-of-type {
+	border: none;
+}
+	.review-added-resource > .span4 {
+		line-height: 30px;
+		vertical-align: middle;
+	}
+.text-error {
+	margin-bottom: 10px;
+}
 /*************************************/
 

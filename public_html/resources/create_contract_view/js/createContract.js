@@ -156,6 +156,35 @@ $(function() {
 		$wrap.attr('data-step', parseInt($wrap.attr('data-step'), 10) - 1);
   });
 
+	var validator = new FormValidator('contract-form', [{
+		name: 'length',
+		display: 'contract length',
+		rules: 'required|integer'
+	}, {
+		name: 'employee-id',
+		display: 'employee',
+		rules: 'required|integer'
+	}, {
+		name: 'resources',
+		display: 'payment',
+		rules: 'required'
+	}], function(errors) {
+			var errorHtml = '';
+			$(".contract-errors").html('');
+
+			if (errors.length > 0) {
+				for (var x = 0; x < errors.length; x++) {
+					errorHtml += "<div>" + errors[x].message + "</div>";
+				}
+
+				$(".contract-errors").html(errorHtml);
+			}
+	});
+
+  $(".create").on("click", function() {
+  	$("#contract-form").submit();
+  });
+
   function renderReviewView() {
   	var length = parseInt($("#contract-duration").val(), 10),
   			lengthText = (length === -1) ? "On Going" : length + " Turns";
@@ -164,14 +193,14 @@ $(function() {
   			resourcesObject = {},
   			newHtml = '';
 
-		newHtml = '<ul class="review-contract-details">' +
+		newHtml = '<ul class="review-contract-details review-list">' +
 								'<li class="review-length">' + 
-									'<div>Length</div>' +
+									'<h4>Length</h4>' +
 									'<div class="review-length-text">' + lengthText + '</div>' +
 								'</li>' +
 								'<li class="review-employee">' +
-									'<div>Employee</div>' +
-									'<ul>' +
+									'<h4>Employee</h4>' +
+									'<ul class="review-list">' +
 										'<li>Family: ' + $employee.attr("data-family") + '</li>' +
 										'<li>Member: ' + $employee.attr("data-id") + '</li>' +
 										'<li>Age: ' + $employee.attr("data-age") + '</li>' +
@@ -181,20 +210,23 @@ $(function() {
 									'</ul>' +
 								'</li>' +
 								'<li class="review-resources">' +
-									'<div>Resources</div>' +
-									'<ul>';
+									'<h4>Resources</h4>' +
+									'<ul class="review-list">';
 
 		$.each($resources, function(index, obj) {
 			var $obj = $(obj),
 					onGoingResourceHtml = ($obj.attr('data-ongoing') === "true") ? "Every Turn" : "Once";
 
 			newHtml += '<li class="review-added-resource">' +
-			 							'<div class="span7">' + 
+			 							'<div class="span4">' + 
 			 								'<i class="icon-leaf"></i>&nbsp;' +
 			 								'<span>' + $obj.attr('data-name') + '</span>' +
 			 							'</div>' +
-			 							'<div class="span2">' + onGoingResourceHtml + '</div>' +
-			 							'<div class="span2">' +
+			 							'<div class="span4">' +
+			 								'<i class="icon-history"></i>&nbsp;' +
+			 								'<span>' + onGoingResourceHtml + '</span>' +
+			 							'</div>' +
+			 							'<div class="span4">' +
 			 								'<i class="icon-plus-sign"></i>&nbsp;' +
 			 								'<span>' + $obj.attr('data-quantity') + '</span>' +
 			 							'</div>' +

@@ -94,13 +94,13 @@
 	<div class="resources-option">
 		<div class="row-fluid">
 			<legend>
-				<h1 class="step-name">Choose the Resources</h1>
+				<h1 class="step-name">Choose the Resources for Payment</h1>
 				<ul class="crumbs inline">
 					<li class="step-link" data-step="1">Length</li>
 					<li><i class="icon-chevron-right"></i></li>
 					<li class="step-link" data-step="2">Employee</li>
 					<li><i class="icon-chevron-right"></i></li>
-					<li class="step-active">Resources</li>
+					<li class="step-active">Payment</li>
 				</ul>
 			</legend>
 		</div>
@@ -128,19 +128,19 @@
 					<li><i class="icon-chevron-right"></i></li>
 					<li class="step-link" data-step="2">Employee</li>
 					<li><i class="icon-chevron-right"></i></li>
-					<li class="step-link" data-step="3">Resources</li>
+					<li class="step-link" data-step="3">Payment</li>
 					<li><i class="icon-chevron-right"></i></li>
 					<li class="step-active">Review</li>
 				</ul>
 			</legend>
 		</div>
-		<div class="row-fluid review-template">
-		</div>
-		<form action="<?=site_url("/labor/create_contract");?>" method="POST">
+		<div class="row-fluid review-template"></div>
+		<form id="contract-form" name="contract-form" action="<?=site_url("/labor/create_contract");?>" method="POST">
 			<input id="length-input" type="hidden" name="length"/>
 			<input id="employee-id-input" type="hidden" name="employee-id"/>
 			<input id="resources-input" type="hidden" name="resources"/>
 		</form>
+		<div class="text-error contract-errors"></div>
 	</div>
 
 </div>
