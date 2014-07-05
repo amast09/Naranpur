@@ -157,16 +157,16 @@ $(function() {
   });
 
 	var validator = new FormValidator('contract-form', [{
-		name: 'length',
-		display: 'contract length',
+		name: 'duration',
+		display: 'Contract Duration',
 		rules: 'required|integer'
 	}, {
 		name: 'employee-id',
-		display: 'employee',
+		display: 'Employee',
 		rules: 'required|integer'
 	}, {
 		name: 'resources',
-		display: 'payment',
+		display: 'Payment',
 		rules: 'required'
 	}], function(errors) {
 			var errorHtml = '';
@@ -186,11 +186,11 @@ $(function() {
   });
 
   function renderReviewView() {
-  	var length = parseInt($("#contract-duration").val(), 10),
-  			lengthText = (length === -1) ? "On Going" : length + " Turns";
+  	var duration = parseInt($("#contract-duration").val(), 10),
+  			lengthText = (duration === -1) ? "On Going" : duration + " Turns";
   			$employee = $(".family-member.chosen"),
   			$resources = $(".added-resource"),
-  			resourcesObject = {},
+  			resourcesObject = [],
   			newHtml = '';
 
 		newHtml = '<ul class="review-contract-details review-list">' +
@@ -231,14 +231,21 @@ $(function() {
 			 								'<span>' + $obj.attr('data-quantity') + '</span>' +
 			 							'</div>' +
 			 						'</li>';
-			resourcesObject[$obj.attr('data-id')] = $obj.attr('data-quantity');
+			resourcesObject.push(
+				{
+					"resource_id" : $obj.attr('data-id'),
+					"resource_quantity" : $obj.attr('data-quantity'),
+					"on_going" : $obj.attr('data-ongoing')
+				}
+			);
+
 		});
 				
 		newHtml += '</ul>' +
 							'</li>' +
 						'</ul>';
 
-		$("#length-input").val(length);
+		$("#duration-input").val(duration);
 		$("#employee-id-input").val($employee.attr("data-id"));
 		$("#resources-input").val(JSON.stringify(resourcesObject));
 		$(".review-template").html(newHtml);

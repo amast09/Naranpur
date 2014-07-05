@@ -136,7 +136,7 @@
 		</div>
 		<div class="row-fluid review-template"></div>
 		<form id="contract-form" name="contract-form" action="<?=site_url("/labor/create_contract");?>" method="POST">
-			<input id="length-input" type="hidden" name="length"/>
+			<input id="duration-input" type="hidden" name="duration"/>
 			<input id="employee-id-input" type="hidden" name="employee-id"/>
 			<input id="resources-input" type="hidden" name="resources"/>
 		</form>
