@@ -1,0 +1,20 @@
+.contract > .resources {
+	max-height: 120px;
+	overflow-y: auto;
+}
+.contract {
+	line-height: 120px;
+	border-bottom: 1px solid #ddd;
+	height: 120px;
+	padding-bottom: 5px;
+	margin: 20px 0;
+}
+.contract:last-of-type {
+	border: none;
+}
+.actions {
+	text-align: center;
+}
+.contract-list-wrapper {
+	padding: 0 25px;
+}

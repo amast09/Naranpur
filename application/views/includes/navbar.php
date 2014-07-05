@@ -50,7 +50,13 @@
 									<li class="divider"></li>
 								<li>
 									<a href="<?=site_url('/labor/create_contract_view');?>">
-										<i class="icon-user4"></i> Create Labor Contract <span id='win' class="badge badge-info pull-right" style="display:none;">
+										<i class="icon-user4"></i> Create Labor Contract
+									</a>
+								</li>
+									<li class="divider"></li>
+								<li>
+									<a href="<?=site_url('/labor/manage_contracts_view');?>">
+										<i class="icon-signup"></i> Manage Labor Contracts
 									</a>
 								</li>
 							</ul>
