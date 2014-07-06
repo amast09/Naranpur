@@ -12,9 +12,13 @@
 .contract:last-of-type {
 	border: none;
 }
+.empty-contracts,
 .actions {
 	text-align: center;
 }
 .contract-list-wrapper {
 	padding: 0 25px;
+}
+.empty-contracts {
+	margin-top: 20px;
 }

@@ -14,6 +14,7 @@ class Labor extends CI_Controller{
 		$this->load->model('resource_model');
 
 		// Load the available employees
+		// TODO:: NEED TO LIMIT FROM THE ONES THAT ARE ALREADY IN A CONTRACT!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 		$family_name = $this->session->userdata('family_name');
 		$data['families'] = $this->family_model->get_all_families($family_name);
 		$data['members'] = $this->family_model->get_all_members($family_name);
@@ -37,7 +38,7 @@ class Labor extends CI_Controller{
 
 		if($this->form_validation->run()){
 			$this->load->model('Labor_model');
-			$employer = $this->session->userdata('family_id');
+			$employer = $this->session->userdata('family_name');
 			$duration = $this->input->post('duration');
 			$employee_id = $this->input->post('employee-id');
 			$resources = json_decode($this->input->post('resources'), true);
@@ -58,10 +59,36 @@ class Labor extends CI_Controller{
 	}
 
 	function manage_contracts_view() {
+			$this->load->model('Labor_model');
+
+			$family_name = $this->session->userdata('family_name');
+
+			$data['pending_contracts'] = $this->Labor_model->get_pending_contracts($family_name);
+			if($data['pending_contracts']->num_rows() > 0) {
+			  foreach($data['pending_contracts']->result() as $row) {
+					$row->resources = $this->Labor_model->get_contract_resources($row->id);
+			  }
+			}
+
+			$data['proposed_contracts'] = $this->Labor_model->get_proposed_contracts($family_name);
+			if($data['proposed_contracts']->num_rows() > 0) {
+			  foreach($data['proposed_contracts']->result() as $row) {
+					$row->resources = $this->Labor_model->get_contract_resources($row->id);
+			  }
+			}
+
+			$data['current_contracts'] = $this->Labor_model->get_current_contracts($family_name);
+			if($data['current_contracts']->num_rows() > 0) {
+			  foreach($data['current_contracts']->result() as $row) {
+					$row->resources = $this->Labor_model->get_contract_resources($row->id);
+			  }
+			}
+
 			$data['content'] = 'manage_contracts_view';
 			$data['css_files'][0] = base_url('resources/manage_contracts_view/css/manageContracts.css');
 			$data['js_files'][0] = base_url('resources/base/js/validate.min.js');
 			$data['js_files'][1] = base_url('resources/manage_contracts_view/js/manageContracts.js');
+			
 			$this->load->view('includes/template', $data);	
 	}
 

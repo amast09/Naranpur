@@ -1,6 +1,7 @@
 <div class="container-fluid">
-	
 
+
+<!-- ######## Current Contracts ######## -->
 	<section id="current-contracts" class="row-fluid">
 		<legend>
 			<h2>Current Contracts</h2>
@@ -21,205 +22,54 @@
 				</div>
 			</div>
 			<ul class="contract-list unstyled row-fluid">
-				<li class="contract">
-					<div class="actions span1">
-						<button class="btn btn-danger" type="button"><i class="icon-remove"></i></button>
-					</div>
-					<div class="employer span2">
-						Mast
-					</div>
-					<div class="employee span2">
-						<ul class="unstyled">
-				      <li>Family: awasner</li>
-				      <li>Member: 199</li>
-				      <li>Age: 51</li>
-				      <li>Sex: M</li>
-				      <li>Health: 100</li>
-				      <li>Labor: 120</li>
-				    </ul>
-					</div>
-					<div class="length span2">
-						8 turns
-					</div>
-					<div class="resources span5">
-						<ul class="unstyled">
-				      <li class="resource">
-				        <div class="span4"><i class="icon-leaf"></i>&nbsp;<span>Milk Cow</span></div>
-				        <div class="span4"><i class="icon-history"></i>&nbsp;<span>Once</span></div>
-				        <div class="span4"><i class="icon-plus-sign"></i>&nbsp;<span>2</span></div>
-				      </li>
-				      <li class="resource">
-				        <div class="span4"><i class="icon-leaf"></i>&nbsp;<span>Cotton</span></div>
-				        <div class="span4"><i class="icon-history"></i>&nbsp;<span>Every Turn</span></div>
-				        <div class="span4"><i class="icon-plus-sign"></i>&nbsp;<span>32</span></div>
-				      </li>
-				      <li class="resource">
-				        <div class="span4"><i class="icon-leaf"></i>&nbsp;<span>Milk Cow</span></div>
-				        <div class="span4"><i class="icon-history"></i>&nbsp;<span>Once</span></div>
-				        <div class="span4"><i class="icon-plus-sign"></i>&nbsp;<span>2</span></div>
-				      </li>
-				      <li class="resource">
-				        <div class="span4"><i class="icon-leaf"></i>&nbsp;<span>Cotton</span></div>
-				        <div class="span4"><i class="icon-history"></i>&nbsp;<span>Every Turn</span></div>
-				        <div class="span4"><i class="icon-plus-sign"></i>&nbsp;<span>32</span></div>
-				      </li>
-				      <li class="resource">
-				        <div class="span4"><i class="icon-leaf"></i>&nbsp;<span>Milk Cow</span></div>
-				        <div class="span4"><i class="icon-history"></i>&nbsp;<span>Once</span></div>
-				        <div class="span4"><i class="icon-plus-sign"></i>&nbsp;<span>2</span></div>
-				      </li>
-				      <li class="resource">
-				        <div class="span4"><i class="icon-leaf"></i>&nbsp;<span>Cotton</span></div>
-				        <div class="span4"><i class="icon-history"></i>&nbsp;<span>Every Turn</span></div>
-				        <div class="span4"><i class="icon-plus-sign"></i>&nbsp;<span>32</span></div>
-				      </li>
-				      <li class="resource">
-				        <div class="span4"><i class="icon-leaf"></i>&nbsp;<span>Milk Cow</span></div>
-				        <div class="span4"><i class="icon-history"></i>&nbsp;<span>Once</span></div>
-				        <div class="span4"><i class="icon-plus-sign"></i>&nbsp;<span>2</span></div>
-				      </li>
-				      <li class="resource">
-				        <div class="span4"><i class="icon-leaf"></i>&nbsp;<span>Cotton</span></div>
-				        <div class="span4"><i class="icon-history"></i>&nbsp;<span>Every Turn</span></div>
-				        <div class="span4"><i class="icon-plus-sign"></i>&nbsp;<span>32</span></div>
-				      </li>
-				    </ul>
-					</div>
-				</li>
-				<li class="contract">
-					<div class="actions span1">
-						<button class="btn btn-danger" type="button"><i class="icon-remove"></i></button>
-					</div>
-					<div class="employer span2">
-						Mast
-					</div>
-					<div class="employee span2">
-						<ul class="unstyled">
-				      <li>Family: awasner</li>
-				      <li>Member: 199</li>
-				      <li>Age: 51</li>
-				      <li>Sex: M</li>
-				      <li>Health: 100</li>
-				      <li>Labor: 120</li>
-				    </ul>
-					</div>
-					<div class="length span2">
-						8 turns
-					</div>
-					<div class="resources span5">
-						<ul class="unstyled">
-				      <li class="resource">
-				        <div class="span4"><i class="icon-leaf"></i>&nbsp;<span>Milk Cow</span></div>
-				        <div class="span4"><i class="icon-history"></i>&nbsp;<span>Once</span></div>
-				        <div class="span4"><i class="icon-plus-sign"></i>&nbsp;<span>2</span></div>
-				      </li>
-				      <li class="resource">
-				        <div class="span4"><i class="icon-leaf"></i>&nbsp;<span>Cotton</span></div>
-				        <div class="span4"><i class="icon-history"></i>&nbsp;<span>Every Turn</span></div>
-				        <div class="span4"><i class="icon-plus-sign"></i>&nbsp;<span>32</span></div>
-				      </li>
-				      <li class="resource">
-				        <div class="span4"><i class="icon-leaf"></i>&nbsp;<span>Milk Cow</span></div>
-				        <div class="span4"><i class="icon-history"></i>&nbsp;<span>Once</span></div>
-				        <div class="span4"><i class="icon-plus-sign"></i>&nbsp;<span>2</span></div>
-				      </li>
-				      <li class="resource">
-				        <div class="span4"><i class="icon-leaf"></i>&nbsp;<span>Cotton</span></div>
-				        <div class="span4"><i class="icon-history"></i>&nbsp;<span>Every Turn</span></div>
-				        <div class="span4"><i class="icon-plus-sign"></i>&nbsp;<span>32</span></div>
-				      </li>
-				      <li class="resource">
-				        <div class="span4"><i class="icon-leaf"></i>&nbsp;<span>Milk Cow</span></div>
-				        <div class="span4"><i class="icon-history"></i>&nbsp;<span>Once</span></div>
-				        <div class="span4"><i class="icon-plus-sign"></i>&nbsp;<span>2</span></div>
-				      </li>
-				      <li class="resource">
-				        <div class="span4"><i class="icon-leaf"></i>&nbsp;<span>Cotton</span></div>
-				        <div class="span4"><i class="icon-history"></i>&nbsp;<span>Every Turn</span></div>
-				        <div class="span4"><i class="icon-plus-sign"></i>&nbsp;<span>32</span></div>
-				      </li>
-				      <li class="resource">
-				        <div class="span4"><i class="icon-leaf"></i>&nbsp;<span>Milk Cow</span></div>
-				        <div class="span4"><i class="icon-history"></i>&nbsp;<span>Once</span></div>
-				        <div class="span4"><i class="icon-plus-sign"></i>&nbsp;<span>2</span></div>
-				      </li>
-				      <li class="resource">
-				        <div class="span4"><i class="icon-leaf"></i>&nbsp;<span>Cotton</span></div>
-				        <div class="span4"><i class="icon-history"></i>&nbsp;<span>Every Turn</span></div>
-				        <div class="span4"><i class="icon-plus-sign"></i>&nbsp;<span>32</span></div>
-				      </li>
-				    </ul>
-					</div>
-				</li>
-				<li class="contract">
-					<div class="actions span1">
-						<button class="btn btn-danger" type="button"><i class="icon-remove"></i></button>
-					</div>
-					<div class="employer span2">
-						Mast
-					</div>
-					<div class="employee span2">
-						<ul class="unstyled">
-				      <li>Family: awasner</li>
-				      <li>Member: 199</li>
-				      <li>Age: 51</li>
-				      <li>Sex: M</li>
-				      <li>Health: 100</li>
-				      <li>Labor: 120</li>
-				    </ul>
-					</div>
-					<div class="length span2">
-						8 turns
-					</div>
-					<div class="resources span5">
-						<ul class="unstyled">
-				      <li class="resource">
-				        <div class="span4"><i class="icon-leaf"></i>&nbsp;<span>Milk Cow</span></div>
-				        <div class="span4"><i class="icon-history"></i>&nbsp;<span>Once</span></div>
-				        <div class="span4"><i class="icon-plus-sign"></i>&nbsp;<span>2</span></div>
-				      </li>
-				      <li class="resource">
-				        <div class="span4"><i class="icon-leaf"></i>&nbsp;<span>Cotton</span></div>
-				        <div class="span4"><i class="icon-history"></i>&nbsp;<span>Every Turn</span></div>
-				        <div class="span4"><i class="icon-plus-sign"></i>&nbsp;<span>32</span></div>
-				      </li>
-				      <li class="resource">
-				        <div class="span4"><i class="icon-leaf"></i>&nbsp;<span>Milk Cow</span></div>
-				        <div class="span4"><i class="icon-history"></i>&nbsp;<span>Once</span></div>
-				        <div class="span4"><i class="icon-plus-sign"></i>&nbsp;<span>2</span></div>
-				      </li>
-				      <li class="resource">
-				        <div class="span4"><i class="icon-leaf"></i>&nbsp;<span>Cotton</span></div>
-				        <div class="span4"><i class="icon-history"></i>&nbsp;<span>Every Turn</span></div>
-				        <div class="span4"><i class="icon-plus-sign"></i>&nbsp;<span>32</span></div>
-				      </li>
-				      <li class="resource">
-				        <div class="span4"><i class="icon-leaf"></i>&nbsp;<span>Milk Cow</span></div>
-				        <div class="span4"><i class="icon-history"></i>&nbsp;<span>Once</span></div>
-				        <div class="span4"><i class="icon-plus-sign"></i>&nbsp;<span>2</span></div>
-				      </li>
-				      <li class="resource">
-				        <div class="span4"><i class="icon-leaf"></i>&nbsp;<span>Cotton</span></div>
-				        <div class="span4"><i class="icon-history"></i>&nbsp;<span>Every Turn</span></div>
-				        <div class="span4"><i class="icon-plus-sign"></i>&nbsp;<span>32</span></div>
-				      </li>
-				      <li class="resource">
-				        <div class="span4"><i class="icon-leaf"></i>&nbsp;<span>Milk Cow</span></div>
-				        <div class="span4"><i class="icon-history"></i>&nbsp;<span>Once</span></div>
-				        <div class="span4"><i class="icon-plus-sign"></i>&nbsp;<span>2</span></div>
-				      </li>
-				      <li class="resource">
-				        <div class="span4"><i class="icon-leaf"></i>&nbsp;<span>Cotton</span></div>
-				        <div class="span4"><i class="icon-history"></i>&nbsp;<span>Every Turn</span></div>
-				        <div class="span4"><i class="icon-plus-sign"></i>&nbsp;<span>32</span></div>
-				      </li>
-				    </ul>
-					</div>
-				</li>
+				<?php
+					if($current_contracts->num_rows() > 0) {
+					  foreach($current_contracts->result() as $row) {
+					  	$row->duration = ($row->duration == -1) ? "On-Going" : $row->duration;
+							echo	"<li class='contract' data-contract-id='$row->id'>
+											<div class='actions span1'>
+												<button class='btn btn-danger' type='button'><i class='icon-remove'></i></button>
+											</div>
+											<div class='employer span2'>$row->employer_family_name</div>
+											<div class='employee span2'>
+												<ul class='unstyled'>
+										      <li>Family: $row->family_name</li>
+										      <li>Member: $row->name</li>
+										      <li>Age: $row->age</li>
+										      <li>Sex: $row->sex</li>
+										      <li>Health: $row->health</li>
+										      <li>Labor: TODO</li>
+										    </ul>
+											</div>
+											<div class='length span2'>$row->duration</div>
+											<div class='resources span5'>
+												<ul class='unstyled'>";
+
+							foreach($row->resources->result() as $resource) {
+								$resource->on_going = ($resource->on_going == 1) ? "On-Going" : "Once";
+								echo	"<li class='resource'>
+												<div class='span4'><i class='icon-leaf'></i>&nbsp;<span>$resource->name</span></div>
+					       				<div class='span4'><i class='icon-history'></i>&nbsp;<span>$resource->on_going</span></div>
+					      				<div class='span4'><i class='icon-plus-sign'></i>&nbsp;<span>$resource->quantity</span></div>
+					      			</li>";
+							}
+
+							echo		"</ul>
+											</div>
+										</li>";
+					  }
+					}
+					else {
+						echo '<div class="empty-contracts">You Have No Contracts Currently in Effect.</div>';
+					}
+				?>
 			</ul>
 		</div>
 	</section>
+<!-- #################################### -->
 
+
+<!-- ######## Pending Contracts ######## -->
 	<section id="pending-contracts">
 		<legend>
 			<h2>Pending Contracts</h2>
@@ -240,205 +90,54 @@
 				</div>
 			</div>
 			<ul class="contract-list unstyled row-fluid">
-				<li class="contract">
-					<div class="actions span1">
-						<button class="btn btn-danger" type="button"><i class="icon-remove"></i></button>
-					</div>
-					<div class="employer span2">
-						Mast
-					</div>
-					<div class="employee span2">
-						<ul class="unstyled">
-				      <li>Family: awasner</li>
-				      <li>Member: 199</li>
-				      <li>Age: 51</li>
-				      <li>Sex: M</li>
-				      <li>Health: 100</li>
-				      <li>Labor: 120</li>
-				    </ul>
-					</div>
-					<div class="length span2">
-						8 turns
-					</div>
-					<div class="resources span5">
-						<ul class="unstyled">
-				      <li class="resource">
-				        <div class="span4"><i class="icon-leaf"></i>&nbsp;<span>Milk Cow</span></div>
-				        <div class="span4"><i class="icon-history"></i>&nbsp;<span>Once</span></div>
-				        <div class="span4"><i class="icon-plus-sign"></i>&nbsp;<span>2</span></div>
-				      </li>
-				      <li class="resource">
-				        <div class="span4"><i class="icon-leaf"></i>&nbsp;<span>Cotton</span></div>
-				        <div class="span4"><i class="icon-history"></i>&nbsp;<span>Every Turn</span></div>
-				        <div class="span4"><i class="icon-plus-sign"></i>&nbsp;<span>32</span></div>
-				      </li>
-				      <li class="resource">
-				        <div class="span4"><i class="icon-leaf"></i>&nbsp;<span>Milk Cow</span></div>
-				        <div class="span4"><i class="icon-history"></i>&nbsp;<span>Once</span></div>
-				        <div class="span4"><i class="icon-plus-sign"></i>&nbsp;<span>2</span></div>
-				      </li>
-				      <li class="resource">
-				        <div class="span4"><i class="icon-leaf"></i>&nbsp;<span>Cotton</span></div>
-				        <div class="span4"><i class="icon-history"></i>&nbsp;<span>Every Turn</span></div>
-				        <div class="span4"><i class="icon-plus-sign"></i>&nbsp;<span>32</span></div>
-				      </li>
-				      <li class="resource">
-				        <div class="span4"><i class="icon-leaf"></i>&nbsp;<span>Milk Cow</span></div>
-				        <div class="span4"><i class="icon-history"></i>&nbsp;<span>Once</span></div>
-				        <div class="span4"><i class="icon-plus-sign"></i>&nbsp;<span>2</span></div>
-				      </li>
-				      <li class="resource">
-				        <div class="span4"><i class="icon-leaf"></i>&nbsp;<span>Cotton</span></div>
-				        <div class="span4"><i class="icon-history"></i>&nbsp;<span>Every Turn</span></div>
-				        <div class="span4"><i class="icon-plus-sign"></i>&nbsp;<span>32</span></div>
-				      </li>
-				      <li class="resource">
-				        <div class="span4"><i class="icon-leaf"></i>&nbsp;<span>Milk Cow</span></div>
-				        <div class="span4"><i class="icon-history"></i>&nbsp;<span>Once</span></div>
-				        <div class="span4"><i class="icon-plus-sign"></i>&nbsp;<span>2</span></div>
-				      </li>
-				      <li class="resource">
-				        <div class="span4"><i class="icon-leaf"></i>&nbsp;<span>Cotton</span></div>
-				        <div class="span4"><i class="icon-history"></i>&nbsp;<span>Every Turn</span></div>
-				        <div class="span4"><i class="icon-plus-sign"></i>&nbsp;<span>32</span></div>
-				      </li>
-				    </ul>
-					</div>
-				</li>
-				<li class="contract">
-					<div class="actions span1">
-						<button class="btn btn-danger" type="button"><i class="icon-remove"></i></button>
-					</div>
-					<div class="employer span2">
-						Mast
-					</div>
-					<div class="employee span2">
-						<ul class="unstyled">
-				      <li>Family: awasner</li>
-				      <li>Member: 199</li>
-				      <li>Age: 51</li>
-				      <li>Sex: M</li>
-				      <li>Health: 100</li>
-				      <li>Labor: 120</li>
-				    </ul>
-					</div>
-					<div class="length span2">
-						8 turns
-					</div>
-					<div class="resources span5">
-						<ul class="unstyled">
-				      <li class="resource">
-				        <div class="span4"><i class="icon-leaf"></i>&nbsp;<span>Milk Cow</span></div>
-				        <div class="span4"><i class="icon-history"></i>&nbsp;<span>Once</span></div>
-				        <div class="span4"><i class="icon-plus-sign"></i>&nbsp;<span>2</span></div>
-				      </li>
-				      <li class="resource">
-				        <div class="span4"><i class="icon-leaf"></i>&nbsp;<span>Cotton</span></div>
-				        <div class="span4"><i class="icon-history"></i>&nbsp;<span>Every Turn</span></div>
-				        <div class="span4"><i class="icon-plus-sign"></i>&nbsp;<span>32</span></div>
-				      </li>
-				      <li class="resource">
-				        <div class="span4"><i class="icon-leaf"></i>&nbsp;<span>Milk Cow</span></div>
-				        <div class="span4"><i class="icon-history"></i>&nbsp;<span>Once</span></div>
-				        <div class="span4"><i class="icon-plus-sign"></i>&nbsp;<span>2</span></div>
-				      </li>
-				      <li class="resource">
-				        <div class="span4"><i class="icon-leaf"></i>&nbsp;<span>Cotton</span></div>
-				        <div class="span4"><i class="icon-history"></i>&nbsp;<span>Every Turn</span></div>
-				        <div class="span4"><i class="icon-plus-sign"></i>&nbsp;<span>32</span></div>
-				      </li>
-				      <li class="resource">
-				        <div class="span4"><i class="icon-leaf"></i>&nbsp;<span>Milk Cow</span></div>
-				        <div class="span4"><i class="icon-history"></i>&nbsp;<span>Once</span></div>
-				        <div class="span4"><i class="icon-plus-sign"></i>&nbsp;<span>2</span></div>
-				      </li>
-				      <li class="resource">
-				        <div class="span4"><i class="icon-leaf"></i>&nbsp;<span>Cotton</span></div>
-				        <div class="span4"><i class="icon-history"></i>&nbsp;<span>Every Turn</span></div>
-				        <div class="span4"><i class="icon-plus-sign"></i>&nbsp;<span>32</span></div>
-				      </li>
-				      <li class="resource">
-				        <div class="span4"><i class="icon-leaf"></i>&nbsp;<span>Milk Cow</span></div>
-				        <div class="span4"><i class="icon-history"></i>&nbsp;<span>Once</span></div>
-				        <div class="span4"><i class="icon-plus-sign"></i>&nbsp;<span>2</span></div>
-				      </li>
-				      <li class="resource">
-				        <div class="span4"><i class="icon-leaf"></i>&nbsp;<span>Cotton</span></div>
-				        <div class="span4"><i class="icon-history"></i>&nbsp;<span>Every Turn</span></div>
-				        <div class="span4"><i class="icon-plus-sign"></i>&nbsp;<span>32</span></div>
-				      </li>
-				    </ul>
-					</div>
-				</li>
-				<li class="contract">
-					<div class="actions span1">
-						<button class="btn btn-danger" type="button"><i class="icon-remove"></i></button>
-					</div>
-					<div class="employer span2">
-						Mast
-					</div>
-					<div class="employee span2">
-						<ul class="unstyled">
-				      <li>Family: awasner</li>
-				      <li>Member: 199</li>
-				      <li>Age: 51</li>
-				      <li>Sex: M</li>
-				      <li>Health: 100</li>
-				      <li>Labor: 120</li>
-				    </ul>
-					</div>
-					<div class="length span2">
-						8 turns
-					</div>
-					<div class="resources span5">
-						<ul class="unstyled">
-				      <li class="resource">
-				        <div class="span4"><i class="icon-leaf"></i>&nbsp;<span>Milk Cow</span></div>
-				        <div class="span4"><i class="icon-history"></i>&nbsp;<span>Once</span></div>
-				        <div class="span4"><i class="icon-plus-sign"></i>&nbsp;<span>2</span></div>
-				      </li>
-				      <li class="resource">
-				        <div class="span4"><i class="icon-leaf"></i>&nbsp;<span>Cotton</span></div>
-				        <div class="span4"><i class="icon-history"></i>&nbsp;<span>Every Turn</span></div>
-				        <div class="span4"><i class="icon-plus-sign"></i>&nbsp;<span>32</span></div>
-				      </li>
-				      <li class="resource">
-				        <div class="span4"><i class="icon-leaf"></i>&nbsp;<span>Milk Cow</span></div>
-				        <div class="span4"><i class="icon-history"></i>&nbsp;<span>Once</span></div>
-				        <div class="span4"><i class="icon-plus-sign"></i>&nbsp;<span>2</span></div>
-				      </li>
-				      <li class="resource">
-				        <div class="span4"><i class="icon-leaf"></i>&nbsp;<span>Cotton</span></div>
-				        <div class="span4"><i class="icon-history"></i>&nbsp;<span>Every Turn</span></div>
-				        <div class="span4"><i class="icon-plus-sign"></i>&nbsp;<span>32</span></div>
-				      </li>
-				      <li class="resource">
-				        <div class="span4"><i class="icon-leaf"></i>&nbsp;<span>Milk Cow</span></div>
-				        <div class="span4"><i class="icon-history"></i>&nbsp;<span>Once</span></div>
-				        <div class="span4"><i class="icon-plus-sign"></i>&nbsp;<span>2</span></div>
-				      </li>
-				      <li class="resource">
-				        <div class="span4"><i class="icon-leaf"></i>&nbsp;<span>Cotton</span></div>
-				        <div class="span4"><i class="icon-history"></i>&nbsp;<span>Every Turn</span></div>
-				        <div class="span4"><i class="icon-plus-sign"></i>&nbsp;<span>32</span></div>
-				      </li>
-				      <li class="resource">
-				        <div class="span4"><i class="icon-leaf"></i>&nbsp;<span>Milk Cow</span></div>
-				        <div class="span4"><i class="icon-history"></i>&nbsp;<span>Once</span></div>
-				        <div class="span4"><i class="icon-plus-sign"></i>&nbsp;<span>2</span></div>
-				      </li>
-				      <li class="resource">
-				        <div class="span4"><i class="icon-leaf"></i>&nbsp;<span>Cotton</span></div>
-				        <div class="span4"><i class="icon-history"></i>&nbsp;<span>Every Turn</span></div>
-				        <div class="span4"><i class="icon-plus-sign"></i>&nbsp;<span>32</span></div>
-				      </li>
-				    </ul>
-					</div>
-				</li>
+				<?php
+					if($pending_contracts->num_rows() > 0) {
+					  foreach($pending_contracts->result() as $row) {
+					  	$row->duration = ($row->duration == -1) ? "On-Going" : $row->duration;
+							echo	"<li class='contract' data-contract-id='$row->id'>
+											<div class='actions span1'>
+												<button class='btn btn-danger' type='button'><i class='icon-remove'></i></button>
+											</div>
+											<div class='employer span2'>$row->employer_family_name</div>
+											<div class='employee span2'>
+												<ul class='unstyled'>
+										      <li>Family: $row->family_name</li>
+										      <li>Member: $row->name</li>
+										      <li>Age: $row->age</li>
+										      <li>Sex: $row->sex</li>
+										      <li>Health: $row->health</li>
+										      <li>Labor: TODO</li>
+										    </ul>
+											</div>
+											<div class='length span2'>$row->duration</div>
+											<div class='resources span5'>
+												<ul class='unstyled'>";
+
+							foreach($row->resources->result() as $resource) {
+								$resource->on_going = ($resource->on_going == 1) ? "On-Going" : "Once";
+								echo	"<li class='resource'>
+												<div class='span4'><i class='icon-leaf'></i>&nbsp;<span>$resource->name</span></div>
+					       				<div class='span4'><i class='icon-history'></i>&nbsp;<span>$resource->on_going</span></div>
+					      				<div class='span4'><i class='icon-plus-sign'></i>&nbsp;<span>$resource->quantity</span></div>
+					      			</li>";
+							}
+
+							echo		"</ul>
+											</div>
+										</li>";
+					  }
+					}
+					else {
+						echo '<div class="empty-contracts">You Have No Pending Contracts</div>';
+					}
+				?>
 			</ul>
 		</div>
 	</section>
+<!-- #################################### -->
 
+
+<!-- ######## Proposed Contracts ######## -->
 	<section id="proposed-contracts">
 		<legend>
 			<h2>Proposed Contracts</h2>
@@ -459,240 +158,52 @@
 				</div>
 			</div>
 			<ul class="contract-list unstyled row-fluid">
-				<li class="contract">
-					<div class="actions span1">
-						<button class="btn btn-success" type="button"><i class="icon-checkmark"></i></button>
-						<button class="btn btn-danger" type="button"><i class="icon-close"></i></button>
-					</div>
-					<div class="employer span2">
-						Mast
-					</div>
-					<div class="employee span2">
-						<ul class="unstyled">
-				      <li>Family: awasner</li>
-				      <li>Member: 199</li>
-				      <li>Age: 51</li>
-				      <li>Sex: M</li>
-				      <li>Health: 100</li>
-				      <li>Labor: 120</li>
-				    </ul>
-					</div>
-					<div class="length span2">
-						8 turns
-					</div>
-					<div class="resources span5">
-						<ul class="unstyled">
-				      <li class="resource">
-				        <div class="span4"><i class="icon-leaf"></i>&nbsp;<span>Milk Cow</span></div>
-				        <div class="span4"><i class="icon-history"></i>&nbsp;<span>Once</span></div>
-				        <div class="span4"><i class="icon-plus-sign"></i>&nbsp;<span>2</span></div>
-				      </li>
-				      <li class="resource">
-				        <div class="span4"><i class="icon-leaf"></i>&nbsp;<span>Cotton</span></div>
-				        <div class="span4"><i class="icon-history"></i>&nbsp;<span>Every Turn</span></div>
-				        <div class="span4"><i class="icon-plus-sign"></i>&nbsp;<span>32</span></div>
-				      </li>
-				      <li class="resource">
-				        <div class="span4"><i class="icon-leaf"></i>&nbsp;<span>Milk Cow</span></div>
-				        <div class="span4"><i class="icon-history"></i>&nbsp;<span>Once</span></div>
-				        <div class="span4"><i class="icon-plus-sign"></i>&nbsp;<span>2</span></div>
-				      </li>
-				      <li class="resource">
-				        <div class="span4"><i class="icon-leaf"></i>&nbsp;<span>Cotton</span></div>
-				        <div class="span4"><i class="icon-history"></i>&nbsp;<span>Every Turn</span></div>
-				        <div class="span4"><i class="icon-plus-sign"></i>&nbsp;<span>32</span></div>
-				      </li>
-				      <li class="resource">
-				        <div class="span4"><i class="icon-leaf"></i>&nbsp;<span>Milk Cow</span></div>
-				        <div class="span4"><i class="icon-history"></i>&nbsp;<span>Once</span></div>
-				        <div class="span4"><i class="icon-plus-sign"></i>&nbsp;<span>2</span></div>
-				      </li>
-				      <li class="resource">
-				        <div class="span4"><i class="icon-leaf"></i>&nbsp;<span>Cotton</span></div>
-				        <div class="span4"><i class="icon-history"></i>&nbsp;<span>Every Turn</span></div>
-				        <div class="span4"><i class="icon-plus-sign"></i>&nbsp;<span>32</span></div>
-				      </li>
-				      <li class="resource">
-				        <div class="span4"><i class="icon-leaf"></i>&nbsp;<span>Milk Cow</span></div>
-				        <div class="span4"><i class="icon-history"></i>&nbsp;<span>Once</span></div>
-				        <div class="span4"><i class="icon-plus-sign"></i>&nbsp;<span>2</span></div>
-				      </li>
-				      <li class="resource">
-				        <div class="span4"><i class="icon-leaf"></i>&nbsp;<span>Cotton</span></div>
-				        <div class="span4"><i class="icon-history"></i>&nbsp;<span>Every Turn</span></div>
-				        <div class="span4"><i class="icon-plus-sign"></i>&nbsp;<span>32</span></div>
-				      </li>
-				    </ul>
-					</div>
-				</li>
-				<li class="contract">
-					<div class="actions span1">
-						<button class="btn btn-success" type="button"><i class="icon-checkmark"></i></button>
-						<button class="btn btn-danger" type="button"><i class="icon-close"></i></button>
-					</div>
-					<div class="employer span2">
-						Mast
-					</div>
-					<div class="employee span2">
-						<ul class="unstyled">
-				      <li>Family: awasner</li>
-				      <li>Member: 199</li>
-				      <li>Age: 51</li>
-				      <li>Sex: M</li>
-				      <li>Health: 100</li>
-				      <li>Labor: 120</li>
-				    </ul>
-					</div>
-					<div class="length span2">
-						8 turns
-					</div>
-					<div class="resources span5">
-						<ul class="unstyled">
-				      <li class="resource">
-				        <div class="span4"><i class="icon-leaf"></i>&nbsp;<span>Milk Cow</span></div>
-				        <div class="span4"><i class="icon-history"></i>&nbsp;<span>Once</span></div>
-				        <div class="span4"><i class="icon-plus-sign"></i>&nbsp;<span>2</span></div>
-				      </li>
-				      <li class="resource">
-				        <div class="span4"><i class="icon-leaf"></i>&nbsp;<span>Cotton</span></div>
-				        <div class="span4"><i class="icon-history"></i>&nbsp;<span>Every Turn</span></div>
-				        <div class="span4"><i class="icon-plus-sign"></i>&nbsp;<span>32</span></div>
-				      </li>
-				      <li class="resource">
-				        <div class="span4"><i class="icon-leaf"></i>&nbsp;<span>Milk Cow</span></div>
-				        <div class="span4"><i class="icon-history"></i>&nbsp;<span>Once</span></div>
-				        <div class="span4"><i class="icon-plus-sign"></i>&nbsp;<span>2</span></div>
-				      </li>
-				      <li class="resource">
-				        <div class="span4"><i class="icon-leaf"></i>&nbsp;<span>Cotton</span></div>
-				        <div class="span4"><i class="icon-history"></i>&nbsp;<span>Every Turn</span></div>
-				        <div class="span4"><i class="icon-plus-sign"></i>&nbsp;<span>32</span></div>
-				      </li>
-				      <li class="resource">
-				        <div class="span4"><i class="icon-leaf"></i>&nbsp;<span>Milk Cow</span></div>
-				        <div class="span4"><i class="icon-history"></i>&nbsp;<span>Once</span></div>
-				        <div class="span4"><i class="icon-plus-sign"></i>&nbsp;<span>2</span></div>
-				      </li>
-				      <li class="resource">
-				        <div class="span4"><i class="icon-leaf"></i>&nbsp;<span>Cotton</span></div>
-				        <div class="span4"><i class="icon-history"></i>&nbsp;<span>Every Turn</span></div>
-				        <div class="span4"><i class="icon-plus-sign"></i>&nbsp;<span>32</span></div>
-				      </li>
-				      <li class="resource">
-				        <div class="span4"><i class="icon-leaf"></i>&nbsp;<span>Milk Cow</span></div>
-				        <div class="span4"><i class="icon-history"></i>&nbsp;<span>Once</span></div>
-				        <div class="span4"><i class="icon-plus-sign"></i>&nbsp;<span>2</span></div>
-				      </li>
-				      <li class="resource">
-				        <div class="span4"><i class="icon-leaf"></i>&nbsp;<span>Cotton</span></div>
-				        <div class="span4"><i class="icon-history"></i>&nbsp;<span>Every Turn</span></div>
-				        <div class="span4"><i class="icon-plus-sign"></i>&nbsp;<span>32</span></div>
-				      </li>
-				    </ul>
-					</div>
-				</li>
-				<li class="contract">
-					<div class="actions span1">
-						<button class="btn btn-success" type="button"><i class="icon-checkmark"></i></button>
-						<button class="btn btn-danger" type="button"><i class="icon-close"></i></button>
-					</div>
-					<div class="employer span2">
-						Mast
-					</div>
-					<div class="employee span2">
-						<ul class="unstyled">
-				      <li>Family: awasner</li>
-				      <li>Member: 199</li>
-				      <li>Age: 51</li>
-				      <li>Sex: M</li>
-				      <li>Health: 100</li>
-				      <li>Labor: 120</li>
-				    </ul>
-					</div>
-					<div class="length span2">
-						8 turns
-					</div>
-					<div class="resources span5">
-						<ul class="unstyled">
-				      <li class="resource">
-				        <div class="span4"><i class="icon-leaf"></i>&nbsp;<span>Milk Cow</span></div>
-				        <div class="span4"><i class="icon-history"></i>&nbsp;<span>Once</span></div>
-				        <div class="span4"><i class="icon-plus-sign"></i>&nbsp;<span>2</span></div>
-				      </li>
-				      <li class="resource">
-				        <div class="span4"><i class="icon-leaf"></i>&nbsp;<span>Cotton</span></div>
-				        <div class="span4"><i class="icon-history"></i>&nbsp;<span>Every Turn</span></div>
-				        <div class="span4"><i class="icon-plus-sign"></i>&nbsp;<span>32</span></div>
-				      </li>
-				      <li class="resource">
-				        <div class="span4"><i class="icon-leaf"></i>&nbsp;<span>Milk Cow</span></div>
-				        <div class="span4"><i class="icon-history"></i>&nbsp;<span>Once</span></div>
-				        <div class="span4"><i class="icon-plus-sign"></i>&nbsp;<span>2</span></div>
-				      </li>
-				      <li class="resource">
-				        <div class="span4"><i class="icon-leaf"></i>&nbsp;<span>Cotton</span></div>
-				        <div class="span4"><i class="icon-history"></i>&nbsp;<span>Every Turn</span></div>
-				        <div class="span4"><i class="icon-plus-sign"></i>&nbsp;<span>32</span></div>
-				      </li>
-				      <li class="resource">
-				        <div class="span4"><i class="icon-leaf"></i>&nbsp;<span>Milk Cow</span></div>
-				        <div class="span4"><i class="icon-history"></i>&nbsp;<span>Once</span></div>
-				        <div class="span4"><i class="icon-plus-sign"></i>&nbsp;<span>2</span></div>
-				      </li>
-				      <li class="resource">
-				        <div class="span4"><i class="icon-leaf"></i>&nbsp;<span>Cotton</span></div>
-				        <div class="span4"><i class="icon-history"></i>&nbsp;<span>Every Turn</span></div>
-				        <div class="span4"><i class="icon-plus-sign"></i>&nbsp;<span>32</span></div>
-				      </li>
-				      <li class="resource">
-				        <div class="span4"><i class="icon-leaf"></i>&nbsp;<span>Milk Cow</span></div>
-				        <div class="span4"><i class="icon-history"></i>&nbsp;<span>Once</span></div>
-				        <div class="span4"><i class="icon-plus-sign"></i>&nbsp;<span>2</span></div>
-				      </li>
-				      <li class="resource">
-				        <div class="span4"><i class="icon-leaf"></i>&nbsp;<span>Cotton</span></div>
-				        <div class="span4"><i class="icon-history"></i>&nbsp;<span>Every Turn</span></div>
-				        <div class="span4"><i class="icon-plus-sign"></i>&nbsp;<span>32</span></div>
-				      </li>
-				    </ul>
-					</div>
-				</li>
+				<?php
+					if($proposed_contracts->num_rows() > 0) {
+					  foreach($proposed_contracts->result() as $row) {
+					  	$row->duration = ($row->duration == -1) ? "On-Going" : $row->duration;
+							echo	"<li class='contract' data-contract-id='$row->id'>
+											<div class='actions span1'>
+											<button class='btn btn-success' type='button'><i class='icon-checkmark'></i></button>
+											<button class='btn btn-danger' type='button'><i class='icon-close'></i></button>
+											</div>
+											<div class='employer span2'>$row->employer_family_name</div>
+											<div class='employee span2'>
+												<ul class='unstyled'>
+										      <li>Family: $row->family_name</li>
+										      <li>Member: $row->name</li>
+										      <li>Age: $row->age</li>
+										      <li>Sex: $row->sex</li>
+										      <li>Health: $row->health</li>
+										      <li>Labor: TODO</li>
+										    </ul>
+											</div>
+											<div class='length span2'>$row->duration</div>
+											<div class='resources span5'>
+												<ul class='unstyled'>";
+
+							foreach($row->resources->result() as $resource) {
+								$resource->on_going = ($resource->on_going == 1) ? "On-Going" : "Once";
+								echo	"<li class='resource'>
+												<div class='span4'><i class='icon-leaf'></i>&nbsp;<span>$resource->name</span></div>
+					       				<div class='span4'><i class='icon-history'></i>&nbsp;<span>$resource->on_going</span></div>
+					      				<div class='span4'><i class='icon-plus-sign'></i>&nbsp;<span>$resource->quantity</span></div>
+					      			</li>";
+							}
+
+							echo		"</ul>
+											</div>
+										</li>";
+					  }
+					}
+					else {
+						echo '<div class="empty-contracts">You Have No Proposed Contracts</div>';
+					}
+				?>
 			</ul>
 		</div>
 	</section>
+<!-- #################################### -->
+
+
 </div>
-
-
-
-<!-- <ul class="review-contract-details review-list">
-  <li class="review-length">
-    <h4>Length</h4>
-    <div class="review-length-text">8 Turns</div>
-  </li>
-  <li class="review-employee">
-    <h4>Employee</h4>
-    <ul class="review-list">
-      <li>Family: awasner</li>
-      <li>Member: 199</li>
-      <li>Age: 51</li>
-      <li>Sex: M</li>
-      <li>Health: 100</li>
-      <li>Labor: 120</li>
-    </ul>
-  </li>
-  <li class="review-resources">
-    <h4>Resources</h4>
-    <ul class="review-list">
-      <li class="review-added-resource">
-        <div class="span4"><i class="icon-leaf"></i>&nbsp;<span>Milk Cow</span></div>
-        <div class="span4"><i class="icon-history"></i>&nbsp;<span>Once</span></div>
-        <div class="span4"><i class="icon-plus-sign"></i>&nbsp;<span>2</span></div>
-      </li>
-      <li class="review-added-resource">
-        <div class="span4"><i class="icon-leaf"></i>&nbsp;<span>Cotton</span></div>
-        <div class="span4"><i class="icon-history"></i>&nbsp;<span>Every Turn</span></div>
-        <div class="span4"><i class="icon-plus-sign"></i>&nbsp;<span>32</span></div>
-      </li>
-    </ul>
-  </li>
-</ul> -->
