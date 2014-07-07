@@ -36,7 +36,7 @@ class Labor extends CI_Controller{
 		$this->form_validation->set_rules('employee-id', 'Employee', 'trim|required|integer');
 		$this->form_validation->set_rules('resources', 'Payment', 'trim|required');
 
-		if($this->form_validation->run()){
+		if($this->form_validation->run()) {
 			$this->load->model('Labor_model');
 			$employer = $this->session->userdata('family_name');
 			$duration = $this->input->post('duration');
@@ -54,6 +54,39 @@ class Labor extends CI_Controller{
 			redirect('/Labor/manage_contracts_view/', 'refresh');
 		} else {
 			echo "Form Validation Failed... Stop manipulating input values...";
+		}
+	}
+
+	function delete_contract() {
+		$this->load->library('form_validation');
+		$this->form_validation->set_rules('contract-id', 'Contract', 'trim|required|integer');
+
+		if($this->form_validation->run()) {
+			$this->load->model('Labor_model');
+			$contract_id = $this->input->post('contract-id');
+
+			$success = $this->Labor_model->delete_contract($contract_id);
+
+			echo json_encode(array('success' => $success));
+		} else {
+			echo json_encode(array('success' => false));
+		}
+
+	}
+
+	function update_contract() {
+		$this->load->library('form_validation');
+		$this->form_validation->set_rules('contract-id', 'Contract', 'trim|required|integer');
+
+		if($this->form_validation->run()) {
+			$this->load->model('Labor_model');
+			$contract_id = $this->input->post('contract-id');
+
+			$success = $this->Labor_model->accept_contract($contract_id);
+
+			echo json_encode(array('success' => $success));
+		} else {
+			echo json_encode(array('success' => false));
 		}
 
 	}

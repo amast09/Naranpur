@@ -29,7 +29,7 @@ class Labor_model extends CI_Model{
 
 	function delete_contract($contract_id) {
 		$this->db->where('id', $contract_id);
-		$this->db->delete('contract');
+		return($this->db->delete('contract'));
 	}
 
 	function accept_contract($contract_id) {

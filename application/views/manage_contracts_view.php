@@ -1,5 +1,4 @@
-<div class="container-fluid">
-
+<div class="container-fluid" data-base-url="<?=site_url()?>">
 
 <!-- ######## Current Contracts ######## -->
 	<section id="current-contracts" class="row-fluid">
@@ -22,13 +21,14 @@
 				</div>
 			</div>
 			<ul class="contract-list unstyled row-fluid">
+				<li class="empty-contracts">You Have No Contracts Currently in Effect.</li>
 				<?php
 					if($current_contracts->num_rows() > 0) {
 					  foreach($current_contracts->result() as $row) {
 					  	$row->duration = ($row->duration == -1) ? "On-Going" : $row->duration;
 							echo	"<li class='contract' data-contract-id='$row->id'>
 											<div class='actions span1'>
-												<button class='btn btn-danger' type='button'><i class='icon-remove'></i></button>
+												<button class='btn btn-danger delete-contract' type='button'><i class='icon-remove'></i></button>
 											</div>
 											<div class='employer span2'>$row->employer_family_name</div>
 											<div class='employee span2'>
@@ -56,18 +56,18 @@
 
 							echo		"</ul>
 											</div>
+											<div class='contract-delete-confirmation'>
+												<h4 class='confirmation-text'>Are You Sure You Want to Delete This Contract?</h4>
+												<button class='btn btn-success confirm-delete-contract' type='button'>Delete</button>
+												<button class='btn btn-danger deny-delete-contract' type='button'>Cancel</button>
+											</div>
 										</li>";
 					  }
-					}
-					else {
-						echo '<div class="empty-contracts">You Have No Contracts Currently in Effect.</div>';
 					}
 				?>
 			</ul>
 		</div>
 	</section>
-<!-- #################################### -->
-
 
 <!-- ######## Pending Contracts ######## -->
 	<section id="pending-contracts">
@@ -90,13 +90,14 @@
 				</div>
 			</div>
 			<ul class="contract-list unstyled row-fluid">
+				<li class="empty-contracts">You Have No Pending Contracts</li>
 				<?php
 					if($pending_contracts->num_rows() > 0) {
 					  foreach($pending_contracts->result() as $row) {
 					  	$row->duration = ($row->duration == -1) ? "On-Going" : $row->duration;
 							echo	"<li class='contract' data-contract-id='$row->id'>
 											<div class='actions span1'>
-												<button class='btn btn-danger' type='button'><i class='icon-remove'></i></button>
+												<button class='btn btn-danger delete-contract' type='button'><i class='icon-remove'></i></button>
 											</div>
 											<div class='employer span2'>$row->employer_family_name</div>
 											<div class='employee span2'>
@@ -122,20 +123,20 @@
 					      			</li>";
 							}
 
-							echo		"</ul>
+							echo			"</ul>
+											</div>
+											<div class='contract-delete-confirmation'>
+												<h4 class='confirmation-text'>Are You Sure You Want to Delete This Contract?</h4>
+												<button class='btn btn-success confirm-delete-contract' type='button'>Delete</button>
+												<button class='btn btn-danger deny-delete-contract' type='button'>Cancel</button>
 											</div>
 										</li>";
 					  }
-					}
-					else {
-						echo '<div class="empty-contracts">You Have No Pending Contracts</div>';
 					}
 				?>
 			</ul>
 		</div>
 	</section>
-<!-- #################################### -->
-
 
 <!-- ######## Proposed Contracts ######## -->
 	<section id="proposed-contracts">
@@ -158,14 +159,15 @@
 				</div>
 			</div>
 			<ul class="contract-list unstyled row-fluid">
+				<li class="empty-contracts">You Have No Proposed Contracts</li>
 				<?php
 					if($proposed_contracts->num_rows() > 0) {
 					  foreach($proposed_contracts->result() as $row) {
 					  	$row->duration = ($row->duration == -1) ? "On-Going" : $row->duration;
 							echo	"<li class='contract' data-contract-id='$row->id'>
 											<div class='actions span1'>
-											<button class='btn btn-success' type='button'><i class='icon-checkmark'></i></button>
-											<button class='btn btn-danger' type='button'><i class='icon-close'></i></button>
+												<button class='btn btn-success accept-contract' type='button'><i class='icon-checkmark'></i></button>
+												<button class='btn btn-danger delete-contract' type='button'><i class='icon-close'></i></button>
 											</div>
 											<div class='employer span2'>$row->employer_family_name</div>
 											<div class='employee span2'>
@@ -193,17 +195,17 @@
 
 							echo		"</ul>
 											</div>
+											<div class='contract-delete-confirmation'>
+												<h4 class='confirmation-text'>Are You Sure You Want to Delete This Contract?</h4>
+												<button class='btn btn-success confirm-delete-contract' type='button'>Delete</button>
+												<button class='btn btn-danger deny-delete-contract' type='button'>Cancel</button>
+											</div>
 										</li>";
 					  }
-					}
-					else {
-						echo '<div class="empty-contracts">You Have No Proposed Contracts</div>';
 					}
 				?>
 			</ul>
 		</div>
 	</section>
-<!-- #################################### -->
-
 
 </div>
