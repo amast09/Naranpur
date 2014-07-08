@@ -63,9 +63,14 @@ class Family_model extends CI_Model{
 	}
 
 	function get_all_members($family_name) {
-		$this->db->or_where_not_in('family_name', $family_name);
-		$this->db->order_by('family_name', 'ASC');
-		return($this->db->get('member'));
+		$query = $this->db->query("
+			SELECT * 
+			FROM member
+			WHERE member.family_name != '$family_name'
+			AND NOT EXISTS (SELECT * FROM contract WHERE contract.employee_member_id = member.id)
+		");
+
+		return($query);
 	}
 
 	function get_members($family_name){

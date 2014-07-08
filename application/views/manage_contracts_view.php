@@ -34,7 +34,7 @@
 											<div class='employee span2'>
 												<ul class='unstyled'>
 										      <li>Family: $row->family_name</li>
-										      <li>Member: $row->name</li>
+										      <li>Member: $row->employee_member_id</li>
 										      <li>Age: $row->age</li>
 										      <li>Sex: $row->sex</li>
 										      <li>Health: $row->health</li>
@@ -103,7 +103,7 @@
 											<div class='employee span2'>
 												<ul class='unstyled'>
 										      <li>Family: $row->family_name</li>
-										      <li>Member: $row->name</li>
+										      <li>Member: $row->employee_member_id</li>
 										      <li>Age: $row->age</li>
 										      <li>Sex: $row->sex</li>
 										      <li>Health: $row->health</li>
@@ -173,7 +173,7 @@
 											<div class='employee span2'>
 												<ul class='unstyled'>
 										      <li>Family: $row->family_name</li>
-										      <li>Member: $row->name</li>
+										      <li>Member: $row->employee_member_id</li>
 										      <li>Age: $row->age</li>
 										      <li>Sex: $row->sex</li>
 										      <li>Health: $row->health</li>
