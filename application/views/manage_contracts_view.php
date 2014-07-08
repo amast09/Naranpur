@@ -26,7 +26,7 @@
 					if($current_contracts->num_rows() > 0) {
 					  foreach($current_contracts->result() as $row) {
 					  	$row->duration = ($row->duration == -1) ? "On-Going" : $row->duration;
-							echo	"<li class='contract' data-contract-id='$row->id'>
+							echo	"<li class='contract' data-contract-id='$row->id' data-employee-member-id='$row->employee_member_id'>
 											<div class='actions span1'>
 												<button class='btn btn-danger delete-contract' type='button'><i class='icon-remove'></i></button>
 											</div>
@@ -95,7 +95,7 @@
 					if($pending_contracts->num_rows() > 0) {
 					  foreach($pending_contracts->result() as $row) {
 					  	$row->duration = ($row->duration == -1) ? "On-Going" : $row->duration;
-							echo	"<li class='contract' data-contract-id='$row->id'>
+							echo	"<li class='contract' data-contract-id='$row->id' data-employee-member-id='$row->employee_member_id'>
 											<div class='actions span1'>
 												<button class='btn btn-danger delete-contract' type='button'><i class='icon-remove'></i></button>
 											</div>
@@ -164,7 +164,7 @@
 					if($proposed_contracts->num_rows() > 0) {
 					  foreach($proposed_contracts->result() as $row) {
 					  	$row->duration = ($row->duration == -1) ? "On-Going" : $row->duration;
-							echo	"<li class='contract' data-contract-id='$row->id'>
+							echo	"<li class='contract' data-contract-id='$row->id' data-employee-member-id='$row->employee_member_id'>
 											<div class='actions span1'>
 												<button class='btn btn-success accept-contract' type='button'><i class='icon-checkmark'></i></button>
 												<button class='btn btn-danger delete-contract' type='button'><i class='icon-close'></i></button>

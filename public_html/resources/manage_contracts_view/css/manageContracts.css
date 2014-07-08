@@ -1,3 +1,6 @@
+.container-fluid {
+	margin-bottom: 50px;
+}
 .contract > .resources {
 	max-height: 120px;
 	overflow-y: auto;

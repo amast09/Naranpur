@@ -32,7 +32,35 @@ class Labor_model extends CI_Model{
 		return($this->db->delete('contract'));
 	}
 
+	function delete_remaining_proposed_contracts($employee_member_id) {
+		$this->db->where('employee_member_id', $employee_member_id);
+		$this->db->where('employee_acceptance', FALSE);
+		return($this->db->delete('contract'));
+	}
+
 	function accept_contract($contract_id) {
+		$return = false;
+		// If we were able to update the contract to be accepted
+		if($this->set_contract_to_accepted($contract_id)) {
+
+			// Grab the actual contract from the DB
+			$this->db->where('id', $contract_id);
+			$query = $this->db->get("contract");
+
+			// If the contract was there
+			if ($query->num_rows() > 0) {
+				// Remove the remaing proposed contracts for that member id
+   			$this->delete_remaining_proposed_contracts($query->row()->employee_member_id);
+   		}
+
+   		$return = true;
+
+		}
+
+		return $return;
+	}
+
+	function set_contract_to_accepted($contract_id) {
 		$this->db->where('id', $contract_id);
 		return($this->db->update('contract', array('employee_acceptance' => true)));
 	}

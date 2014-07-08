@@ -48,10 +48,13 @@ $(function() {
 				success: function(data) {
 					if(data.success) {
 						$contractClicked.fadeOut(1000, function(){
+							$(".contract[data-employee-member-id='904'").not($contractClicked).fadeOut(1000, function(){
+								$(this).remove();
+							});
 							$contractClicked = $contractClicked.detach();
 							$contractClicked.find(".accept-contract").remove();
-							$contractClicked.find(".icon-close").remove(".icon-close").addClass(".icon-remove");
-							$("#current-contracts").find(".contract-list").append($contractClicked);
+							$contractClicked.find(".icon-close").removeClass("icon-close").addClass("icon-remove");
+							$("#current-contracts").find(".contract-list").append($contractClicked.fadeIn(1000));
 						});
 					} else {
 						alert("Server Error.  Please try again later.");
