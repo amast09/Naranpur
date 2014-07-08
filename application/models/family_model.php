@@ -67,7 +67,10 @@ class Family_model extends CI_Model{
 			SELECT * 
 			FROM member
 			WHERE member.family_name != '$family_name'
-			AND NOT EXISTS (SELECT * FROM contract WHERE contract.employee_member_id = member.id)
+			AND NOT EXISTS (SELECT * FROM contract
+											WHERE contract.employee_member_id = member.id
+											AND contract.employee_acceptance = TRUE)
+			ORDER BY member.family_name ASC, member.age ASC
 		");
 
 		return($query);
