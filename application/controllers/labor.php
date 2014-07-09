@@ -125,4 +125,12 @@ class Labor extends CI_Controller{
 			$this->load->view('includes/template', $data);	
 	}
 
+	// TODO:: Remove Later
+	function check_labor() {
+		$this->load->model('Family_model');
+		$labor = $this->Family_model->get_labor();
+		echo "<h1>Available Labor:: " . $labor['a'] . "</h1>";
+		echo "<h1>Used Labor:: " . $labor['u'] . "</h1>";
+	}
+
 }
