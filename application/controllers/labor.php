@@ -51,7 +51,7 @@ class Labor extends CI_Controller{
 
 			unset($value);
 
-			redirect('/Labor/manage_contracts_view/', 'refresh');
+			redirect('/labor/manage_contracts_view/', 'refresh');
 		} else {
 			echo "Form Validation Failed... Stop manipulating input values...";
 		}
