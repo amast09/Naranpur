@@ -56,13 +56,26 @@ class Family_model extends CI_Model{
 		return($this->db->get('family'));
 	}
 
+	function get_family_by_member_id($member_id) {
+		$family_name = "error";
+		$this->db->where('id', $member_id);
+		$query = $this->db->get('member');
+
+		if($query->num_rows() > 0) {
+		   $row = $query->row(); 
+		   $family_name = $row->family_name;
+		}
+
+		return $family_name;
+	}
+
 	function get_all_families($family_name){
 		$this->db->or_where_not_in('name', $family_name);
 		$this->db->order_by('name', 'ASC');
 		return($this->db->get('family'));
 	}
 
-	function get_all_members($family_name) {
+	function get_all_potential_employees_for_family($family_name) {
 		$query = $this->db->query("
 			SELECT * 
 			FROM member

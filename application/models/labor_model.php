@@ -60,6 +60,16 @@ class Labor_model extends CI_Model{
 		return $return;
 	}
 
+	function get_contract_by_id($contract_id) {
+		$query = $this->db->query("
+			SELECT contract.id, duration, employee_member_id, employee_acceptance, employer_family_name, family_name AS employee_family_name, name, sex,age, ageWeek, health FROM contract
+			LEFT JOIN member ON member.id = contract.employee_member_id
+			WHERE contract.id = $contract_id
+		");
+
+		return($query);
+	}
+
 	function set_contract_to_accepted($contract_id) {
 		$this->db->where('id', $contract_id);
 		return($this->db->update('contract', array('employee_acceptance' => true)));

@@ -56,7 +56,7 @@
 									<li class="divider"></li>
 								<li>
 									<a href="<?=site_url('/labor/manage_contracts_view');?>">
-										<i class="icon-signup"></i> Manage Labor Contracts
+										<i class="icon-signup"></i> Manage Labor Contracts <span id='contract-notification' class="badge badge-info pull-right" style="display:none;">
 									</a>
 								</li>
 							</ul>

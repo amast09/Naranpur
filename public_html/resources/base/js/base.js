@@ -22,34 +22,37 @@
 					if(data.mess > 0){
 						$('#mess').text(data.mess);
 						$('#mess').show();
-					}
-					else {
+					} else {
 						$('#mess').hide();
 					}
 
 					if(data.win > 0) {
 						$('#win').text(data.win);
 						$('#win').show();
-					}
-					else {
+					} else {
 						$('#win').hide();
 					}
 
 					if(data.bid > 0){
 						$('#bid').text(data.bid);
 						$('#bid').show();
-					}
-					else {
+					} else {
 						$('#bid').hide();
 					}
 
 					if(data.notif > 0){
 						$('#notif').text(data.notif);
 						$('#notif').show();
-					}
-					else {
+					} else {
 						$('#notif').hide();
 					}
+
+					if(data.contract > 0){
+						$('#contract-notification').text(data.contract).show();
+					} else {
+						$('#contract-notification').hide();
+					}
+
 					if(data.unreadMessages > 0) {
 						$(".unread-messages").text("(" + data.unreadMessages + ")");
 					} else {

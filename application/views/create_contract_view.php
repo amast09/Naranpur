@@ -68,13 +68,26 @@
 										"</li>";
 						}
 
-						echo	"<li class='family-member' data-family='$member->family_name' data-id='$member->id' data-age='$member->age' data-sex='$member->sex' data-health='$member->health' data-labor='120'>" .
+						$labor = 0;
+
+						if($member->age >= 12) {
+				  		$labor =  1.00 * $member->health / 100;
+				  	} else if($member->age >= 10) {
+				  		$labor =  0.75 * $member->health / 100;
+				  	} else if($member->age >= 8) {
+							$labor =  0.50 * $member->health / 100;
+						} else if($member->age >= 6) {
+							$labor =  0.25 * $member->health / 100;
+						}
+
+
+						echo	"<li class='family-member' data-family='$member->family_name' data-id='$member->id' data-age='$member->age' data-sex='$member->sex' data-health='$member->health' data-labor='$labor'>" .
 										"<ul class='family-member-stats inline'>" .
 											"<li class='name span3'>$member->id</li>" .
 											"<li class='age span2'>$member->age</li>" .
 											"<li class='sex span2'>$member->sex</li>" .
 											"<li class='health span2'>$member->health</li>" .
-											"<li class='labor span3'>120</li>" .
+											"<li class='labor span3'>$labor</li>" .
 										"</ul>" .
 									"</li>";
 

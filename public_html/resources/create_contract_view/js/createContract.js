@@ -191,7 +191,20 @@ $(function() {
   			$employee = $(".family-member.chosen"),
   			$resources = $(".added-resource"),
   			resourcesObject = [],
-  			newHtml = '';
+  			newHtml = '',
+  			age = $employee.attr("data-age"),
+  			health = $employee.attr("data-health"),
+  			labor = 0;
+
+		if(age >= 12) {
+  		labor =  1.00 * health / 100;
+  	} else if(age >= 10) {
+  		labor =  0.75 * health / 100;
+  	} else if(age >= 8) {
+			labor =  0.50 * health / 100;
+		} else if(age >= 6) {
+			labor =  0.25 * health / 100;
+		}
 
 		newHtml = '<ul class="review-contract-details review-list">' +
 								'<li class="review-length">' + 
@@ -203,10 +216,10 @@ $(function() {
 									'<ul class="review-list">' +
 										'<li>Family: ' + $employee.attr("data-family") + '</li>' +
 										'<li>Member: ' + $employee.attr("data-id") + '</li>' +
-										'<li>Age: ' + $employee.attr("data-age") + '</li>' +
+										'<li>Age: ' + age + '</li>' +
 										'<li>Sex: ' + $employee.attr('data-sex') + '</li>' +
-										'<li>Health: ' + $employee.attr("data-health") + '</li>' +
-										'<li>Labor: ' + 120 + '</li>' +
+										'<li>Health: ' + health + '</li>' +
+										'<li>Labor: ' + labor + '</li>' +
 									'</ul>' +
 								'</li>' +
 								'<li class="review-resources">' +

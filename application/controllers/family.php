@@ -100,6 +100,7 @@ class Family extends CI_Controller {
 								 'bid' => $row->bid,
 								 'win' => $row->win,
 								 'notif' => $row->notif,
+								 'contract' => $row->contract,
 								 'unreadMessages' => $unread_messages));
 	}
 
@@ -132,6 +133,7 @@ class Family extends CI_Controller {
 		$this->load->model('inventory_model');
 
 		$family_query = $this->family_model->get_members($family_name);
+		$worker_query = $this->family_model->get_family_workers($family_name);
 		$water_query = $this->water_model->get_family_water($family_name);
 		$well_query = $this->water_model->get_family_well_water($family_name);
 		$bullock_query = $this->water_model->get_family_bullock_water($family_name);
@@ -150,20 +152,15 @@ class Family extends CI_Controller {
 
 		$produced_labor=0;
 		$num_members = $family_query->num_rows();
-		foreach($family_query->result() as $row){
+		foreach($worker_query->result() as $row){
 			if($row->age >= 12){		$produced_labor += 1.00 * $row->health / 100;	}
 			else if($row->age >= 10){	$produced_labor += 0.75 * $row->health / 100;	}
 			else if($row->age >= 8){	$produced_labor += 0.50 * $row->health / 100;	}
 			else if($row->age >= 6){	$produced_labor += 0.25 * $row->health / 100;	}
 		}
 
-		$nCows = $this->inventory_model->get_resource_quantity(2, $family_name);
-		$animal_policy_query = $this->animal_model->get_animal_policy($family_name,2)->result();
-		$feed_method_id = $animal_policy_query[0]->id;
-		$feed_method_query = $this->animal_model->get_feed_method($feed_method_id)->result();
-		$produced_milk = $nCows * $feed_method_query[0]->milkProduced;
-
 		$produced_water=0;
+		$produced_milk = 0;
 		$produced_grain=0;
 		$produced_straw=0;
 
@@ -178,21 +175,34 @@ class Family extends CI_Controller {
 		$depleted_straw=0;
 		$depleted_milk=0;
 
+		// NEEDS UPDATING !!!!!!!!!!!
 		$consumed_grain = $num_members * 300;
 		$consumed_milk = $num_members * 50;
 		$consumed_water = $num_members * 8;
 
+		$nCows = $this->inventory_model->get_resource_quantity(2, $family_name);
+		$animal_policy_query = $this->animal_model->get_animal_policy($family_name,2)->result();
+		if(count($animal_policy_query) > 0) {
+			$feed_method_id = $animal_policy_query[0]->id;
+			$feed_method_query = $this->animal_model->get_feed_method($feed_method_id)->result();
+			$produced_milk = $nCows * $feed_method_query[0]->milkProduced;
+		}
+
 		$cows_policy_query = $this->animal_model->get_animal_policy($family_name,2)->result();
-		$feed_method_id = $cows_policy_query[0]->id;
-		$cows_grain_query = $this->animal_model->get_feed_method($feed_method_id)->result();
-		$consumed_grain += $nCows * $cows_grain_query[0]->quantity;
-		$consumed_straw += $nCows * $cows_grain_query[1]->quantity;
+		if(count($cows_policy_query) > 0) {
+			$feed_method_id = $cows_policy_query[0]->id;
+			$cows_grain_query = $this->animal_model->get_feed_method($feed_method_id)->result();
+			$consumed_grain += $nCows * $cows_grain_query[0]->quantity;
+			$consumed_straw += $nCows * $cows_grain_query[1]->quantity;			
+		}
 
 		$bullocks_policy_query = $this->animal_model->get_animal_policy($family_name,13)->result();
-		$feed_method_id = $bullocks_policy_query[0]->id;
-		$bullocks_grain_query = $this->animal_model->get_feed_method($feed_method_id)->result();
-		$consumed_grain += $nBullocks * $bullocks_grain_query[0]->quantity;
-		$consumed_straw += $nBullocks * $bullocks_grain_query[1]->quantity;
+		if(count($bullocks_policy_query) > 0) {
+			$feed_method_id = $bullocks_policy_query[0]->id;
+			$bullocks_grain_query = $this->animal_model->get_feed_method($feed_method_id)->result();
+			$consumed_grain += $nBullocks * $bullocks_grain_query[0]->quantity;
+			$consumed_straw += $nBullocks * $bullocks_grain_query[1]->quantity;
+		}
 
 		foreach($water_query->result() as $row){
 			$produced_water += $row->rate * $row->hours;

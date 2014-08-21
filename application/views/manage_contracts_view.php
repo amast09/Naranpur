@@ -26,6 +26,18 @@
 					if($current_contracts->num_rows() > 0) {
 					  foreach($current_contracts->result() as $row) {
 					  	$row->duration = ($row->duration == -1) ? "On-Going" : $row->duration;
+					  	$labor = 0;
+
+					  	if($row->age >= 12) {
+					  		$labor =  1.00 * $row->health / 100;
+					  	} else if($row->age >= 10) {
+					  		$labor =  0.75 * $row->health / 100;
+					  	} else if($row->age >= 8) {
+								$labor =  0.50 * $row->health / 100;
+							} else if($row->age >= 6) {
+								$labor =  0.25 * $row->health / 100;
+							}
+
 							echo	"<li class='contract' data-contract-id='$row->id' data-employee-member-id='$row->employee_member_id'>
 											<div class='actions span1'>
 												<button class='btn btn-danger delete-contract' type='button'><i class='icon-remove'></i></button>
@@ -38,7 +50,7 @@
 										      <li>Age: $row->age</li>
 										      <li>Sex: $row->sex</li>
 										      <li>Health: $row->health</li>
-										      <li>Labor: TODO</li>
+										      <li>Labor: $labor</li>
 										    </ul>
 											</div>
 											<div class='length span2'>$row->duration</div>
@@ -94,7 +106,19 @@
 				<?php
 					if($pending_contracts->num_rows() > 0) {
 					  foreach($pending_contracts->result() as $row) {
-					  	$row->duration = ($row->duration == -1) ? "On-Going" : $row->duration;
+							$row->duration = ($row->duration == -1) ? "On-Going" : $row->duration;
+					  	$labor = 0;
+
+					  	if($row->age >= 12) {
+					  		$labor =  1.00 * $row->health / 100;
+					  	} else if($row->age >= 10) {
+					  		$labor =  0.75 * $row->health / 100;
+					  	} else if($row->age >= 8) {
+								$labor =  0.50 * $row->health / 100;
+							} else if($row->age >= 6) {
+								$labor =  0.25 * $row->health / 100;
+							}
+
 							echo	"<li class='contract' data-contract-id='$row->id' data-employee-member-id='$row->employee_member_id'>
 											<div class='actions span1'>
 												<button class='btn btn-danger delete-contract' type='button'><i class='icon-remove'></i></button>
@@ -107,7 +131,7 @@
 										      <li>Age: $row->age</li>
 										      <li>Sex: $row->sex</li>
 										      <li>Health: $row->health</li>
-										      <li>Labor: TODO</li>
+										      <li>Labor: $labor</li>
 										    </ul>
 											</div>
 											<div class='length span2'>$row->duration</div>
@@ -164,10 +188,22 @@
 					if($proposed_contracts->num_rows() > 0) {
 					  foreach($proposed_contracts->result() as $row) {
 					  	$row->duration = ($row->duration == -1) ? "On-Going" : $row->duration;
+					  	$labor = 0;
+
+					  	if($row->age >= 12) {
+					  		$labor =  1.00 * $row->health / 100;
+					  	} else if($row->age >= 10) {
+					  		$labor =  0.75 * $row->health / 100;
+					  	} else if($row->age >= 8) {
+								$labor =  0.50 * $row->health / 100;
+							} else if($row->age >= 6) {
+								$labor =  0.25 * $row->health / 100;
+							}
+
 							echo	"<li class='contract' data-contract-id='$row->id' data-employee-member-id='$row->employee_member_id'>
 											<div class='actions span1'>
-												<button class='btn btn-success accept-contract' type='button'><i class='icon-checkmark'></i></button>
-												<button class='btn btn-danger delete-contract' type='button'><i class='icon-close'></i></button>
+												<button class='btn btn-success btn-small accept-contract' type='button'><i class='icon-checkmark'></i></button>
+												<button class='btn btn-danger btn-small delete-contract' type='button'><i class='icon-close'></i></button>
 											</div>
 											<div class='employer span2'>$row->employer_family_name</div>
 											<div class='employee span2'>
@@ -177,7 +213,7 @@
 										      <li>Age: $row->age</li>
 										      <li>Sex: $row->sex</li>
 										      <li>Health: $row->health</li>
-										      <li>Labor: TODO</li>
+										      <li>Labor: $labor</li>
 										    </ul>
 											</div>
 											<div class='length span2'>$row->duration</div>
