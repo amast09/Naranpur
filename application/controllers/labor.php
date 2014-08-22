@@ -50,9 +50,11 @@ class Labor extends CI_Controller{
 
 			$this->load->model('Update_model');
 			$this->load->model('Family_model');
+			$this->load->model('Notifications_model');
 
 			$employer_family = $this->Family_model->get_family_by_member_id($employee_id);
 			$this->Update_model->create_notification($employer_family, 'contract');
+			$this->Notifications_model->create_notification($employer_family, 'A family has proposed an employee contract for one of your family members.');
 
 			unset($value);
 
@@ -93,9 +95,11 @@ class Labor extends CI_Controller{
 
 			if($contract->num_rows() > 0) {
 				$this->load->model('Update_model');
+				$this->load->model('Notifications_model');
 
 			  $row = $contract->row();
 				$this->Update_model->create_notification($row->employer_family_name, 'contract');
+				$this->Notifications_model->create_notification($row->employer_family_name, 'One of your propsed contracts has been accepted!  You now have a new employee.');
 			}
 
 			echo json_encode(array('success' => $success));

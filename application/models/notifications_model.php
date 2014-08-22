@@ -15,4 +15,8 @@ class Notifications_model extends CI_Model{
 	function delete_notification($id){
 		return($this->db->delete('notification', array('id' => $id)));
 	}	
+
+	function create_notification($family_name, $content) {
+		$this->db->insert('notification', array('family_name' => $family_name, 'content' => $content));
+	}
 }
