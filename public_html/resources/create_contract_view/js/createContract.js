@@ -1,13 +1,13 @@
 $(function() {
 
-	$(".fixed-contract").click(function() {
+	$(".fixed-contract").on('click', function() {
 		$(".on-going-contract").removeClass('active');
 		$(this).addClass('active');
 		$('.contract-duration').removeClass('hidden').find(".contract-duration__input").val("");
 		$('.wrap').removeClass('length-chosen');
 	});
 
-	$(".on-going-contract").click(function() {
+	$(".on-going-contract").on('click', function() {
 		$(".fixed-contract").removeClass('active');
 		$(this).addClass('active');
 		$('.contract-duration').addClass('hidden').find(".contract-duration__input").val(-1);

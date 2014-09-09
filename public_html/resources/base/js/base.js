@@ -62,7 +62,7 @@
 			});
 		}
 
-	$('#inventoryLink').click(function (){
+	$('#inventoryLink').on('click', function (){
     $.ajax({
       url: $(this).attr("data-ajax-url"),
 			dataType: 'json',
@@ -84,7 +84,7 @@
 
   });
 
-  $('#needsLink').click(function (){
+  $('#needsLink').on('click', function (){
     $.ajax({
       url: $(this).attr("data-ajax-url"),
 			dataType: 'json',
@@ -133,7 +133,7 @@
     });
   });
 
-  $('#notsLink').click(function (){
+  $('#notsLink').on('click', function (){
     $.ajax({
       url: $(this).attr("data-ajax-url"),
 			dataType: 'json',
@@ -161,7 +161,7 @@
 					notification += '</tr>';
 
 					$('#nots').append(notification);
-					$('#'+data[i].id).click(function () {
+					$('#'+data[i].id).on('click', function () {
 						$(this).closest('tr').remove();
 						$.ajax({
 							type: "POST",

@@ -5,7 +5,7 @@ $(function() {
 	rsr.image($("#rsr").attr("data-map-url") + $('#map').val(), 0, 0, 500, 500);
 	draw_lmus();
 
-	$('#change_map').click(function(){
+	$('#change_map').on('click', function(){
 		var newImage = $("#rsr").attr("data-map-url") + $('#map').val();
 		rsr.image(newImage, 0,0,500,500);
 		if ( $('#map').val()=="world_map.png" )
@@ -61,7 +61,7 @@ $(function() {
 							}, 200);
 						});
 
-						paths[i].click(function() {
+						paths[i].on('click', function() {
 							if(familyName == paths[i].data("owner")){
 								window.location = url + "/" + i;
 							}

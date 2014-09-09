@@ -22,7 +22,7 @@ $(function(){
 	});
 
 	// When a user clicks to update their collection hours
-	$('#update-hours').click(function () {
+	$('#update-hours').on('click', function () {
 		// First check if it is valid by checking how many spare labor hours they have
 		$.ajax({
 			type: "POST",
@@ -78,7 +78,7 @@ $(function(){
 	});
 
 	// Buy well button clicked, then run backend to buy well
-	$('#buy_well').click(function () {
+	$('#buy_well').on('click', function () {
 		$('#water-error').hide();
 		if(well == $('#well_select option:selected').val()){
 			$('#water_error_message').text("The well is already of this type.");

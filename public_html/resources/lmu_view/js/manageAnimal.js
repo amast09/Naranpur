@@ -22,7 +22,7 @@ $(function(){
 		}
 	});
 
-	$('#updateFeedMethod').click(function () {
+	$('#updateFeedMethod').on('click', function () {
 		var data = $("#feed_policy").serialize();
 		$.ajax({
 			type: "POST",
@@ -36,7 +36,7 @@ $(function(){
 		});
 	});
 
-	$('#manure_icon').click(function() {
+	$('#manure_icon').on('click', function() {
 		var data = $("#feed_policy").serialize();
 		$.ajax({
 			type: 'POST',
