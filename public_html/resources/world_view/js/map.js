@@ -61,7 +61,7 @@ $(function() {
 							}, 200);
 						});
 
-						paths[i].on('click', function() {
+						paths[i].click(function() {
 							if(familyName == paths[i].data("owner")){
 								window.location = url + "/" + i;
 							}

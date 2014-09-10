@@ -34,11 +34,11 @@ $(function() {
 		}
 	}
 
-	hut.on('click', function() {$('#family').modal();});
-	barn.on('click', function() {$('#feed').modal();});
-	well.on('click', function() {$('#water').modal();});
-	farmer.on('click', function() {$('#plant').modal();});
-	field.on('click', function() {$('#cultivate').modal();});
+	hut.click(function() {$('#family').modal();});
+	barn.click(function() {$('#feed').modal();});
+	well.click(function() {$('#water').modal();});
+	farmer.click(function() {$('#plant').modal();});
+	field.click(function() {$('#cultivate').modal();});
 
 	hut.mouseover(function(){this.attr({cursor: 'pointer'});});
 	barn.mouseover(function(){this.attr({cursor: 'pointer'});});
