@@ -3,6 +3,7 @@
 		var bid = 0;
 		var notif = 0;
 		var mess = 0;
+		var lawsLinkClicked = false;
 
 		updates();
 
@@ -82,6 +83,43 @@
       }
     });
 
+  });
+
+  $('#lawsLink').on('click', function() {
+  	if(!lawsLinkClicked) {
+		  $.ajax({
+		    url: $(this).attr("data-ajax-url"),
+				dataType: 'json',
+		    success: function(data) {
+		    	var lawsMarkup = '<ul class="law-list">',
+		    		lawParagraphs;
+
+		    	data.forEach(function(law) {
+		    		lawParagraphs = law.description.split("{{new-line}}");
+
+		    		lawsMarkup += '<li><div class="law-name">' + law.name + '</div><div class="law-description">';
+
+		    		lawParagraphs.forEach(function(lawParagraph) {
+		    			lawsMarkup += '<p>' + lawParagraph + '</p>';
+		    		});
+
+						lawsMarkup += '</li></div>';
+		    	});
+
+		    	lawsMarkup += '</ul>';
+
+		    	lawsMarkup = (data.length > 0) ? lawsMarkup : '<p>No laws enacted.  Welcome to the wild west!</p>'
+
+		    	$('.laws-container').html(lawsMarkup);
+
+		    	$('.law-name').on('click', function() {
+		    		$(this).next('.law-description').toggleClass('show');
+		    	});
+
+		    	lawsLinkClicked = true;
+		    }
+		  });
+  	}
   });
 
   $('#needsLink').on('click', function (){

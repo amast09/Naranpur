@@ -26,6 +26,8 @@
 											<i class="icon-bullhorn"></i> Alerts <span id='notif' class="badge badge-info pull-right" style="display:none;">
 										</a>
 									</li>
+									<li class="divider"></li>
+      						<li id="lawsLink" data-ajax-url="<?=site_url('/law/get_active_laws')?>"><a href="#lawsModal" role="button"  data-toggle="modal"><i class="icon-library"></i> Laws</a></li>
 							</ul>
 					</li>
 						<li class="divider-vertical"></li>

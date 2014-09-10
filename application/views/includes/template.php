@@ -4,6 +4,7 @@
 	$this->load->view('modals/read_inventory'); 
 	$this->load->view('modals/read_needs'); 
 	$this->load->view('modals/read_notifications');
+	$this->load->view('modals/read_laws');
 	$this->load->view($content); 
 	$this->load->view('includes/footer');
 ?>
