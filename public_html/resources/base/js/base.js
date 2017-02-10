@@ -3,6 +3,7 @@
 		var bid = 0;
 		var notif = 0;
 		var mess = 0;
+		var lawsLinkClicked = false;
 
 		updates();
 
@@ -22,34 +23,37 @@
 					if(data.mess > 0){
 						$('#mess').text(data.mess);
 						$('#mess').show();
-					}
-					else {
+					} else {
 						$('#mess').hide();
 					}
 
 					if(data.win > 0) {
 						$('#win').text(data.win);
 						$('#win').show();
-					}
-					else {
+					} else {
 						$('#win').hide();
 					}
 
 					if(data.bid > 0){
 						$('#bid').text(data.bid);
 						$('#bid').show();
-					}
-					else {
+					} else {
 						$('#bid').hide();
 					}
 
 					if(data.notif > 0){
 						$('#notif').text(data.notif);
 						$('#notif').show();
-					}
-					else {
+					} else {
 						$('#notif').hide();
 					}
+
+					if(data.contract > 0){
+						$('#contract-notification').text(data.contract).show();
+					} else {
+						$('#contract-notification').hide();
+					}
+
 					if(data.unreadMessages > 0) {
 						$(".unread-messages").text("(" + data.unreadMessages + ")");
 					} else {
@@ -59,7 +63,7 @@
 			});
 		}
 
-	$('#inventoryLink').click(function (){
+	$('#inventoryLink').on('click', function (){
     $.ajax({
       url: $(this).attr("data-ajax-url"),
 			dataType: 'json',
@@ -81,7 +85,44 @@
 
   });
 
-  $('#needsLink').click(function (){
+  $('#lawsLink').on('click', function() {
+  	if(!lawsLinkClicked) {
+		  $.ajax({
+		    url: $(this).attr("data-ajax-url"),
+				dataType: 'json',
+		    success: function(data) {
+		    	var lawsMarkup = '<ul class="law-list">',
+		    		lawParagraphs;
+
+		    	data.forEach(function(law) {
+		    		lawParagraphs = law.description.split("{{new-line}}");
+
+		    		lawsMarkup += '<li><div class="law-name">' + law.name + '</div><div class="law-description">';
+
+		    		lawParagraphs.forEach(function(lawParagraph) {
+		    			lawsMarkup += '<p>' + lawParagraph + '</p>';
+		    		});
+
+						lawsMarkup += '</li></div>';
+		    	});
+
+		    	lawsMarkup += '</ul>';
+
+		    	lawsMarkup = (data.length > 0) ? lawsMarkup : '<p>No laws enacted.  Welcome to the wild west!</p>'
+
+		    	$('.laws-container').html(lawsMarkup);
+
+		    	$('.law-name').on('click', function() {
+		    		$(this).next('.law-description').toggleClass('show');
+		    	});
+
+		    	lawsLinkClicked = true;
+		    }
+		  });
+  	}
+  });
+
+  $('#needsLink').on('click', function (){
     $.ajax({
       url: $(this).attr("data-ajax-url"),
 			dataType: 'json',
@@ -130,7 +171,7 @@
     });
   });
 
-  $('#notsLink').click(function (){
+  $('#notsLink').on('click', function (){
     $.ajax({
       url: $(this).attr("data-ajax-url"),
 			dataType: 'json',
@@ -158,7 +199,7 @@
 					notification += '</tr>';
 
 					$('#nots').append(notification);
-					$('#'+data[i].id).click(function () {
+					$('#'+data[i].id).on('click', function () {
 						$(this).closest('tr').remove();
 						$.ajax({
 							type: "POST",

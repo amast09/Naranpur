@@ -26,6 +26,8 @@
 											<i class="icon-bullhorn"></i> Alerts <span id='notif' class="badge badge-info pull-right" style="display:none;">
 										</a>
 									</li>
+									<li class="divider"></li>
+      						<li id="lawsLink" data-ajax-url="<?=site_url('/law/get_active_laws')?>"><a href="#lawsModal" role="button"  data-toggle="modal"><i class="icon-library"></i> Laws</a></li>
 							</ul>
 					</li>
 						<li class="divider-vertical"></li>
@@ -45,6 +47,18 @@
 								<li>
 									<a href="<?=site_url('/transaction/view_all_transactions');?>">
 										<i class="icon-stack"></i> View Transactions <span id='win' class="badge badge-info pull-right" style="display:none;">
+									</a>
+								</li>
+									<li class="divider"></li>
+								<li>
+									<a href="<?=site_url('/labor/create_contract_view');?>">
+										<i class="icon-user4"></i> Create Labor Contract
+									</a>
+								</li>
+									<li class="divider"></li>
+								<li>
+									<a href="<?=site_url('/labor/manage_contracts_view');?>">
+										<i class="icon-signup"></i> Manage Labor Contracts <span id='contract-notification' class="badge badge-info pull-right" style="display:none;">
 									</a>
 								</li>
 							</ul>

@@ -1,5 +1,5 @@
 $(function(){
-	$('#comment_button').click(function() {
+	$('#comment_button').on('click', function() {
 		$.ajax({
 			type: "post",
 			url: $("#comment-form").attr("data-submit-url"),

@@ -56,12 +56,36 @@ class Family_model extends CI_Model{
 		return($this->db->get('family'));
 	}
 
+	function get_family_by_member_id($member_id) {
+		$family_name = "error";
+		$this->db->where('id', $member_id);
+		$query = $this->db->get('member');
+
+		if($query->num_rows() > 0) {
+		   $row = $query->row(); 
+		   $family_name = $row->family_name;
+		}
+
+		return $family_name;
+	}
+
 	function get_all_families($family_name){
+		$this->db->or_where_not_in('name', $family_name);
+		$this->db->order_by('name', 'ASC');
+		return($this->db->get('family'));
+	}
+
+	function get_all_potential_employees_for_family($family_name) {
 		$query = $this->db->query("
-			SELECT family.name
-			FROM family
-			WHERE family.name !=  '$family_name'
+			SELECT * 
+			FROM member
+			WHERE member.family_name != '$family_name'
+			AND NOT EXISTS (SELECT * FROM contract
+											WHERE contract.employee_member_id = member.id
+											AND contract.employee_acceptance = TRUE)
+			ORDER BY member.family_name ASC, member.age ASC
 		");
+
 		return($query);
 	}
 
@@ -86,6 +110,24 @@ class Family_model extends CI_Model{
 		return($this->db->get('game_params'));
 	}
 
+	function get_family_workers($family_name) {
+		$query = $this->db->query("
+			SELECT age, sex, health
+			FROM member
+			WHERE (member.family_name = '$family_name'
+			AND NOT EXISTS (SELECT * FROM contract
+							WHERE contract.employee_member_id = member.id
+							AND contract.employee_acceptance = TRUE))
+			OR EXISTS (SELECT * FROM contract
+						WHERE contract.employer_family_name = '$family_name'
+				        AND contract.employee_member_id = member.id
+						AND contract.employee_acceptance = TRUE)
+			AND health > 0
+			ORDER BY age DESC
+		");
+		return($query);
+	}
+
 	function get_labor(){
 		$this->load->model('crop_model');
 		$this->load->model('lmu_model');
@@ -94,7 +136,7 @@ class Family_model extends CI_Model{
 
 		$family_name = $this->session->userdata('family_name');
 
-		$family_query = $this->get_members($family_name);
+		$family_query = $this->get_family_workers($family_name);
 		$crop_query = $this->crop_model->get_all_planted_crops($family_name);
 		$water_query = $this->water_model->get_family_water($family_name);
 		$well_query = $this->water_model->get_family_well_water($family_name);

@@ -6,12 +6,12 @@ $(function() {
 	drawWorldGraph();
 	drawUserGraph();
 
-	$("#worldBtns .btn").click(function() {
+	$("#worldBtns .btn").on('click', function() {
 		x = $(this).data('lookup');
 		drawWorldGraph();
 	});
 
-	$("#userBtns .btn").click(function() {
+	$("#userBtns .btn").on('click', function() {
 		y = $(this).data('lookup');
 		drawUserGraph();
 	});

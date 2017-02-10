@@ -41,7 +41,7 @@ $(function(){
 		});
 	});
 
-	$('#removeCrop').click(function() {
+	$('#removeCrop').on('click', function() {
 		var $lmu = $(this),
 				data = {
 					'lmu_id': $lmu.data('lmu_id'),

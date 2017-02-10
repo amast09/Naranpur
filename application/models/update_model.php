@@ -29,7 +29,11 @@ class Update_model extends CI_Model{
     		SELECT COUNT(*)
     		FROM updates
     		WHERE update_type = 'win' AND family_name = '$family_name'
-			) AS win
+			) AS win, (
+    		SELECT COUNT(*)
+    		FROM updates
+    		WHERE update_type = 'contract' AND family_name = '$family_name'
+			) AS contract
 		");
 		return($query);
 	}
