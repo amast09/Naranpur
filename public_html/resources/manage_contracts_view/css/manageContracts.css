@@ -1,0 +1,58 @@
+.container-fluid {
+	margin-bottom: 50px;
+}
+.contract > .resources {
+	max-height: 120px;
+	overflow-y: auto;
+}
+.contract {
+	line-height: 120px;
+	border-bottom: 1px solid #ddd;
+	height: 120px;
+	padding-bottom: 19px;
+	margin: 20px 0;
+}
+.contract:last-of-type {
+	border: none;
+}
+.empty-contracts,
+.actions {
+	text-align: center;
+}
+.contract-list-wrapper {
+	padding: 0 25px;
+}
+.empty-contracts {
+	margin-top: 20px;
+}
+.contract.confirm > .actions,
+.contract.confirm > .employer,
+.contract.confirm > .employee,
+.contract.confirm > .length,
+.contract.confirm > .resources,
+.contract-delete-confirmation {
+	display: none;
+
+}
+.contract.confirm > .contract-delete-confirmation {
+	display: block;
+}
+.contract.confirm {
+	padding: 2px 0;
+}
+.contract-delete-confirmation {
+	text-align: center;
+	background-color: #f2dede;
+	color: #b94a48;
+	border-radius: 5px;
+	line-height: 45px;
+}
+.confirmation-text {
+	padding-top: 5px;
+}
+.empty-contracts {
+	display: none;
+}
+.empty-contracts:last-of-type {
+	display: block;
+}

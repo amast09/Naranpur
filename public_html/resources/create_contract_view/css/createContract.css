@@ -1,0 +1,197 @@
+/** Navigation between steps **/
+
+/* Steps */
+.wrap {
+	overflow: hidden;
+	position: relative;
+	min-height: 500px;
+}
+
+.length-option,
+.employee-option,
+.resources-option,
+.review-option {
+	width: 96%;
+	position: absolute;
+	transition: 1s;
+	left: 2%;
+}
+
+.wrap[data-step='2'] > .length-option,
+.wrap[data-step='3'] > .length-option,
+.wrap[data-step='3'] > .employee-option,
+.wrap[data-step='4'] > .length-option,
+.wrap[data-step='4'] > .employee-option,
+.wrap[data-step='4'] > .resources-option{
+	left: -200%;
+}
+
+.wrap[data-step='1'] > .employee-option,
+.wrap[data-step='1'] > .resources-option,
+.wrap[data-step='1'] > .review-option,
+.wrap[data-step='2'] > .resources-option, 
+.wrap[data-step='2'] > .review-option,
+.wrap[data-step='3'] > .review-option {
+	left: 200%;	
+}
+
+/* Next & Previous Buttons */
+.wrap[data-step='1'] + .navigation .previous,
+.wrap[data-step='1'] + .navigation .next,
+.wrap[data-step='2'] + .navigation .next,
+.wrap[data-step='3'] + .navigation .next, 
+.wrap[data-step='4'] + .navigation .next,
+.create {
+	display: none;
+}
+
+.wrap[data-step='1'].length-chosen + .navigation .next,
+.wrap[data-step='2'].employee-chosen + .navigation .next,
+.wrap[data-step='3'].resources-chosen + .navigation .next, 
+.wrap[data-step='4'].length-chosen + .navigation .create {
+	display: inline-block;
+}
+
+.navigation {
+	margin-top: 10px;
+}
+
+.step-name {
+	display: inline-block;
+}
+
+.crumbs {
+	list-style: none;
+	float: right;
+	margin: 10px 0;
+}
+
+.step-link {
+	color: #0088cc;
+}
+	.step-link:hover {
+		cursor: pointer;
+	}
+
+.crumbs .icon-chevron-right {
+	font-size: 16px;
+}
+
+/******************************/
+
+/******** Length : Step-1 CSS ********/
+.contract-duration {
+	text-align: center;
+	margin-top: 50px;
+}
+.contract-duration__label {
+	display: inline-block;
+	line-height: 30px;
+	font-size: 20px;
+	margin: 0 15px 10px 0;
+	vertical-align: middle;
+}
+.hidden {
+	display: none;
+}
+/*************************************/
+
+/******** Employee : Step-2 CSS ********/
+/***************************************/
+.family-member,
+.family-name,
+.header {
+	padding: 0 15px;
+}
+	.family-member:hover,
+	.family-name:hover {
+		cursor: pointer;
+	}
+
+
+.family-member-list {
+	display: none;
+}
+
+.family-name-list,
+.family-member-list,
+.family-member-stats {
+	list-style: none;
+	max-height: 500px;
+	overflow-y: auto;
+}
+
+.chosen {
+	color: #ffffff;
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2);
+	background-color: #0088cc;
+}
+.family-member-stats > .span2,
+.family-member-stats > .span3 {
+	min-height: 100%;
+}
+.family-name-list > .header,
+.family-member-list > .header {
+	font-weight: bold;
+}
+/***************************************/
+
+/******** Resources : Step-3 CSS ********/
+/****************************************/
+.available-resources {
+	text-align: center;
+}
+.add-resource {
+	margin-bottom: 10px;
+}
+.added-resources-list {
+	list-style: none;
+	margin: 0;
+	max-height: 350px;
+	overflow-y: auto;
+}
+.added-resource {
+	margin: 1% 5%;
+	border-bottom: 1px solid #ddd;
+	padding-bottom: 5px;
+	font-size: 25px;
+}
+.added-resource:last-of-type {
+	border: none;
+}
+	.added-resource > .span2 {
+		line-height: 30px;
+		vertical-align: middle;
+	}
+
+#resource-quantity.error {
+	border-color: #b94a48;
+	color: #b94a48;
+}
+
+/****************************************/
+
+/******** Review : Step-4 CSS ********/
+.review-list {
+	list-style: none;
+}
+.review-length-text {
+	padding: 0;
+	margin: 0 0 10px 25px;
+}
+.review-added-resource {
+	border-bottom: 1px solid #ddd;
+	min-height: 30px;
+}
+.review-added-resource:last-of-type {
+	border: none;
+}
+	.review-added-resource > .span4 {
+		line-height: 30px;
+		vertical-align: middle;
+	}
+.text-error {
+	margin-bottom: 10px;
+}
+/*************************************/
+
