@@ -7,11 +7,7 @@ $(function() {
 
 	$('#change_map').on('click', function(){
 		var newImage = $("#rsr").attr("data-map-url") + $('#map').val();
-		rsr.image(newImage, 0,0,500,500);
-		if ( $('#map').val()=="world_map.png" )
-		{
-		draw_lmus();
-		}
+		$('#rsr').find('image').attr('href', newImage);
 	});
 
 	function draw_lmus(){
